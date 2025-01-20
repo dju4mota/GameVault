@@ -1,0 +1,41 @@
+[
+  {
+    "reviewId": 1,
+    "score": 9,
+    "comment": "Um jogo incrível com uma narrativa emocionante!",
+    "data": "2025-01-19",
+    "game": {
+      "title": "The Legend of Zelda: Breath of the Wild",
+      "description": "Explore um vasto mundo aberto cheio de mistérios e aventuras.",
+      "genre": "Action-Adventure"
+    },
+    "hoursPlayed": 120.5,
+    "platform": "Nintendo Switch"
+  },
+  {
+    "reviewId": 2,
+    "score": 8,
+    "comment": "Um excelente jogo com gráficos impressionantes, mas um pouco repetitivo.",
+    "data": "2025-01-18",
+    "game": {
+      "title": "Horizon Forbidden West",
+      "description": "Acompanhe Aloy em uma jornada épica para salvar a Terra de uma nova ameaça.",
+      "genre": "RPG"
+    },
+    "hoursPlayed": 45.0,
+    "platform": "PlayStation 5"
+  },
+  {
+    "reviewId": 3,
+    "score": 7,
+    "comment": "Boa jogabilidade, mas com problemas de performance no PC.",
+    "data": "2025-01-15",
+    "game": {
+      "title": "Cyberpunk 2077",
+      "description": "Explore uma cidade futurista em um mundo aberto repleto de escolhas.",
+      "genre": "Action RPG"
+    },
+    "hoursPlayed": 30.0,
+    "platform": "PC"
+  }
+]

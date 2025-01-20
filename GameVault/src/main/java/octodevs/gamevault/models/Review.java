@@ -20,6 +20,9 @@ public class Review {
     private String data;
     @Embedded
     private Game game;
+    private float hoursPlayed;
+    private String platform;
+
 
     public Review() {
 
@@ -41,6 +44,8 @@ public class Review {
         this.score = review.score();
         this.data = review.data();
         this.reviewId = review.reviewId();
+        this.platform = review.platform();
+        this.hoursPlayed = review.hoursPlayed();
         //this.game = review.game();
     }
 }
