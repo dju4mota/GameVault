@@ -4,7 +4,9 @@ public record DtoPostReview(
         long reviewId,
         int score,
         String comment,
-        String data
+        String data,
+        String platform,
+        float hoursPlayed
 )
     {
 

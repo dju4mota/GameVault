@@ -9,7 +9,5 @@ public class Game {
     private String title;
     private String description;
     private String genre;
-    private float hoursPlayed;
-    private String platform;
 
 }
