@@ -19,6 +19,7 @@ public class ReviewController {
 
 
     // Create
+    //todo validation
     @PostMapping
     void createReview(@RequestBody DtoPostReview review) {
         reviewRepository.save(new Review(review));
@@ -26,7 +27,7 @@ public class ReviewController {
     }
 
     // Read
-    // pages
+    // TODO pages
     @GetMapping
     Stream<DtoGetReview> getAllReviews() {
         Stream<DtoGetReview> reviews = reviewRepository.findAll().stream().map(DtoGetReview::new);
