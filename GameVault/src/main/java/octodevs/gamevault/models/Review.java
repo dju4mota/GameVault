@@ -9,8 +9,8 @@ import lombok.Setter;
 import octodevs.gamevault.dto.DtoPostReview;
 
 
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Entity
 public class Review {
     @Id
@@ -42,37 +42,5 @@ public class Review {
         this.data = review.data();
         this.reviewId = review.reviewId();
         //this.game = review.game();
-    }
-
-    public long getReviewId() {
-        return reviewId;
-    }
-
-    public void setReviewId(long reviewId) {
-        this.reviewId = reviewId;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 }
