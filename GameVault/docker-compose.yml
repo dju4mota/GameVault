@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   db:
     image: mysql:8.0
@@ -16,7 +17,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/app  # Montar o código-fonte local no container
+      - .:/app  # Montar o código-fonte local no contêiner
+      - /app/target  # Necessário para build incremental
     environment:
       JAVA_VERSION: 21
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gamevault
@@ -25,6 +27,9 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       - db
-
+    command: >
+      ./mvnw spring-boot:run
+        -Dspring-boot.run.profiles=development
+        -Dspring.devtools.restart.enabled=true  # Habilita o Live Reload no DevTools
 volumes:
   db_data:
