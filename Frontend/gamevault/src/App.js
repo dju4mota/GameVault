@@ -1,10 +1,10 @@
 import React from 'react';
-import Hello from './Hello'; 
+import TelaInicial from './components/pages/Landing/TelaInicial';
 
 function App() {
   return (
     <div className="App">
-      <Hello/> 
+      <TelaInicial />
     </div>
   );
 }
