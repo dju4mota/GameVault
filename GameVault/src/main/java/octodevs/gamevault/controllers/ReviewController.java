@@ -8,6 +8,7 @@ import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repository.RepositoryReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,10 +33,11 @@ public class ReviewController {
     }
 
     // Read
+
     // TODO pages
     @GetMapping
-    Stream<DtoGetReview> getAllReviews() {
-        Stream<DtoGetReview> reviews = reviewRepository.findAll().stream().map(DtoGetReview::new);
+    Stream<DtoGetReview> getAllReviews(Pageable pageable) {
+        Stream<DtoGetReview> reviews = reviewRepository.findAll(pageable).stream().map(DtoGetReview::new);
         System.out.println("Getting all reviews");
         return reviews;
     }
