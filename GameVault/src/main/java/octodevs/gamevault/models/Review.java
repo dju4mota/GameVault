@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import octodevs.gamevault.dto.DtoPostReview;
+import octodevs.gamevault.dto.DtoPutReview;
 
 
 @Getter
@@ -47,5 +48,23 @@ public class Review {
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
         //this.game = review.game();
+    }
+
+    public void atualizarDados(DtoPutReview dadosReview) {
+        if(dadosReview.comment() != null) {
+            this.comment = dadosReview.comment();
+        }
+        if(dadosReview.data() != null) {
+            this.data = dadosReview.data();
+        }
+        if(dadosReview.platform() != null) {
+            this.platform = dadosReview.platform();
+        }
+        if(dadosReview.hoursPlayed() != 0) {
+            this.hoursPlayed = dadosReview.hoursPlayed();
+        }
+        if (dadosReview.score() != 0) {
+            this.score = dadosReview.score();
+        }
     }
 }

@@ -2,9 +2,11 @@ package octodevs.gamevault.controllers;
 
 import octodevs.gamevault.dto.DtoGetReview;
 import octodevs.gamevault.dto.DtoPostReview;
+import octodevs.gamevault.dto.DtoPutReview;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repository.RepositoryReview;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -45,8 +47,18 @@ public class ReviewController {
     // TODO get by games
 
     // Update
+    @PutMapping
+    @Transactional
+    void updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
+        Review review = reviewRepository.getReferenceById(id);
+        review.atualizarDados(dtoPut);
+    }
+
 
     // Delete
-
+    @DeleteMapping
+    void deleteReviewById(@PathVariable Long id) {
+        reviewRepository.deleteById(id);
+    }
 
 }
