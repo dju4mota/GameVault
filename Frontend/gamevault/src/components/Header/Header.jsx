@@ -1,4 +1,5 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import { Button, ButtonX } from '../Button/Button';
 
 const Div = styled.div`
   position: absolute;
@@ -10,6 +11,7 @@ const Div = styled.div`
   justify-content: center;
   display: flex;
 `;
+
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: left;
@@ -21,17 +23,18 @@ const Title = styled.h1`
 `;
 
 const Menu = styled.div`
-  background-color: rgb(22, 28, 70);
   display: flex;
   position: absolute;
   right: 20%;
 `;
 
-export const Header = () => {
+export const Header = ({ openModal }) => {
   return (
     <Div>
       <Title>GameVault</Title>
-      <Menu> perfil | Jogos | Listas | + Log </Menu>
+      <Menu>
+        perfil | Jogos | Listas | <Button onClick={openModal}>teste</Button>
+      </Menu>
     </Div>
   );
 };

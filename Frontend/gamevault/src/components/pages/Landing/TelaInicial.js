@@ -1,11 +1,12 @@
-import styled from '@emotion/styled';
 import { Header } from '../../Header/Header';
+import ModalReview from '../../Modal/ModalReview';
 
 
 function TelaInicial() {
     return (
     <div>
-        <Header />
+        
+        <ModalReview />
         
     </div>
     );
