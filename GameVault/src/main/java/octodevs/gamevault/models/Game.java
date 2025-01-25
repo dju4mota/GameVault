@@ -1,8 +1,6 @@
 package octodevs.gamevault.models;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import octodevs.gamevault.dto.game.DtoPostGame;

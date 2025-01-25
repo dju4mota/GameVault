@@ -1,11 +1,13 @@
 package octodevs.gamevault.controllers;
 
+import jakarta.validation.Valid;
 import octodevs.gamevault.dto.DtoGetReview;
 import octodevs.gamevault.dto.DtoPostReview;
 import octodevs.gamevault.dto.DtoPutReview;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repository.RepositoryReview;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,7 @@ public class ReviewController {
     //todo validation
     @PostMapping
     @Transactional
-    void createReview(@RequestBody DtoPostReview review) {
+    void createReview(@RequestBody @Valid DtoPostReview review) {
         reviewRepository.save(new Review(review));
         System.out.println("Creating review");
     }
