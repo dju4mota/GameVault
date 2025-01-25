@@ -23,6 +23,7 @@ public class ReviewController {
     // Create
     //todo validation
     @PostMapping
+    @Transactional
     void createReview(@RequestBody DtoPostReview review) {
         reviewRepository.save(new Review(review));
         System.out.println("Creating review");
@@ -53,7 +54,6 @@ public class ReviewController {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
     }
-
 
     // Delete
     @DeleteMapping

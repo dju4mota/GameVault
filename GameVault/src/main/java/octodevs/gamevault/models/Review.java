@@ -47,7 +47,7 @@ public class Review {
         this.reviewId = review.reviewId();
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
-        //this.game = review.game();
+        this.game = new Game(review.game());
     }
 
     public void atualizarDados(DtoPutReview dadosReview) {
