@@ -7,8 +7,8 @@ import octodevs.gamevault.dto.DtoPutReview;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repository.RepositoryReview;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,45 +24,42 @@ public class ReviewController {
 
 
     // Create
-    //todo validation
     @PostMapping
     @Transactional
-    void createReview(@RequestBody @Valid DtoPostReview review) {
+    ResponseEntity createReview(@RequestBody @Valid DtoPostReview review) {
         reviewRepository.save(new Review(review));
-        System.out.println("Creating review");
+        return ResponseEntity.ok().build();
     }
 
     // Read
-
-    // TODO pages
     @GetMapping
-    Stream<DtoGetReview> getAllReviews(Pageable pageable) {
+    ResponseEntity<Stream<DtoGetReview>> getAllReviews(Pageable pageable) {
         Stream<DtoGetReview> reviews = reviewRepository.findAll(pageable).stream().map(DtoGetReview::new);
-        System.out.println("Getting all reviews");
-        return reviews;
+        return ResponseEntity.ok(reviews);
     }
 
     // get by Id
     @GetMapping("/{id}")
-    DtoGetReview getReviewbyId(@PathVariable Long id) {
+    ResponseEntity<DtoGetReview> getReviewbyId(@PathVariable Long id) {
         Optional<Review> review = reviewRepository.findById(id);
-        System.out.println("Getting id " + id);
-        return review.map(DtoGetReview::new).orElse(null);
+        return ResponseEntity.ok( review.map(DtoGetReview::new).orElse(null));
     }
-    // TODO get by games
 
     // Update
-    @PutMapping
+    @PutMapping ("/{id}")
     @Transactional
-    void updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
+    ResponseEntity updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
+        return ResponseEntity.ok(new DtoGetReview(reviewRepository.save(review)));
     }
 
     // Delete
     @DeleteMapping("/{id}")
-    void deleteReviewById(@PathVariable Long id) {
+    @Transactional
+    ResponseEntity deleteReviewById(@PathVariable Long id) {
         reviewRepository.deleteById(id);
+        return  ResponseEntity.noContent().build();
     }
 
 }

@@ -15,7 +15,6 @@ public record DtoGetReview(
 ) {
     public DtoGetReview(Review review) {
         this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),new DtoGetGame(review.getGame()));
-
     }
 
 }

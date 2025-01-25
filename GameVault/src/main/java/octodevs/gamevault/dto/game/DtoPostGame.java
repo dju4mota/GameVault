@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 
 public record DtoPostGame(
         @NotNull
-        @NotBlank
         String title,
         String description,
         String genre
