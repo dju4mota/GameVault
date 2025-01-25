@@ -4,14 +4,9 @@ package octodevs.gamevault.models;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
 import octodevs.gamevault.dto.DtoPostReview;
 import octodevs.gamevault.dto.DtoPutReview;
 
-
-@Getter
-@Setter
 @Entity
 public class Review {
     @Id
@@ -66,5 +61,33 @@ public class Review {
         if (dadosReview.score() != 0) {
             this.score = dadosReview.score();
         }
+    }
+
+    public long getReviewId() {
+        return reviewId;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public float getHoursPlayed() {
+        return hoursPlayed;
+    }
+
+    public String getPlatform() {
+        return platform;
     }
 }

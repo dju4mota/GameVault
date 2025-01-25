@@ -1,6 +1,8 @@
 package octodevs.gamevault.dto.game;
 
 import octodevs.gamevault.models.Game;
+import lombok.Getter;
+
 
 public record DtoGetGame(
 

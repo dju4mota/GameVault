@@ -1,13 +1,9 @@
 package octodevs.gamevault.models;
 
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
 import octodevs.gamevault.dto.game.DtoPostGame;
 
 @Embeddable
-@Getter
-@Setter
 public class Game {
 
     private String title;
@@ -21,6 +17,18 @@ public class Game {
     }
 
     public Game() {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getGenre() {
+        return genre;
     }
 }
 

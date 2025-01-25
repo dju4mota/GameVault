@@ -1,8 +1,8 @@
 package octodevs.gamevault.dto;
 
 import octodevs.gamevault.dto.game.DtoGetGame;
-import octodevs.gamevault.models.Game;
 import octodevs.gamevault.models.Review;
+import lombok.Getter;
 
 public record DtoGetReview(
         long reviewId,
