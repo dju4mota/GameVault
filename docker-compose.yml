@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-db-Total
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gamevault
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  spring-app:
+    build: 
+      context: ./GameVault  # Certifique-se de que o diretório está correto
+      dockerfile: Dockerfile
+    container_name: spring-app-Total
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./GameVault:/app  # Corrija o caminho para a pasta do Spring
+    environment:
+      JAVA_VERSION: 21
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gamevault
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - db
+
+  react-app:
+    build:
+      context: ./Frontend/gamevault  # Confirme se o caminho está correto
+      dockerfile: Dockerfile
+    container_name: react-app-Total
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Frontend/gamevault:/app  # Corrija o volume para o diretório correto
+      - /app/node_modules  # Monta a pasta node_modules dentro do container
+    stdin_open: true
+    tty: true
+    environment:
+      CHOKIDAR_USEPOLLING: "true" # Permite hot-reloading no Docker
+
+volumes:
+  db_data:
