@@ -29,9 +29,9 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: target/*.jar
+        path: GameVault/target/*.jar
     - name: Archive test results
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: target/surefire-reports/
+        path: GameVault/target/surefire-reports/
