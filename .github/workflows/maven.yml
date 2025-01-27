@@ -22,7 +22,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run:
+         cd GameVault
+         mvn -B package --file pom.xml
     - name: Archive build artifacts
       uses: actions/upload-artifact@v3
       with:
