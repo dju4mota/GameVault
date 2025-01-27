@@ -22,7 +22,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name : Clean Install
-      run: mvn clean install -U
+      run: |
+        cd GameVault
+        mvn clean install -U
     - name: Build with Maven
       run: |
         cd GameVault
