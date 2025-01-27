@@ -20,10 +20,11 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'      
-    - name : Clean Install
-      run: |
-        cd GameVault
-        mvn clean install -U
+        cache: maven  
+    # - name : Clean Install
+    #   run: |
+    #     cd GameVault
+    #     mvn clean install -U
     - name: Build with Maven
       run: |
         cd GameVault
