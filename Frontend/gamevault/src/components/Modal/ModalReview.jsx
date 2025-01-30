@@ -62,9 +62,9 @@ const Content = styled.div`
     align-items: center;
     img {
       height: 200px;
-}
-      padding: 10px;
-}
+    }
+    padding: 10px;
+  }
 
   .nomeJogo {
     display: flex;
@@ -107,6 +107,86 @@ const OpenButton = styled.button`
     background-color: #218838;
   }
 `;
+
+const StarRatingContainer = styled.div`
+  display: inline-block;
+  border: 0;
+  margin-left: 10px;
+
+  .rate {
+    display: inline-block;
+    border: 0;
+  }
+
+  input {
+    display: none;
+  }
+
+  label {
+    float: right;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+      display: inline-block;
+      font-size: 2rem;
+      padding: 0.3rem 0.2rem;
+      margin: 0;
+      font-family: FontAwesome;
+      content: "\\f005"; /* full star */
+    }
+  }
+
+  .half:before {
+    content: "\\f089"; /* half star no outline */
+    position: absolute;
+    padding-right: 0;
+  }
+
+  input:checked ~ label,
+  label:hover,
+  label:hover ~ label {
+    color: #73b100;
+  }
+
+  input:checked + label:hover,
+  input:checked ~ label:hover,
+  input:checked ~ label:hover ~ label,
+  label:hover ~ input:checked ~ label {
+    color: #a6e72d;
+  }
+`;
+
+function StarRating({ value, onChange }) {
+  const ratings = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5];
+
+  return (
+    <StarRatingContainer>
+      <div className="rate">
+        {ratings.map((rating) => {
+          const isHalf = rating % 1 !== 0;
+          return (
+            <React.Fragment key={rating}>
+              <input
+                type="radio"
+                id={`star${rating}`}
+                name="nota"
+                value={rating}
+                checked={value === rating.toString()}
+                onChange={onChange}
+              />
+              <label
+                htmlFor={`star${rating}`}
+                className={isHalf ? "half" : ""}
+                title={`${rating} stars`}
+              />
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </StarRatingContainer>
+  );
+}
 
 function ModalReview() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -218,26 +298,21 @@ function ModalReview() {
                     />
                   </label>
 
-                <div className="dataJogado">
-                  <label>
-                    Jogado em:
-                    <input
-                      type="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleChange}
-                    />
-                  </label>
-                </div>
+                  <div className="dataJogado">
+                    <label>
+                      Jogado em:
+                      <input
+                        type="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
 
-                  <label>
+                  <label style={{ display: "flex", alignItems: "center" }}>
                     Nota:
-                    <input
-                      type="number"
-                      name="nota"
-                      value={formData.nota}
-                      onChange={handleChange}
-                    />
+                    <StarRating value={formData.nota} onChange={handleChange} />
                   </label>
                   <br />
                   <label>
