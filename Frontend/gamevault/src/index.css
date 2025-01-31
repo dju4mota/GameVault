@@ -16,3 +16,11 @@ code {
   font-family: 'FontAwesome';
   src: url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
 }
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+

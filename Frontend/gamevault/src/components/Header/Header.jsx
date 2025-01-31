@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, ButtonX } from '../Button/Button';
+import { Button } from '../Button/Button';
 
 const Div = styled.div`
   position: absolute;
@@ -26,6 +26,10 @@ const Menu = styled.div`
   display: flex;
   position: absolute;
   right: 20%;
+  button {
+    background-color:rgb(90, 90, 90);
+    color: white;
+  }
 `;
 
 export const Header = ({ openModal }) => {
@@ -33,7 +37,7 @@ export const Header = ({ openModal }) => {
     <Div>
       <Title>GameVault</Title>
       <Menu>
-        perfil | Jogos | Listas | <Button onClick={openModal}>teste</Button>
+        perfil | Jogos | Listas | <Button onClick={openModal}> +Log </Button>
       </Menu>
     </Div>
   );
