@@ -19,8 +19,14 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+  
 
     steps:
+    
+    - name: Populate MySQL database
+      run: |
+        mysql -h 127.0.0.1 -P 3306 -u root -proot gamevault < ./GameVault/BD/start.sql
+
     - uses: actions/checkout@v4
 
     - name: Set up JDK 21
