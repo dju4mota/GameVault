@@ -1,47 +1,57 @@
 package octodevs.gamevault.crud;
 
-
-import io.swagger.v3.core.util.Json;
 import octodevs.gamevault.controllers.ReviewController;
+import octodevs.gamevault.dto.DtoGetReview;
+import octodevs.gamevault.models.Review;
+import octodevs.gamevault.services.JsonFileReader;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
+import java.util.List;
+import java.util.stream.Stream;
 
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 class RequestTest {
 
     @LocalServerPort
     private int port;
 
     @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
     private ReviewController controller;
+    @Autowired
+    private ReviewController reviewController;
 
-    void greetingShouldReturnDefaultMessage() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/reviews", String.class)
-        ).contains("");
-//                ("[{\"reviewId\":7,\"score\":8,\"comment\":\"Um excelente jogo com gráficos impressionantes, mas um pouco repetitivo.\"," +
-//                "\"data\":\"2025-01-18\",\"platform\":\"PlayStation 5\",\"hoursPlayed\":45.0,\"game\":{\"title\":\"Horizon Forbidden West\",\"description\":" +
-//                "\"Acompanhe Aloy em uma jornada épica para salvar a Terra de uma nova ameaça.\",\"genre\":\"RPG\"}},{\"reviewId\":12,\"score\":8,\"comment\":" +
-//                "\"Um excelente jogo com gráficos impressionantes, mas um pouco repetitivo.\",\"data\":\"2025-01-18\",\"platform\":\"PlayStation 5\",\"hoursPlayed" +
-//                "\":45.0,\"game\":{\"title\":\"Horizon Forbidden West\",\"description\":\"Acompanhe Aloy em uma jornada épica para salvar a Terra de uma nova ameaça.\"," +
-//                "\"genre\":\"RPG\"}},{\"reviewId\":19,\"score\":8,\"comment\":\"Um excelente jogo com gráficos impressionantes, mas um pouco repetitivo.\",\"data\":null," +
-//                "\"platform\":null,\"hoursPlayed\":45.0,\"game\":{\"title\":\"Horizon Forbidden West\",\"description\":\"Acompanhe Aloy em uma jornada épica para salvar a " +
-//                "Terra de uma nova ameaça.\",\"genre\":\"RPG\"}},{\"reviewId\":30,\"score\":8,\"comment\":\"Um excelente jogo com gráficos impressionantes, mas um pouco repetitivo." +
-//                "\",\"data\":\"\",\"platform\":null,\"hoursPlayed\":45.0,\"game\":{\"title\":\"Horizon Forbidden West\",\"description\":\"Acompanhe Aloy em uma jornada épica para " +
-//                "salvar a Terra de uma nova ameaça.\",\"genre\":\"RPG\"}},{\"reviewId\":45,\"score\":7,\"comment\":\"Um excelente jogo com gráficos impressionantes, mas um " +
-//                "pouco repetitivo.\",\"data\":\"\",\"platform\":null,\"hoursPlayed\":5.0,\"game\":{\"title\":\"Horizon Forbidden West\",\"description\":\"Acompanhe Aloy em uma " +
-//                "jornada épica para salvar a Terra de uma nova ameaça.\",\"genre\":\"RPG\"}},{\"reviewId\":450,\"score\":8,\"comment\":\"Um excelente jogo com gráficos impressionantes," +
-//                " mas um pouco repetitivo.\",\"data\":\"\",\"platform\":null,\"hoursPlayed\":45.0,\"game\":{\"title\":\"Horizon Forbidden West\",\"description\":\"Acompanhe Aloy em uma" +
-//                " jornada épica para salvar a Terra de uma nova ameaça.\",\"genre\":\"RPG\"}}]");
+    final private JsonFileReader reader;
+
+    RequestTest(JsonFileReader reader) {
+        this.reader = reader;
+    }
+
+    @Test
+    void getAllReviewsNotEmpty() {
+        ResponseEntity<Stream<DtoGetReview>> response =  reviewController.getAllReviews(Pageable.unpaged());
+
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().count()).isEqualTo(20);
+    }
+
+    @Test
+    void getAllReviewsContent(){
+
+        List<Review> reviews = reader.readArrayReviewFromJson();
+        Stream<DtoGetReview> expected = reviews.stream().map(DtoGetReview::new);
+
+        ResponseEntity<Stream<DtoGetReview>> response =  reviewController.getAllReviews(Pageable.unpaged());
+
+        assertThat(response.getBody()).isEqualTo(expected);
     }
 
 

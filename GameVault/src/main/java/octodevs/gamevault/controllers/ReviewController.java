@@ -24,21 +24,21 @@ public class ReviewController {
     // Create
     @PostMapping
     @Transactional
-    ResponseEntity createReview(@RequestBody @Valid DtoPostReview review) {
+    public ResponseEntity createReview(@RequestBody @Valid DtoPostReview review) {
         reviewRepository.save(new Review(review));
         return ResponseEntity.ok().build();
     }
 
     // Read
     @GetMapping
-    ResponseEntity<Stream<DtoGetReview>> getAllReviews(Pageable pageable) {
+    public ResponseEntity<Stream<DtoGetReview>> getAllReviews(Pageable pageable) {
         Stream<DtoGetReview> reviews = reviewRepository.findAll(pageable).stream().map(DtoGetReview::new);
         return ResponseEntity.ok(reviews);
     }
 
     // get by Id
     @GetMapping("/{id}")
-    ResponseEntity<DtoGetReview> getReviewbyId(@PathVariable Long id) {
+    public ResponseEntity<DtoGetReview> getReviewbyId(@PathVariable Long id) {
         Optional<Review> review = reviewRepository.findById(id);
         return ResponseEntity.ok( review.map(DtoGetReview::new).orElse(null));
     }
@@ -46,7 +46,7 @@ public class ReviewController {
     // Update
     @PutMapping ("/{id}")
     @Transactional
-    ResponseEntity updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
+    public ResponseEntity updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
         return ResponseEntity.ok(new DtoGetReview(reviewRepository.save(review)));
@@ -55,7 +55,7 @@ public class ReviewController {
     // Delete
     @DeleteMapping("/{id}")
     @Transactional
-    ResponseEntity deleteReviewById(@PathVariable Long id) {
+    public ResponseEntity deleteReviewById(@PathVariable Long id) {
         reviewRepository.deleteById(id);
         return  ResponseEntity.noContent().build();
     }
