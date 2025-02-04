@@ -1,6 +1,6 @@
 use gamevault;
 
-CREATE TABLE IF NOT EXISTS reviews (
+CREATE TABLE IF NOT EXISTS review (
     reviewId INT PRIMARY KEY,
     score INT NOT NULL,
     comment TEXT,
