@@ -24,6 +24,16 @@ public class Review {
 
     }
 
+    public Review(long reviewId, int score, String comment, String data, Game game, float hoursPlayed, String platform) {
+        this.reviewId = reviewId;
+        this.score = score;
+        this.comment = comment;
+        this.data = data;
+        this.game = game;
+        this.hoursPlayed = hoursPlayed;
+        this.platform = platform;
+    }
+
     @Override
     public String toString() {
         return "Review{" +

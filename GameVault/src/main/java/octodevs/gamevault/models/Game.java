@@ -19,6 +19,12 @@ public class Game {
     public Game() {
     }
 
+    public Game(String title, String description, String genre) {
+        this.title = title;
+        this.description = description;
+        this.genre = genre;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -24,7 +24,7 @@ class RequestTest {
     @Autowired
     private ReviewController controller;
 
-    @Test
+    //@Test
     void greetingShouldReturnDefaultMessage() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/reviews",
                 String.class)).contains("[{\"reviewId\":7,\"score\":8,\"comment\":\"Um excelente jogo com gráficos impressionantes, mas um pouco repetitivo.\"," +

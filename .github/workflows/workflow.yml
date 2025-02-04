@@ -35,7 +35,7 @@ jobs:
     - name: Build and Test with Maven
       run: |
         cd GameVault
-        mvn --batch-mode verify -Dmaven.test.failure.ignore=true || exit 0
+        mvn --batch-mode verify 
 
     - name: Archive build artifacts
       uses: actions/upload-artifact@v4
