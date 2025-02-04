@@ -1,22 +1,16 @@
 package octodevs.gamevault.controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.validation.Valid;
 import octodevs.gamevault.dto.DtoGetReview;
 import octodevs.gamevault.dto.DtoPostReview;
 import octodevs.gamevault.dto.DtoPutReview;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repository.RepositoryReview;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.File;
-import java.io.FileReader;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -26,7 +20,6 @@ public class ReviewController {
 
     @Autowired
     RepositoryReview reviewRepository;
-
 
     // Create
     @PostMapping
