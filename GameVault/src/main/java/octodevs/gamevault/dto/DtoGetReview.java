@@ -1,8 +1,10 @@
 package octodevs.gamevault.dto;
 
+import lombok.EqualsAndHashCode;
 import octodevs.gamevault.dto.game.DtoGetGame;
 import octodevs.gamevault.models.Review;
 import lombok.Getter;
+
 
 public record DtoGetReview(
         long reviewId,

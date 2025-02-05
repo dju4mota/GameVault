@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -24,9 +25,12 @@ public class ReviewController {
     // Create
     @PostMapping
     @Transactional
-    public ResponseEntity createReview(@RequestBody @Valid DtoPostReview review) {
-        reviewRepository.save(new Review(review));
-        return ResponseEntity.ok().build();
+    public ResponseEntity createReview(@RequestBody @Valid DtoPostReview DTOreview, UriComponentsBuilder uriBuilder) {
+
+        Review review = new Review(DTOreview);
+        reviewRepository.save(review);
+        return ResponseEntity.created(uriBuilder.path("/reviews/{id}").buildAndExpand(review.getReviewId()).toUri())
+                .body(new DtoGetReview(review));
     }
 
     // Read
