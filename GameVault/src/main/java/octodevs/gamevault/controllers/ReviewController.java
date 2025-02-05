@@ -44,7 +44,8 @@ public class ReviewController {
     @GetMapping("/{id}")
     public ResponseEntity<DtoGetReview> getReviewbyId(@PathVariable Long id) {
         Optional<Review> review = reviewRepository.findById(id);
-        return ResponseEntity.ok( review.map(DtoGetReview::new).orElse(null));
+        // TODO mensagem de não encontrado ?
+        return ResponseEntity.ok(review.map(DtoGetReview::new).orElse(null));
     }
 
     // Update
