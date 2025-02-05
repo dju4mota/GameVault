@@ -54,8 +54,8 @@ const Body = styled.div`
 
 const CloseButton = styled.button`
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 10px;
+  right: 10px;
   background: #ff4800;
   border: none;
   color: white;
@@ -71,7 +71,7 @@ const CloseButton = styled.button`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: #ff5c1a;
+    background:rgb(255, 95, 32);
   }
 
   &::before {
