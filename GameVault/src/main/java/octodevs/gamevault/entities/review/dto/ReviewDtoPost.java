@@ -2,9 +2,9 @@ package octodevs.gamevault.entities.review.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import octodevs.gamevault.entities.game.dto.DtoPostGame;
+import octodevs.gamevault.entities.game.dto.GameDtoPost;
 
-public record DtoPostReview(
+public record ReviewDtoPost(
         @NotNull
         long reviewId,
         @NotNull
@@ -16,6 +16,6 @@ public record DtoPostReview(
         @NotNull
         float hoursPlayed,
         @Valid
-        DtoPostGame game
+        GameDtoPost game
 )
 {}

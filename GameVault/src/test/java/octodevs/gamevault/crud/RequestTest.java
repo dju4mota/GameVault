@@ -1,7 +1,7 @@
 package octodevs.gamevault.crud;
 
 import octodevs.gamevault.entities.review.ReviewController;
-import octodevs.gamevault.entities.review.dto.DtoGetReview;
+import octodevs.gamevault.entities.review.dto.ReviewDtoGet;
 import octodevs.gamevault.services.JsonFileReader;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ class RequestTest {
 
     @Test
     void getAllReviewsNotEmpty() {
-        ResponseEntity<Stream<DtoGetReview>> response =  reviewController.getAllReviews(Pageable.unpaged());
+        ResponseEntity<Stream<ReviewDtoGet>> response =  reviewController.getAllReviews(Pageable.unpaged());
 
         assertThat(response.getBody()).isNotNull();
         //assertThat(response.getBody().count()).isEqualTo(20);

@@ -2,7 +2,7 @@ package octodevs.gamevault.entities.review.dto;
 
 import octodevs.gamevault.entities.game.Game;
 
-public record DtoPutReview(
+public record ReviewDtoPut(
     long reviewId,
     int score,
     String comment,

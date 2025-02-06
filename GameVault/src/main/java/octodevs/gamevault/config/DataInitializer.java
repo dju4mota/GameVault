@@ -1,7 +1,7 @@
 package octodevs.gamevault.config;
 
 import octodevs.gamevault.entities.review.Review;
-import octodevs.gamevault.entities.review.RepositoryReview;
+import octodevs.gamevault.entities.review.ReviewRepository;
 import octodevs.gamevault.services.JsonFileReader;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ public class DataInitializer {
     }
 
     @Bean
-    public CommandLineRunner loadData(RepositoryReview reviewRepository, JsonFileReader jsonFileReader) {
+    public CommandLineRunner loadData(ReviewRepository reviewRepository, JsonFileReader jsonFileReader) {
 
         List<Review> reviews = jsonFileReader.readArrayReviewFromJson();
 

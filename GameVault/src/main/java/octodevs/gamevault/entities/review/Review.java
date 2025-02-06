@@ -5,8 +5,8 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import octodevs.gamevault.entities.game.Game;
-import octodevs.gamevault.entities.review.dto.DtoPostReview;
-import octodevs.gamevault.entities.review.dto.DtoPutReview;
+import octodevs.gamevault.entities.review.dto.ReviewDtoPost;
+import octodevs.gamevault.entities.review.dto.ReviewDtoPut;
 
 @Entity
 public class Review {
@@ -46,7 +46,7 @@ public class Review {
                 '}';
     }
 
-    public Review(DtoPostReview review) {
+    public Review(ReviewDtoPost review) {
         this.comment = review.comment();
         this.score = review.score();
         this.data = review.data();
@@ -56,7 +56,7 @@ public class Review {
         this.game = new Game(review.game());
     }
 
-    public void atualizarDados(DtoPutReview dadosReview) {
+    public void atualizarDados(ReviewDtoPut dadosReview) {
         if(dadosReview.comment() != null) {
             this.comment = dadosReview.comment();
         }

@@ -1,7 +1,7 @@
 package octodevs.gamevault.entities.game;
 
 import jakarta.persistence.Embeddable;
-import octodevs.gamevault.entities.game.dto.DtoPostGame;
+import octodevs.gamevault.entities.game.dto.GameDtoPost;
 
 @Embeddable
 public class Game {
@@ -10,10 +10,10 @@ public class Game {
     private String description;
     private String genre;
 
-    public Game(DtoPostGame dtoPostGame) {
-        this.title = dtoPostGame.title();
-        this.description = dtoPostGame.description();
-        this.genre = dtoPostGame.genre();
+    public Game(GameDtoPost gameDtoPost) {
+        this.title = gameDtoPost.title();
+        this.description = gameDtoPost.description();
+        this.genre = gameDtoPost.genre();
     }
 
     public Game() {

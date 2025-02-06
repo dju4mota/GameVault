@@ -2,7 +2,7 @@ package octodevs.gamevault.entities.game.dto;
 
 import jakarta.validation.constraints.NotNull;
 
-public record DtoPostGame(
+public record GameDtoPost(
         @NotNull
         String title,
         String description,

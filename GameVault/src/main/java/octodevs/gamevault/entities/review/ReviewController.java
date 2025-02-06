@@ -1,9 +1,9 @@
 package octodevs.gamevault.entities.review;
 
 import jakarta.validation.Valid;
-import octodevs.gamevault.entities.review.dto.DtoGetReview;
-import octodevs.gamevault.entities.review.dto.DtoPostReview;
-import octodevs.gamevault.entities.review.dto.DtoPutReview;
+import octodevs.gamevault.entities.review.dto.ReviewDtoGet;
+import octodevs.gamevault.entities.review.dto.ReviewDtoPost;
+import octodevs.gamevault.entities.review.dto.ReviewDtoPut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -18,42 +18,42 @@ import java.util.stream.Stream;
 public class ReviewController {
 
     @Autowired
-    RepositoryReview reviewRepository;
+    ReviewRepository reviewRepository;
 
     // Create
     @PostMapping
     @Transactional
-    public ResponseEntity createReview(@RequestBody @Valid DtoPostReview DTOreview, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity createReview(@RequestBody @Valid ReviewDtoPost DTOreview, UriComponentsBuilder uriBuilder) {
         // TODO verificar ID duplicado e resposta disso
         Review review = new Review(DTOreview);
         reviewRepository.save(review);
         return ResponseEntity.created(uriBuilder.path("/reviews/{id}").buildAndExpand(review.getReviewId()).toUri())
-                .body(new DtoGetReview(review));
+                .body(new ReviewDtoGet(review));
     }
 
     // Read
     @GetMapping
-    public ResponseEntity<Stream<DtoGetReview>> getAllReviews(Pageable pageable) {
-        Stream<DtoGetReview> reviews = reviewRepository.findAll(pageable).stream().map(DtoGetReview::new);
+    public ResponseEntity<Stream<ReviewDtoGet>> getAllReviews(Pageable pageable) {
+        Stream<ReviewDtoGet> reviews = reviewRepository.findAll(pageable).stream().map(ReviewDtoGet::new);
         return ResponseEntity.ok(reviews);
     }
 
     // get by Id
     @GetMapping("/{id}")
-    public ResponseEntity<DtoGetReview> getReviewbyId(@PathVariable Long id) {
+    public ResponseEntity<ReviewDtoGet> getReviewbyId(@PathVariable Long id) {
         Optional<Review> review = reviewRepository.findById(id);
         // TODO mensagem de não encontrado 404
-        return ResponseEntity.ok(review.map(DtoGetReview::new).orElse(null));
+        return ResponseEntity.ok(review.map(ReviewDtoGet::new).orElse(null));
     }
 
     // Update
     @PutMapping ("/{id}")
     @Transactional
-    public ResponseEntity updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
+    public ResponseEntity updateById(@PathVariable Long id, @RequestBody ReviewDtoPut dtoPut) {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
         // TODO mensagem de não encontrado 404
-        return ResponseEntity.ok(new DtoGetReview(reviewRepository.save(review)));
+        return ResponseEntity.ok(new ReviewDtoGet(reviewRepository.save(review)));
     }
 
     // Delete
