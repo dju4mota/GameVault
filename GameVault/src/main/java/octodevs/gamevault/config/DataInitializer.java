@@ -1,7 +1,7 @@
 package octodevs.gamevault.config;
 
-import octodevs.gamevault.models.Review;
-import octodevs.gamevault.repository.RepositoryReview;
+import octodevs.gamevault.entities.review.Review;
+import octodevs.gamevault.entities.review.RepositoryReview;
 import octodevs.gamevault.services.JsonFileReader;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

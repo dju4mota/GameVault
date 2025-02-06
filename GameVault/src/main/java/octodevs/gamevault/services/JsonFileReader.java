@@ -2,7 +2,7 @@ package octodevs.gamevault.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import octodevs.gamevault.models.Review;
+import octodevs.gamevault.entities.review.Review;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;

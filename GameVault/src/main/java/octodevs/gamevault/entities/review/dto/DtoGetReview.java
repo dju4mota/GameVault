@@ -1,9 +1,7 @@
-package octodevs.gamevault.dto;
+package octodevs.gamevault.entities.review.dto;
 
-import lombok.EqualsAndHashCode;
-import octodevs.gamevault.dto.game.DtoGetGame;
-import octodevs.gamevault.models.Review;
-import lombok.Getter;
+import octodevs.gamevault.entities.game.dto.DtoGetGame;
+import octodevs.gamevault.entities.review.Review;
 
 
 public record DtoGetReview(

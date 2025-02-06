@@ -1,7 +1,7 @@
-package octodevs.gamevault.models;
+package octodevs.gamevault.entities.game;
 
 import jakarta.persistence.Embeddable;
-import octodevs.gamevault.dto.game.DtoPostGame;
+import octodevs.gamevault.entities.game.dto.DtoPostGame;
 
 @Embeddable
 public class Game {

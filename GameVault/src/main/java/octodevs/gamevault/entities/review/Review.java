@@ -1,11 +1,12 @@
-package octodevs.gamevault.models;
+package octodevs.gamevault.entities.review;
 
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import octodevs.gamevault.dto.DtoPostReview;
-import octodevs.gamevault.dto.DtoPutReview;
+import octodevs.gamevault.entities.game.Game;
+import octodevs.gamevault.entities.review.dto.DtoPostReview;
+import octodevs.gamevault.entities.review.dto.DtoPutReview;
 
 @Entity
 public class Review {

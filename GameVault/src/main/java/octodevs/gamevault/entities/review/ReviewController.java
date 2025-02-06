@@ -1,11 +1,9 @@
-package octodevs.gamevault.controllers;
+package octodevs.gamevault.entities.review;
 
 import jakarta.validation.Valid;
-import octodevs.gamevault.dto.DtoGetReview;
-import octodevs.gamevault.dto.DtoPostReview;
-import octodevs.gamevault.dto.DtoPutReview;
-import octodevs.gamevault.models.Review;
-import octodevs.gamevault.repository.RepositoryReview;
+import octodevs.gamevault.entities.review.dto.DtoGetReview;
+import octodevs.gamevault.entities.review.dto.DtoPostReview;
+import octodevs.gamevault.entities.review.dto.DtoPutReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
-package octodevs.gamevault.dto;
+package octodevs.gamevault.entities.review.dto;
 
-import octodevs.gamevault.models.Game;
+import octodevs.gamevault.entities.game.Game;
 
 public record DtoPutReview(
     long reviewId,

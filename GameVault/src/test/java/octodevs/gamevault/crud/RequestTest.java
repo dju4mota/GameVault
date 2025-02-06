@@ -1,8 +1,7 @@
 package octodevs.gamevault.crud;
 
-import octodevs.gamevault.controllers.ReviewController;
-import octodevs.gamevault.dto.DtoGetReview;
-import octodevs.gamevault.models.Review;
+import octodevs.gamevault.entities.review.ReviewController;
+import octodevs.gamevault.entities.review.dto.DtoGetReview;
 import octodevs.gamevault.services.JsonFileReader;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
-import java.util.List;
-import java.util.Objects;
+
 import java.util.stream.Stream;
 
 

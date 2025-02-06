@@ -1,9 +1,8 @@
-package octodevs.gamevault.dto;
+package octodevs.gamevault.entities.review.dto;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import octodevs.gamevault.dto.game.DtoPostGame;
+import octodevs.gamevault.entities.game.dto.DtoPostGame;
 
 public record DtoPostReview(
         @NotNull
