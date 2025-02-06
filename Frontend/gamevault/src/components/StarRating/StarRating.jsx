@@ -4,7 +4,7 @@ import React from 'react';
 const StarRatingContainer = styled.div`
   display: inline-block;
   border: 0;
-  margin-left: 10px;
+  
 
   .rate {
     display: inline-block;
@@ -54,14 +54,14 @@ function StarRating({ value, onChange }) {
     const ratings = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5];
   
     const handleChange = (rating) => {
-      // Simulate an event object
+      
       const event = {
         target: {
-          name: "nota",  // Matches the state key in the parent
-          value: rating.toString()  // Ensure value is a string
+          name: "nota",  
+          value: rating.toString()  
         },
       };
-      onChange(event);  // Pass the synthetic event to parent
+      onChange(event);  
     };
   
     return (
