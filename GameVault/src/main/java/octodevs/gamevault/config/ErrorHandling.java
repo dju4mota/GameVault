@@ -1,4 +1,4 @@
-package octodevs.gamevault.error;
+package octodevs.gamevault.config;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

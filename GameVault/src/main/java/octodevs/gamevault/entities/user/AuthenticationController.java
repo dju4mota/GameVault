@@ -1,0 +1,31 @@
+package octodevs.gamevault.entities.user;
+
+
+import jakarta.validation.Valid;
+import octodevs.gamevault.entities.user.dto.LoginPostDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/login")
+public class AuthenticationController {
+
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @PostMapping
+    public ResponseEntity login(@RequestBody @Valid LoginPostDTO loginPostDTO) {
+        UsernamePasswordAuthenticationToken loginInfo = new UsernamePasswordAuthenticationToken(loginPostDTO.login(), loginPostDTO.password());
+        authenticationManager.authenticate(loginInfo);
+
+        return ResponseEntity.ok().build();
+    }
+
+}
