@@ -26,7 +26,7 @@ public class ReviewController {
     @PostMapping
     @Transactional
     public ResponseEntity createReview(@RequestBody @Valid DtoPostReview DTOreview, UriComponentsBuilder uriBuilder) {
-
+        // TODO verificar ID duplicado e resposta disso
         Review review = new Review(DTOreview);
         reviewRepository.save(review);
         return ResponseEntity.created(uriBuilder.path("/reviews/{id}").buildAndExpand(review.getReviewId()).toUri())
@@ -44,7 +44,7 @@ public class ReviewController {
     @GetMapping("/{id}")
     public ResponseEntity<DtoGetReview> getReviewbyId(@PathVariable Long id) {
         Optional<Review> review = reviewRepository.findById(id);
-        // TODO mensagem de não encontrado ?
+        // TODO mensagem de não encontrado 404
         return ResponseEntity.ok(review.map(DtoGetReview::new).orElse(null));
     }
 
@@ -54,6 +54,7 @@ public class ReviewController {
     public ResponseEntity updateById(@PathVariable Long id, @RequestBody DtoPutReview dtoPut) {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
+        // TODO mensagem de não encontrado 404
         return ResponseEntity.ok(new DtoGetReview(reviewRepository.save(review)));
     }
 
@@ -62,7 +63,7 @@ public class ReviewController {
     @Transactional
     public ResponseEntity deleteReviewById(@PathVariable Long id) {
         reviewRepository.deleteById(id);
+        // TODO mensagem de não encontrado 404
         return  ResponseEntity.noContent().build();
     }
-
 }
