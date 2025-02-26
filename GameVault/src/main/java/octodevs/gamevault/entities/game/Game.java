@@ -10,7 +10,7 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID gameId;
+    private String gameId;
     private String title;
     private String description;
     private String genre;
@@ -24,14 +24,14 @@ public class Game {
     public Game() {
     }
 
-    public Game(UUID gameId, String title, String description, String genre) {
+    public Game(String gameId, String title, String description, String genre) {
         this.gameId = gameId;
         this.title = title;
         this.description = description;
         this.genre = genre;
     }
 
-    public UUID getGameId() {
+    public String getGameId() {
         return gameId;
     }
 

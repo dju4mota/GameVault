@@ -17,8 +17,11 @@ import java.util.stream.Stream;
 @RequestMapping("/reviews")
 public class ReviewController {
 
-    @Autowired
-    ReviewRepository reviewRepository;
+    final ReviewRepository reviewRepository;
+
+    public ReviewController(ReviewRepository reviewRepository) {
+        this.reviewRepository = reviewRepository;
+    }
 
     // Create
     @PostMapping
@@ -41,7 +44,7 @@ public class ReviewController {
 
     // get by Id
     @GetMapping("/{id}")
-    public ResponseEntity<ReviewDtoGet> getReviewbyId(@PathVariable Long id) {
+    public ResponseEntity<ReviewDtoGet> getReviewbyId(@PathVariable String id) {
         Optional<Review> review = reviewRepository.findById(id);
         // TODO mensagem de não encontrado 404
         return ResponseEntity.ok(review.map(ReviewDtoGet::new).orElse(null));
@@ -50,7 +53,7 @@ public class ReviewController {
     // Update
     @PutMapping ("/{id}")
     @Transactional
-    public ResponseEntity updateById(@PathVariable Long id, @RequestBody ReviewDtoPut dtoPut) {
+    public ResponseEntity updateById(@PathVariable String id, @RequestBody ReviewDtoPut dtoPut) {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
         // TODO mensagem de não encontrado 404
@@ -60,7 +63,7 @@ public class ReviewController {
     // Delete
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteReviewById(@PathVariable Long id) {
+    public ResponseEntity deleteReviewById(@PathVariable String id) {
         reviewRepository.deleteById(id);
         // TODO mensagem de não encontrado 404
         return  ResponseEntity.noContent().build();

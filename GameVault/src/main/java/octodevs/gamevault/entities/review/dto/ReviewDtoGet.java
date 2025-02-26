@@ -6,13 +6,13 @@ import java.util.UUID;
 
 
 public record ReviewDtoGet(
-        UUID reviewId,
+        String reviewId,
         int score,
         String comment,
         String data,
         String platform,
         float hoursPlayed,
-        UUID gameId
+        String gameId
 ) {
     public ReviewDtoGet(Review review) {
         this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),review.getGameId() );

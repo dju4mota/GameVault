@@ -6,7 +6,7 @@ import java.util.UUID;
 
 
 public record GameDtoGet(
-        UUID gameId,
+        String gameId,
         String title,
         String description,
         String genre

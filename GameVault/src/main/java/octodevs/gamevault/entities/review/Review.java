@@ -12,11 +12,11 @@ import java.util.UUID;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID reviewId;
+    private String reviewId;
     private int score;
     private String comment;
     private String data;
-    private UUID gameId;
+    private String gameId;
     private float hoursPlayed;
     private String platform;
 
@@ -25,7 +25,7 @@ public class Review {
 
     }
 
-    public Review(UUID reviewId, int score, String comment, String data, UUID gameId, float hoursPlayed, String platform) {
+    public Review(String reviewId, int score, String comment, String data, String gameId, float hoursPlayed, String platform) {
         this.reviewId = reviewId;
         this.score = score;
         this.comment = comment;
@@ -52,7 +52,7 @@ public class Review {
         this.data = review.data();
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
-        this.gameId = UUID.fromString(review.gameId());
+        this.gameId = review.gameId();
     }
 
     public void atualizarDados(ReviewDtoPut dadosReview) {
@@ -73,7 +73,7 @@ public class Review {
         }
     }
 
-    public UUID getReviewId() {
+    public String getReviewId() {
         return reviewId;
     }
 
@@ -89,7 +89,7 @@ public class Review {
         return data;
     }
 
-    public UUID getGameId() {
+    public String getGameId() {
         return gameId;
     }
 

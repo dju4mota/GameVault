@@ -31,6 +31,5 @@ public class DataLoader {
 
         List<Game> games = jsonFileReader.readArrayGameFromJson("InitialDataGame.json");
         gameRepository.saveAll(games);
-        
     }
 }
