@@ -16,8 +16,7 @@ public class Review {
     private int score;
     private String comment;
     private String data;
-    @Embedded
-    private Game game;
+    private UUID gameId;
     private float hoursPlayed;
     private String platform;
 
@@ -26,12 +25,12 @@ public class Review {
 
     }
 
-    public Review(UUID reviewId, int score, String comment, String data, Game game, float hoursPlayed, String platform) {
+    public Review(UUID reviewId, int score, String comment, String data, UUID gameId, float hoursPlayed, String platform) {
         this.reviewId = reviewId;
         this.score = score;
         this.comment = comment;
         this.data = data;
-        this.game = game;
+        this.gameId = gameId;
         this.hoursPlayed = hoursPlayed;
         this.platform = platform;
     }
@@ -43,7 +42,7 @@ public class Review {
                 ", score=" + score +
                 ", comment='" + comment + '\'' +
                 ", data='" + data + '\'' +
-                ", game=" + game +
+                ", gameID=" + gameId +
                 '}';
     }
 
@@ -53,7 +52,7 @@ public class Review {
         this.data = review.data();
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
-        this.game = new Game(review.game());
+        this.gameId = review.gameId();
     }
 
     public void atualizarDados(ReviewDtoPut dadosReview) {
@@ -90,8 +89,8 @@ public class Review {
         return data;
     }
 
-    public Game getGame() {
-        return game;
+    public UUID getGameId() {
+        return gameId;
     }
 
     public float getHoursPlayed() {

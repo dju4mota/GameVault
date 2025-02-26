@@ -2,6 +2,7 @@ package octodevs.gamevault.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import octodevs.gamevault.entities.game.Game;
 import octodevs.gamevault.entities.review.Review;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -22,27 +23,22 @@ public class JsonFileReader {
         this.objectMapper = objectMapper;
     }
 
-    public Review readJsonFile() {
+    public List<Review> readArrayReviewFromJson(String fileName) {
         try {
-            // Load the JSON file from the classpath
-            Resource resource = resourceLoader.getResource("classpath:InitialData.json");
-            InputStream inputStream = resource.getInputStream();
-
-            // Parse the JSON file into a Review object
-            return objectMapper.readValue(inputStream, Review.class);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read JSON file", e);
-        }
-    }
-
-    public List<Review> readArrayReviewFromJson() {
-        try {
-            Resource resource = resourceLoader.getResource("classpath:InitialData.json");
+            Resource resource = resourceLoader.getResource("classpath:scripts/" + fileName);
             InputStream inputStream = resource.getInputStream();
             return objectMapper.readValue(inputStream, new TypeReference<List<Review>>() {} );
         } catch (IOException e) {
             throw new RuntimeException("Failed to read JSON file", e);
         }
-
+    }
+    public List<Game> readArrayGameFromJson(String fileName) {
+        try {
+            Resource resource = resourceLoader.getResource("classpath:scripts/" + fileName);
+            InputStream inputStream = resource.getInputStream();
+            return objectMapper.readValue(inputStream, new TypeReference<List<Game>>() {} );
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read JSON file", e);
+        }
     }
 }

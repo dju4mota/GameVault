@@ -1,11 +1,16 @@
 package octodevs.gamevault.entities.game;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
 import octodevs.gamevault.entities.game.dto.GameDtoPost;
 
-@Embeddable
+import java.util.UUID;
+
+@Entity
 public class Game {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID gameId;
     private String title;
     private String description;
     private String genre;
@@ -19,10 +24,15 @@ public class Game {
     public Game() {
     }
 
-    public Game(String title, String description, String genre) {
+    public Game(UUID gameId, String title, String description, String genre) {
+        this.gameId = gameId;
         this.title = title;
         this.description = description;
         this.genre = genre;
+    }
+
+    public UUID getGameId() {
+        return gameId;
     }
 
     public String getTitle() {
