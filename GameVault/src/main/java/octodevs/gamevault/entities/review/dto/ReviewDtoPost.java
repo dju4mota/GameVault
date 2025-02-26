@@ -3,7 +3,6 @@ package octodevs.gamevault.entities.review.dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
 
 public record ReviewDtoPost(
         @NotNull
@@ -15,6 +14,6 @@ public record ReviewDtoPost(
         @NotNull
         float hoursPlayed,
         @Valid
-        UUID gameId
+        String gameId
 )
 {}

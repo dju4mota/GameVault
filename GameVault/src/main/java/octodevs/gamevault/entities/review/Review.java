@@ -52,7 +52,7 @@ public class Review {
         this.data = review.data();
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
-        this.gameId = review.gameId();
+        this.gameId = UUID.fromString(review.gameId());
     }
 
     public void atualizarDados(ReviewDtoPut dadosReview) {

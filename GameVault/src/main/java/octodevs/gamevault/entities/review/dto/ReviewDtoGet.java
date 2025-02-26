@@ -12,7 +12,7 @@ public record ReviewDtoGet(
         String data,
         String platform,
         float hoursPlayed,
-        UUID game
+        UUID gameId
 ) {
     public ReviewDtoGet(Review review) {
         this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),review.getGameId() );

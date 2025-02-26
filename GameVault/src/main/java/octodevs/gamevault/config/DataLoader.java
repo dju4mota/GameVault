@@ -26,11 +26,11 @@ public class DataLoader {
     @PostConstruct
     public void loadData( ) {
 
-        List<Game> games = jsonFileReader.readArrayGameFromJson("InitialDataGame.json");
-        gameRepository.saveAll(games);
-
-
         List<Review> reviews = jsonFileReader.readArrayReviewFromJson("InitialDataReview.json");
         reviewRepository.saveAll(reviews);
+
+        List<Game> games = jsonFileReader.readArrayGameFromJson("InitialDataGame.json");
+        gameRepository.saveAll(games);
+        
     }
 }
