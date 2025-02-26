@@ -6,8 +6,6 @@ import octodevs.gamevault.entities.game.dto.GameDtoPost;
 
 public record ReviewDtoPost(
         @NotNull
-        long reviewId,
-        @NotNull
         int score,
         String comment,
         @NotNull

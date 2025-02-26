@@ -1,17 +1,18 @@
 package octodevs.gamevault.entities.review;
 
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import octodevs.gamevault.entities.game.Game;
 import octodevs.gamevault.entities.review.dto.ReviewDtoPost;
 import octodevs.gamevault.entities.review.dto.ReviewDtoPut;
 
+import java.util.UUID;
+
 @Entity
 public class Review {
     @Id
-    private long reviewId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID reviewId;
     private int score;
     private String comment;
     private String data;
@@ -25,7 +26,7 @@ public class Review {
 
     }
 
-    public Review(long reviewId, int score, String comment, String data, Game game, float hoursPlayed, String platform) {
+    public Review(UUID reviewId, int score, String comment, String data, Game game, float hoursPlayed, String platform) {
         this.reviewId = reviewId;
         this.score = score;
         this.comment = comment;
@@ -50,7 +51,6 @@ public class Review {
         this.comment = review.comment();
         this.score = review.score();
         this.data = review.data();
-        this.reviewId = review.reviewId();
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
         this.game = new Game(review.game());
@@ -74,7 +74,7 @@ public class Review {
         }
     }
 
-    public long getReviewId() {
+    public UUID getReviewId() {
         return reviewId;
     }
 

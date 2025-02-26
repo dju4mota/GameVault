@@ -3,9 +3,11 @@ package octodevs.gamevault.entities.review.dto;
 import octodevs.gamevault.entities.game.dto.GameDtoGet;
 import octodevs.gamevault.entities.review.Review;
 
+import java.util.UUID;
+
 
 public record ReviewDtoGet(
-        long reviewId,
+        UUID reviewId,
         int score,
         String comment,
         String data,

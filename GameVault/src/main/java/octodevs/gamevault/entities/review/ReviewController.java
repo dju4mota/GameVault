@@ -26,6 +26,7 @@ public class ReviewController {
     public ResponseEntity createReview(@RequestBody @Valid ReviewDtoPost DTOreview, UriComponentsBuilder uriBuilder) {
         // TODO verificar ID duplicado e resposta disso
         Review review = new Review(DTOreview);
+        System.out.println(review);
         reviewRepository.save(review);
         return ResponseEntity.created(uriBuilder.path("/reviews/{id}").buildAndExpand(review.getReviewId()).toUri())
                 .body(new ReviewDtoGet(review));
