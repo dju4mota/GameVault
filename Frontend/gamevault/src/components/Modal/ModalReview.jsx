@@ -82,7 +82,6 @@ const ModalContent = styled.div`
 
 function ModalReview({ isOpen, onRequestClose }) {
   const [formData, setFormData] = useState({
-    reviewId: "",
     name: "",
     review: "",
     date: "",
@@ -102,7 +101,6 @@ function ModalReview({ isOpen, onRequestClose }) {
 
     try {
       const reviewData = {
-        reviewId: parseFloat(Math.floor(Math.random() * 1000)),
         score: parseFloat(formData.nota),
         comment: formData.review,
         data: formData.date,
