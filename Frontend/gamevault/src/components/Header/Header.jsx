@@ -34,14 +34,52 @@ const Menu = styled.div`
   }
 `;
 
+const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    transition: all 0.5s;
+  }
+`;
+
+const ProfileImage = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: inherit;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: inherit;
+  }
+`;
+
+const Username = styled.span`
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  transition: inherit;
+`;
+
 export const Header = ({ openModal, openProfile, openJogos, openListas }) => {
   return (
     <Div>
       <Title>GameVault</Title>
       <Menu>
-        <Button onClick={openModal}>Profile </Button>
-        <Button onClick={openModal}> Jogos </Button>
-        <Button onClick={openModal}> Listas </Button>
+        <Profile>
+          <ProfileImage>
+            <img src="https://i.pravatar.cc/300" alt="profile" />
+          </ProfileImage>
+          <Username>@junior_mota</Username>
+        </Profile>
         <Button onClick={openModal}> +Log </Button>
       </Menu>
     </Div>

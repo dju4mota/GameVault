@@ -18,7 +18,7 @@ function Feed() {
     };
 
     fetchReviews();
-  }, []); // Empty dependency array means this runs once on mount
+  }, []); 
 
   if (loading) return <div>Loading reviews...</div>;
   if (error) return <div>Error: {error}</div>;
