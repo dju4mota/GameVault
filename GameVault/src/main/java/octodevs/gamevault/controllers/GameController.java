@@ -36,7 +36,7 @@ public class GameController {
     @GetMapping("/{id}")
     public ResponseEntity<GameDtoGet> getReviewbyId(@PathVariable String id) {
         Optional<Game> game = gameRepository.findById(id);
-        // TODO mensagem de não encontrado 404
+        // TO DO mensagem de não encontrado 404
         return ResponseEntity.ok(game.map(GameDtoGet::new).orElse(null));
     }
 

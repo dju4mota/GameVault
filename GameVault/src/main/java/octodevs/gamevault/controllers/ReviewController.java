@@ -29,7 +29,7 @@ public class ReviewController {
     @PostMapping
     @Transactional
     public ResponseEntity createReview(@RequestBody @Valid ReviewDtoPost DTOreview, UriComponentsBuilder uriBuilder) {
-        // TODO adicionar gameID
+        // TO DO adicionar gameID
         Review review = new Review(DTOreview);
         System.out.println(review);
         reviewRepository.save(review);
@@ -48,7 +48,7 @@ public class ReviewController {
     @GetMapping("/{id}")
     public ResponseEntity<ReviewDtoGet> getReviewbyId(@PathVariable String id) {
         Optional<Review> review = reviewRepository.findById(id);
-        // TODO mensagem de não encontrado 404
+        // TO DO mensagem de não encontrado 404
         return ResponseEntity.ok(review.map(ReviewDtoGet::new).orElse(null));
     }
 
@@ -58,7 +58,7 @@ public class ReviewController {
     public ResponseEntity updateById(@PathVariable String id, @RequestBody ReviewDtoPut dtoPut) {
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(dtoPut);
-        // TODO mensagem de não encontrado 404
+        // TO DO mensagem de não encontrado 404
         return ResponseEntity.ok(new ReviewDtoGet(reviewRepository.save(review)));
     }
 
@@ -67,7 +67,7 @@ public class ReviewController {
     @Transactional
     public ResponseEntity deleteReviewById(@PathVariable String id) {
         reviewRepository.deleteById(id);
-        // TODO mensagem de não encontrado 404
+        // TO DO mensagem de não encontrado 404
         return  ResponseEntity.noContent().build();
     }
 }

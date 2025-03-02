@@ -9,10 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements  WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        // TO DO adicionar configurações de segurança 
         registry.addMapping("/**") // Altere para o mapeamento correto se necessário
-                .allowedOrigins("http://localhost:3000") // URL do seu frontend
+                .allowedOrigins("*") // URL do seu frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
-                .allowedHeaders("*") // Permite todos os headers
-                .allowCredentials(true); // Permite credenciais
+                .allowedHeaders("*"); // Permite todos os headers
+                //.allowCredentials(true); // Permite credenciais
     }
 }

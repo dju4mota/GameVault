@@ -28,7 +28,10 @@ O projeto segue uma arquitetura em camadas, com as seguintes principais classes:
 - **Users:** Representa os usuários do sistema.
 
 ## Endpoints da API
-TODO
+
+Rodando o projeto e acessando
+'http://localhost:8080/swagger-ui/index.html'
+é possível visulizar as rotas e suas informações 
 
 ## Modelo de Dados
 
