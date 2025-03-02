@@ -1,7 +1,7 @@
 package octodevs.gamevault.crud;
 
-import octodevs.gamevault.entities.review.ReviewController;
-import octodevs.gamevault.entities.review.dto.ReviewDtoGet;
+import octodevs.gamevault.controllers.ReviewController;
+import octodevs.gamevault.repositories.dto.ReviewDtoGet;
 import octodevs.gamevault.services.JsonFileReader;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

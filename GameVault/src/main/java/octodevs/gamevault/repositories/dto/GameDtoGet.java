@@ -1,8 +1,8 @@
-package octodevs.gamevault.entities.game.dto;
-
-import octodevs.gamevault.entities.game.Game;
+package octodevs.gamevault.repositories.dto;
 
 import java.util.UUID;
+
+import octodevs.gamevault.models.Game;
 
 
 public record GameDtoGet(

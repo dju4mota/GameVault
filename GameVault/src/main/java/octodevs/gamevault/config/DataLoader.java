@@ -1,10 +1,10 @@
 package octodevs.gamevault.config;
 
 import jakarta.annotation.PostConstruct;
-import octodevs.gamevault.entities.game.Game;
-import octodevs.gamevault.entities.game.GameRepository;
-import octodevs.gamevault.entities.review.Review;
-import octodevs.gamevault.entities.review.ReviewRepository;
+import octodevs.gamevault.models.Game;
+import octodevs.gamevault.models.Review;
+import octodevs.gamevault.repositories.GameRepository;
+import octodevs.gamevault.repositories.ReviewRepository;
 import octodevs.gamevault.services.JsonFileReader;
 import org.springframework.stereotype.Component;
 

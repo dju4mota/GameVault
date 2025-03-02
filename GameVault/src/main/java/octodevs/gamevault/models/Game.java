@@ -1,9 +1,7 @@
-package octodevs.gamevault.entities.game;
+package octodevs.gamevault.models;
 
 import jakarta.persistence.*;
-import octodevs.gamevault.entities.game.dto.GameDtoPost;
-
-import java.util.UUID;
+import octodevs.gamevault.repositories.dto.GameDtoPost;
 
 @Entity
 public class Game {

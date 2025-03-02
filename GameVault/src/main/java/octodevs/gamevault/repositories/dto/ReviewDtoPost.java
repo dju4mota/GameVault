@@ -1,4 +1,4 @@
-package octodevs.gamevault.entities.review.dto;
+package octodevs.gamevault.repositories.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;

@@ -1,10 +1,9 @@
-package octodevs.gamevault.entities.review;
+package octodevs.gamevault.models;
 
 
 import jakarta.persistence.*;
-import octodevs.gamevault.entities.game.Game;
-import octodevs.gamevault.entities.review.dto.ReviewDtoPost;
-import octodevs.gamevault.entities.review.dto.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.ReviewDtoPost;
+import octodevs.gamevault.repositories.dto.ReviewDtoPut;
 
 import java.util.UUID;
 

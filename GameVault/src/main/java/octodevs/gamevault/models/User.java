@@ -1,4 +1,4 @@
-package octodevs.gamevault.entities.user;
+package octodevs.gamevault.models;
 
 
 import jakarta.persistence.Entity;

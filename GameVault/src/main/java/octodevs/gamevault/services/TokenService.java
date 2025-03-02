@@ -2,7 +2,9 @@ package octodevs.gamevault.services;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import octodevs.gamevault.entities.user.User;
+
+import octodevs.gamevault.models.User;
+
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

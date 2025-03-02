@@ -1,9 +1,11 @@
-package octodevs.gamevault.entities.game;
+package octodevs.gamevault.controllers;
 
 
-import octodevs.gamevault.entities.game.dto.GameDtoGet;
-import octodevs.gamevault.entities.review.Review;
-import octodevs.gamevault.entities.review.dto.ReviewDtoGet;
+import octodevs.gamevault.models.Review;
+import octodevs.gamevault.repositories.GameRepository;
+import octodevs.gamevault.repositories.dto.GameDtoGet;
+import octodevs.gamevault.repositories.dto.ReviewDtoGet;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

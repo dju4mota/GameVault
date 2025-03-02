@@ -1,10 +1,12 @@
-package octodevs.gamevault.entities.user;
+package octodevs.gamevault.controllers;
 
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import jakarta.validation.Valid;
-import octodevs.gamevault.entities.user.dto.LoginPostDTO;
-import octodevs.gamevault.entities.user.dto.RegisterPostDTO;
+import octodevs.gamevault.models.User;
+import octodevs.gamevault.repositories.UserRepository;
+import octodevs.gamevault.repositories.dto.LoginPostDTO;
+import octodevs.gamevault.repositories.dto.RegisterPostDTO;
 import octodevs.gamevault.services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

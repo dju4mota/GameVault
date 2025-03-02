@@ -1,8 +1,8 @@
-package octodevs.gamevault.entities.review.dto;
-
-import octodevs.gamevault.entities.review.Review;
+package octodevs.gamevault.repositories.dto;
 
 import java.util.UUID;
+
+import octodevs.gamevault.models.Review;
 
 
 public record ReviewDtoGet(
