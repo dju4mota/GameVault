@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import octodevs.gamevault.models.User;
 
-import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

@@ -1,6 +1,5 @@
 package octodevs.gamevault.repositories.dto;
 
-import java.util.UUID;
 
 import octodevs.gamevault.models.Game;
 

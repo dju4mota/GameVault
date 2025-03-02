@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import octodevs.gamevault.repositories.dto.ReviewDtoPost;
 import octodevs.gamevault.repositories.dto.ReviewDtoPut;
 
-import java.util.UUID;
-
 @Entity
 public class Review {
     @Id
