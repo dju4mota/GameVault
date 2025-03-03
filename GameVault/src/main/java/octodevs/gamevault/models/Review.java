@@ -37,8 +37,10 @@ public class Review {
         return "Review{" +
                 "reviewId=" + reviewId +
                 ", score=" + score +
-                ", comment='" + comment + '\'' +
-                ", data='" + data + '\'' +
+                ", comment=" + comment+
+                ", data=" + data + '\'' +
+                ", platform=" + platform + '\'' +
+                ", hoursPlayed=" + hoursPlayed + '\'' +
                 ", gameID=" + gameId +
                 '}';
     }

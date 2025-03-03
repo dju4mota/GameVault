@@ -10,6 +10,7 @@ public record ReviewDtoPost(
         String comment,
         @NotNull
         String data,
+        @NotNull
         String platform,
         @NotNull
         float hoursPlayed,
