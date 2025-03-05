@@ -4,6 +4,7 @@ package octodevs.gamevault.models;
 import jakarta.persistence.*;
 import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
 import octodevs.gamevault.repositories.dto.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
 
 @Entity
 public class Review {
@@ -46,6 +47,16 @@ public class Review {
     }
 
     public Review(ReviewDtoEntrada review) {
+        this.comment = review.comment();
+        this.score = review.score();
+        this.data = review.data();
+        this.platform = review.platform();
+        this.hoursPlayed = review.hoursPlayed();
+        this.gameId = review.gameId();
+    }
+
+    public Review(ReviewDtoSaida review) {
+        this.reviewId = review.reviewId();
         this.comment = review.comment();
         this.score = review.score();
         this.data = review.data();

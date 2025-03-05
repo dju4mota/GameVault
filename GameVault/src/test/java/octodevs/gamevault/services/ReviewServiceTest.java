@@ -2,6 +2,8 @@ package octodevs.gamevault.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import jakarta.transaction.Transactional;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
 import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
+import octodevs.gamevault.repositories.dto.ReviewDtoPut;
 
 @SpringBootTest
 @Transactional
@@ -29,15 +32,36 @@ public class ReviewServiceTest {
     @Autowired
     EntityManager entityManager;
 
-    // @Test
-    // void testCreateReview() {
+    @Test
+    void testCreateReview() {
+        ReviewDtoSaida reviewCriado = this.reviewService.createReview(
+            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+        
+        ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
 
-    // }
+        assertNotNull(reviewSaida);
+        assertThat(reviewCriado).isEqualTo(reviewSaida);
+    }
 
-    // @Test
-    // void testDeleteById() {
+    @Test
+    void testDeleteById() {
 
-    // }
+        // adicionando o resultado esperado no Banco Mockado
+        ReviewDtoSaida reviewCriado = this.reviewService.createReview(
+            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+
+        ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+        
+        assertNotNull(reviewSaida);
+        assertThat(reviewCriado).isEqualTo(reviewSaida);
+        
+        this.reviewService.deleteById(reviewCriado.reviewId());
+
+        reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+        
+        assertNull(reviewSaida);
+
+    }
     
 
     @Test
@@ -95,10 +119,26 @@ public class ReviewServiceTest {
         assertThat(reviewDtoSaida).isEqualTo(reviewEsperado);
     }
 
-    // @Test
-    // void testUpdateById() {
+    @Test
+    void testUpdateById() {
+        // adicionando o resultado esperado no Banco Mockado
+        ReviewDtoSaida reviewCriado = this.reviewService.createReview(
+            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
-    // } 
+        ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+    
+        assertNotNull(reviewSaida);
+        assertThat(reviewCriado).isEqualTo(reviewSaida);
+        
+        ReviewDtoPut update = new ReviewDtoPut(10, null, null, null, 0);
+
+        this.reviewService.updatebyID(reviewCriado.reviewId(), update);
+
+        reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());
+        
+        assertTrue(reviewSaida.score() == 10);
+
+    } 
     
     private ReviewDtoSaida createReview(ReviewDtoEntrada dados){
         Review newReview = new Review(dados);
