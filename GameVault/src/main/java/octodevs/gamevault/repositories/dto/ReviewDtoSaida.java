@@ -4,7 +4,7 @@ package octodevs.gamevault.repositories.dto;
 import octodevs.gamevault.models.Review;
 
 
-public record ReviewDtoGet(
+public record ReviewDtoSaida(
         String reviewId,
         int score,
         String comment,
@@ -13,7 +13,7 @@ public record ReviewDtoGet(
         float hoursPlayed,
         String gameId
 ) {
-    public ReviewDtoGet(Review review) {
+    public ReviewDtoSaida(Review review) {
         this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),review.getGameId() );
     }
 

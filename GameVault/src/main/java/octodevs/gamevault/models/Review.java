@@ -2,7 +2,7 @@ package octodevs.gamevault.models;
 
 
 import jakarta.persistence.*;
-import octodevs.gamevault.repositories.dto.ReviewDtoPost;
+import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
 import octodevs.gamevault.repositories.dto.ReviewDtoPut;
 
 @Entity
@@ -45,7 +45,7 @@ public class Review {
                 '}';
     }
 
-    public Review(ReviewDtoPost review) {
+    public Review(ReviewDtoEntrada review) {
         this.comment = review.comment();
         this.score = review.score();
         this.data = review.data();

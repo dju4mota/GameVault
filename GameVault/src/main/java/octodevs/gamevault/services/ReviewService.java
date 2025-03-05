@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repositories.ReviewRepository;
-import octodevs.gamevault.repositories.dto.ReviewDtoGet;
-import octodevs.gamevault.repositories.dto.ReviewDtoPost;
+import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
+import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
 import octodevs.gamevault.repositories.dto.ReviewDtoPut;
 
+
+// Service 
+// Entrada e Saída com DTOs
+// Manipula os Reviews
 
 @Service
 public class ReviewService {
@@ -21,28 +25,29 @@ public class ReviewService {
     public ReviewRepository reviewRepository;
 
     @Transactional
-    public Review createReview(ReviewDtoPost DTOreview) {
+    public ReviewDtoSaida createReview(ReviewDtoEntrada DTOreview) {
         
         // TO DO adicionar gameID
-        
-        return reviewRepository.save(new Review(DTOreview));
+        ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
+
+        return reviewDTO;
     }
 
 // To-Do  mensagem de não encontrado 404
 
-    public Optional<Review> getReviewbyId(String id){
-           return reviewRepository.findById(id);
+    public ReviewDtoSaida getReviewbyId(String id){
+        return reviewRepository.findById(id).map(ReviewDtoSaida::new).orElse(null);
     }
 
-    public Stream<ReviewDtoGet> getAllReviews(Pageable pageable){
-        return reviewRepository.findAll(pageable).stream().map(ReviewDtoGet::new);
+    public Stream<ReviewDtoSaida> getAllReviews(Pageable pageable){
+        return reviewRepository.findAll(pageable).stream().map(ReviewDtoSaida::new);
     }
 
     @Transactional
-    public Review updatebyID(String id, ReviewDtoPut reviewDtoPut){ 
+    public ReviewDtoSaida updatebyID(String id, ReviewDtoPut reviewDtoPut){ 
         Review review = reviewRepository.getReferenceById(id);
         review.atualizarDados(reviewDtoPut);
-        return reviewRepository.save(review);
+        return new ReviewDtoSaida(reviewRepository.save(review));
     }
 
 
