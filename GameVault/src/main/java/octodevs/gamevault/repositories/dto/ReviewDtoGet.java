@@ -17,4 +17,9 @@ public record ReviewDtoGet(
         this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),review.getGameId() );
     }
 
+    public String reviewId() {
+        return reviewId;
+    }
+
+    
 }
