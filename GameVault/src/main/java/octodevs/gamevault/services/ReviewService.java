@@ -1,6 +1,5 @@
 package octodevs.gamevault.services;
 
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.springframework.data.domain.Pageable;

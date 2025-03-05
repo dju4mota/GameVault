@@ -7,10 +7,11 @@ import octodevs.gamevault.repositories.GameRepository;
 import octodevs.gamevault.repositories.ReviewRepository;
 import octodevs.gamevault.services.JsonFileReader;
 import org.springframework.stereotype.Component;
-
+import org.springframework.context.annotation.Profile;
 import java.util.List;
 
-//@Component
+@Component
+@Profile("dev")
 public class DataLoader {
 
     public final JsonFileReader jsonFileReader;
