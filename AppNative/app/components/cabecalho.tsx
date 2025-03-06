@@ -6,9 +6,9 @@ export default function Cabecalho() {
     const handleMenuPress = () => {
         console.log('Menu pressionado!');
     };
+
     return (
-        <View style={styles.total}>
-            
+        <View style={styles.total}>            
             <View style={styles.barraMenus}>
                 <TouchableOpacity onPress={handleMenuPress}>
                     <Icon name="menu" size={30} color="rgb(235, 231, 231)" />
@@ -19,13 +19,11 @@ export default function Cabecalho() {
             </View>
 
             <View style={styles.carrousel}>
-                <Text style={styles.texto}>Jogos</Text>
-                <Text style={styles.texto}>Reviews</Text>
-                <Text style={styles.texto}>Listas</Text>
+                <View style={styles.textBoxBorder}><Text style={styles.texto}>Jogos</Text></View>
+                <View style={styles.textBox}><Text style={styles.texto}>Reviews</Text></View>
+                <View style={styles.textBox}><Text style={styles.texto}>Listas</Text></View>
             </View>
-
-        </View>
-    
+        </View>    
     );
 }
 
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         flexDirection: 'column',
         backgroundColor: "rgb(255, 72, 0)",
-        height: "12%"
+        height: "11%"
     },
     barraMenus:{ 
         paddingRight:20,
@@ -45,15 +43,28 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     carrousel:{
-        width: "70%",
+        width: "60%",
         flex: 1,        
         justifyContent: "space-around",
-        alignItems: "center",
+        alignItems: "flex-end",
         flexDirection: 'row',
-        // backgroundColor: "#222",
     },
     texto : {
-        color: "rgb(255, 255, 255)"
+        color: "rgb(255, 255, 255)",
+    },
+    textBox: {
+        alignItems: 'center', 
+        marginBottom: 4,
+        width: 70,
+    },
+    textBoxBorder: {
+        borderColor: "rgb(0, 0, 0)",
+        borderWidth: 4, // Espessura da borda
+        borderTopWidth: 0, // Remove a borda superior
+        borderLeftWidth: 0, // Remove a borda esquerda
+        borderRightWidth: 0, 
+        alignItems: 'center', 
+        width: 70,
     }
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState }  from "react";
 import { View} from "react-native";
 import axios from 'axios';
-import FeedScreen from "./screens/feed";
+import FeedScreen from "./screens/feedGame";
 
 
 export default function Index() {

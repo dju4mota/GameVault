@@ -5,27 +5,15 @@ import Carrousel from "@/app/components/carrousel";
 import BotaoPe from "@/app/components/botaoPe";
 
 
-export default function FeedScreen(){
+export default function FeedReviewScreen(){
     
 return(
     <View  style={ styles.mainBody}>
-       <Cabecalho />
-       <View  style={styles.carrousel}>
-           <Carrousel texto={"Popular"}/>
-           <Carrousel texto={"Entre amigos"} nome="dju" foto="hell yeah"  />           
-       </View>  
-       <BotaoPe/>
+       <Cabecalho/>              
    </View>
     )
 }
 
-
-
-const adicional = () => {
-    return(
-        <View> </View>
-    )
-}
 
 const styles = StyleSheet.create({
     carrousel: {

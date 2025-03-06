@@ -4,6 +4,7 @@ export default function RootLayout() {
   return <Stack
       screenOptions={{
         headerShown: false, // Oculta o cabeçalho em todas as telas
+        // statusBarBackgroundColor:"rgb(255, 72, 0)",
       }}
   />;
 }
