@@ -1,13 +1,17 @@
 import React, { useEffect, useState }  from "react";
-import { View, Text, Image, FlatList, StyleSheet, Dimensions } from "react-native";
+import { View, Text, Image, FlatList, StyleSheet, Dimensions, Button } from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import axios from 'axios';
 import Carrousel from "@/app/components/carrousel";
 
 
 export default function FeedScreen(){
+    const handleMenuPress = () => {
+        console.log('Menu pressionado!');
+    };
 return(
-    <View style={{ flex: 1,        
+    <View style={{ flex: 1,      
+        backgroundColor: "rgb(36, 36, 36)"  
     }}>
        <Cabecalho />
        <View
@@ -19,6 +23,11 @@ return(
             }}>
            <Carrousel/>
            <Carrousel/>
+           <Button
+                onPress={handleMenuPress}
+                title="+"
+                color="rgb(76, 151, 14)"                
+                />
        </View>
        {/* <API/> */}
    </View>

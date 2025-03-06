@@ -11,17 +11,17 @@ export default function Cabecalho() {
             
             <View style={styles.barraMenus}>
                 <TouchableOpacity onPress={handleMenuPress}>
-                    <Icon name="menu" size={30} color="#000" />
+                    <Icon name="menu" size={30} color="rgb(235, 231, 231)" />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleMenuPress}>
-                    <Icon name="search" size={30} color="#000" />
+                    <Icon name="search" size={30} color="rrgb(235, 231, 231)" />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.carrousel}>
-                <Text>Jogos</Text>
-                <Text>Reviews</Text>
-                <Text>Listas</Text>
+                <Text style={styles.texto}>Jogos</Text>
+                <Text style={styles.texto}>Reviews</Text>
+                <Text style={styles.texto}>Listas</Text>
             </View>
 
         </View>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     total: {
         alignItems: "flex-start",
         flexDirection: 'column',
-        backgroundColor: "#777",
+        backgroundColor: "rgb(255, 72, 0)",
         height: "12%"
     },
     barraMenus:{ 
@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: 'row',
         // backgroundColor: "#222",
+    },
+    texto : {
+        color: "rgb(255, 255, 255)"
     }
 
 

@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       fontSize: 18,
       fontWeight: "bold",
-      color: "#333",
+      color: "rgb(226, 226, 226)",
   },
 });
