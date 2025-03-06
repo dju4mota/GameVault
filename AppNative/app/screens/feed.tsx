@@ -11,8 +11,8 @@ return(
     <View  style={ styles.mainBody}>
        <Cabecalho />
        <View  style={styles.carrousel}>
-           <Carrousel/>
-           <Carrousel/>           
+           <Carrousel texto={"Popular"}/>
+           <Carrousel texto={"Entre amigos"} nome="dju" foto="hell yeah"  />           
        </View>  
        <BotaoPe/>
    </View>
@@ -20,10 +20,17 @@ return(
 }
 
 
+
+const adicional = () => {
+    return(
+        <View> </View>
+    )
+}
+
 const styles = StyleSheet.create({
     carrousel: {
         // flex:1,
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         height: "60%",
         // backgroundColor: "#000"
     },
