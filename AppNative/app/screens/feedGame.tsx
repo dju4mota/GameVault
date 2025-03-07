@@ -9,7 +9,7 @@ export default function FeedGameScreen(){
     
 return(
     <View  style={ styles.mainBody}>
-       <Cabecalho/>
+       <Cabecalho activeItem={"Jogos"}/>
        <View  style={styles.carrousel}>
            <Carrousel texto={"Popular"}/>
            <Carrousel texto={"Entre amigos"} nome="dju" foto="hell yeah"/>           

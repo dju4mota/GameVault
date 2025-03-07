@@ -5,11 +5,11 @@ import Carrousel from "@/app/components/carrousel";
 import BotaoPe from "@/app/components/botaoPe";
 
 
-export default function FeedReviewScreen(){
+export default function FeedListScreen(){
     
 return(
     <View  style={ styles.mainBody}>
-       <Cabecalho activeItem={"Reviews"}/>              
+       <Cabecalho activeItem={"Lists"}/>              
    </View>
     )
 }

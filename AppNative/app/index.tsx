@@ -2,11 +2,12 @@ import React, { useEffect, useState }  from "react";
 import { View} from "react-native";
 import axios from 'axios';
 import FeedScreen from "./screens/feedGame";
+import {NavigationContainer} from '@react-navigation/native';
 
 
 export default function Index() {
     return (
-        <FeedScreen/>
+        <FeedScreen/> 
     );
 }
 

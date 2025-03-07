@@ -1,8 +1,24 @@
 import {Text, TouchableOpacity, View} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { StyleSheet } from "react-native";
+import { RelativePathString, useRouter } from 'expo-router';
+import { useState } from "react";
 
-export default function Cabecalho() {
+
+interface CabecalhoProps{
+    activeItem:string,
+}
+
+
+const Cabecalho: React.FC<CabecalhoProps> = ({activeItem}) => {
+
+    const router = useRouter();
+
+    const navega = (route: RelativePathString) => {
+        router.push(route); 
+        console.log(activeItem)
+    };
+
     const handleMenuPress = () => {
         console.log('Menu pressionado!');
     };
@@ -19,13 +35,27 @@ export default function Cabecalho() {
             </View>
 
             <View style={styles.carrousel}>
-                <View style={styles.textBoxBorder}><Text style={styles.texto}>Jogos</Text></View>
-                <View style={styles.textBox}><Text style={styles.texto}>Reviews</Text></View>
-                <View style={styles.textBox}><Text style={styles.texto}>Listas</Text></View>
+                <View style={[styles.textBox, activeItem === 'Jogos' && styles.textBoxBorder]}>
+                    <TouchableOpacity onPress={() => navega('../screens/feedGame')}>
+                        <Text style={styles.texto}>Jogos</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={[styles.textBox, activeItem === 'Reviews' && styles.textBoxBorder]}>
+                    <TouchableOpacity onPress={() => navega('../screens/feedReview')}>
+                        <Text style={styles.texto}>Reviews</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={[styles.textBox, activeItem === 'Lists' && styles.textBoxBorder]}>
+                    <TouchableOpacity onPress={() => navega('../screens/feedList')}>
+                        <Text style={styles.texto}>Listas</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>    
     );
 }
+
+export default Cabecalho;
 
 const styles = StyleSheet.create({
     total: {
@@ -63,8 +93,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 0, // Remove a borda superior
         borderLeftWidth: 0, // Remove a borda esquerda
         borderRightWidth: 0, 
-        alignItems: 'center', 
-        width: 70,
+        marginBottom: 0,
     }
 
 
