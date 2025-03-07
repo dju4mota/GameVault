@@ -1,16 +1,16 @@
 import React  from "react";
 import { View, StyleSheet} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
-import Carrousel from "@/app/components/carrousel";
-import BotaoPe from "@/app/components/botaoPe";
+import Review from "@/app/components/review";
 
 
 export default function FeedReviewScreen(){
     
 return(
     <View  style={ styles.mainBody}>
-       <Cabecalho activeItem={"Reviews"}/>              
-   </View>
+       <Cabecalho activeItem={"Reviews"}/>       
+       <Review/>       
+    </View>
     )
 }
 
