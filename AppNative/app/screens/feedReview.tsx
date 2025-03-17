@@ -2,6 +2,7 @@ import React  from "react";
 import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
+import Linha from "../components/linha";
 
 
 export default function FeedReviewScreen(){
@@ -11,8 +12,11 @@ return(
         <Cabecalho activeItem={"Reviews"}/>       
         <ScrollView>
             <Review/>       
+            <Linha/>
             <Review/>       
-            <Review/>       
+            <Linha/>
+            <Review/>      
+            <Linha/>
             <Review/>       
        </ScrollView>       
     </View>
@@ -29,6 +33,7 @@ const styles = StyleSheet.create({
     },
     mainBody: {
         flex: 1,      
-        backgroundColor: "rgb(36, 36, 36)"  
+        backgroundColor: "rgb(36, 36, 36)",  
+        
     }
   });

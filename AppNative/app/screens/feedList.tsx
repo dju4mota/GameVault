@@ -1,15 +1,25 @@
 import React  from "react";
-import { View, StyleSheet} from "react-native";
+import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
-import Carrousel from "@/app/components/carrousel";
-import BotaoPe from "@/app/components/botaoPe";
+import Lista from "../components/list";
+import Linha from "../components/linha";
 
 
 export default function FeedListScreen(){
     
 return(
     <View  style={ styles.mainBody}>
-       <Cabecalho activeItem={"Lists"}/>              
+        <Cabecalho activeItem={"Lists"}/>      
+        <ScrollView>    
+            <Lista/>
+            <Linha/>
+            <Lista/>
+            <Linha/>
+            <Lista/>
+            <Linha/>
+            <Lista/>
+            <Linha/>    
+        </ScrollView>    
    </View>
     )
 }

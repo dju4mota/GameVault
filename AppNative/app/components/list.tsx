@@ -1,20 +1,27 @@
-import { View, Text, Image, FlatList, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import ContainerPerfil from "./containerPerfil";
 
-export default function Review(){
+export default function Lista(){
     return (
     <View>
+        
         <ContainerPerfil></ContainerPerfil>
-        <View  style={styles.containerNota}>
-            <Text  style={styles.textoNota}> Nota: 5/5</Text>
+
+        <View style={styles.containerGeral}> 
+            <ScrollView horizontal={true}>
+                <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
+                <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
+                <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
+                <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
+                <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
+            </ScrollView>
+                       
         </View>
-        <View style={styles.containerGeral}>
-            <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
-            <Text style={styles.textoReview} >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        <View>
+        <Text style={styles.textoReview}> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             </Text>
-            
         </View>
     </View>
     )
@@ -68,6 +75,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         marginTop: 10,
+        margin: 5,
         
     },
     containerGeral:{
@@ -81,7 +89,7 @@ const styles = StyleSheet.create({
     },
     textoReview:{
         color: "rgb(255, 255, 255)",
-        width: 250,
+        width: '95%',
         paddingLeft: 30,
     }
 });
