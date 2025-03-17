@@ -1,5 +1,5 @@
 import React  from "react";
-import { View, StyleSheet} from "react-native";
+import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 
@@ -8,8 +8,13 @@ export default function FeedReviewScreen(){
     
 return(
     <View  style={ styles.mainBody}>
-       <Cabecalho activeItem={"Reviews"}/>       
-       <Review/>       
+        <Cabecalho activeItem={"Reviews"}/>       
+        <ScrollView>
+            <Review/>       
+            <Review/>       
+            <Review/>       
+            <Review/>       
+       </ScrollView>       
     </View>
     )
 }
