@@ -1,9 +1,9 @@
 import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import ContainerPerfilTitulo from "./containerPerfilTitulo";
+import { ReviewData } from "../models/ReviewData";
 
 
-
-const Review :React.FC<Review> = ({score,comment,game, user}) => {
+const Review :React.FC<ReviewData> = ({score,comment,game, user}) => {
     return (
     <View>
         <ContainerPerfilTitulo titulo={game.title} perfil={user}/>

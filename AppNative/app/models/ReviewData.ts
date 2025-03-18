@@ -1,4 +1,7 @@
-interface ReviewData {
+import { Game } from "./GameData";
+import { User } from "./UserData";
+
+export interface ReviewDataInterface {
     reviewId: string;
     score: string;
     comment: string;
@@ -10,7 +13,7 @@ interface ReviewData {
     game: Game;
 }
 
-class Review {
+export class ReviewData {
     reviewId: string;
     score: string;
     comment: string;
@@ -20,7 +23,7 @@ class Review {
     user: User;
     game: Game;
 
-    constructor(data: ReviewData) {
+    constructor(data: ReviewDataInterface) {
         this.reviewId = data.reviewId;
         this.score = data.score;
         this.comment = data.comment;

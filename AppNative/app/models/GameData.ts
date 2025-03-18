@@ -1,5 +1,5 @@
 // Classe Game
-class Game {
+export class Game {
     title: string;
     description: string;
     genre: string;

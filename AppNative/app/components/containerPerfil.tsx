@@ -1,12 +1,13 @@
 import { View, Text, Image, StyleSheet } from "react-native";
-import PerfilData from "../models/PerfilData";
+import { User } from "../models/UserData";
 
 
 
-const ContainerPerfil:React.FC<PerfilData> = ({nome,foto}) => {    
+
+const ContainerPerfil:React.FC<User> = ({userId,userName,userPicture}) => {    
     return(        
         <View style={styles.containerPerfil}>
-            <Text style={styles.textoPerfil}>{nome}</Text>
+            <Text style={styles.textoPerfil}>{userName}</Text>
             <Image source={require("@/assets/images/persona5.jpg")} style={styles.imagePerfil} />
         </View>    
     )

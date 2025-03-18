@@ -1,6 +1,6 @@
 
 // Classe User
-class User {
+export class User {
     userId: string;
     userName: string;
     userPicture: string;

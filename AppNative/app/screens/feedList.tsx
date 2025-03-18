@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Lista from "../components/list";
 import Linha from "../components/linha";
+import { User } from "../models/UserData";
 
 
 export default function FeedListScreen(){
