@@ -1,7 +1,6 @@
 package octodevs.gamevault.controllers;
 
 import jakarta.validation.Valid;
-import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
 import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
 import octodevs.gamevault.repositories.dto.ReviewDtoPut;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 // Controller responsavel por rotas e respostas
