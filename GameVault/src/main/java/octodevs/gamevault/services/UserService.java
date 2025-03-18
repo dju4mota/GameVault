@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import octodevs.gamevault.repositories.UserRepository;
 
 @Service
-public class AuthenticationService implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

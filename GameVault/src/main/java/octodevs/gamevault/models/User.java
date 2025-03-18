@@ -87,4 +87,10 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    public String getProfilePciture() {
+        return profilePciture;
+    }
+    
 }
