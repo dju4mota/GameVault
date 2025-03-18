@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import octodevs.gamevault.models.User;
 
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
 
     UserDetails findByLogin(String login);
     boolean existsByLogin(String login);

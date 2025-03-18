@@ -1,21 +1,38 @@
 package octodevs.gamevault.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import octodevs.gamevault.models.User;
 import octodevs.gamevault.repositories.UserRepository;
+import octodevs.gamevault.repositories.dto.UserDtoEntrada;
+import octodevs.gamevault.repositories.dto.UserDtoOut;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService{
 
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByLogin(username);
+    @Transactional
+    public UserDtoOut createUser(UserDtoEntrada dtoEntrada) {
+        
+        UserDtoOut dtoSaida = new UserDtoOut(userRepository.save(new User(dtoEntrada)));
+        return dtoSaida;
+    }
+
+    // Read    
+    public Stream<UserDtoOut> getAllUsers(Pageable pageable) {    
+        return userRepository.findAll(pageable).stream().map(UserDtoOut::new);
+    }
+    
+    // get by Id    
+    public UserDtoOut getUserById(String id) {        
+        // TO DO mensagem de não encontrado 404
+        return userRepository.findById(id).map(UserDtoOut::new).orElse(null);
     }
 }

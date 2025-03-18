@@ -1,12 +1,15 @@
 package octodevs.gamevault.repositories.dto;
 
-import java.util.UUID;
+import java.util.ArrayList;
 
 public record UserDtoEntrada (
-    UUID userId,
-    String login,
+    
+    String userName,
     String password,
-    String profilePciture
+    String profilePciture,
+    ArrayList<String> reviewsId,
+    ArrayList<String> gameLists,
+    ArrayList<String> friends
 
 ) {
 }
