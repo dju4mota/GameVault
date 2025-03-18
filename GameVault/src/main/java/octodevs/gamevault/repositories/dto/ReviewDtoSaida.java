@@ -11,10 +11,11 @@ public record ReviewDtoSaida(
         String data,
         String platform,
         float hoursPlayed,
-        String gameId
+        String gameId,
+        String userId
 ) {
     public ReviewDtoSaida(Review review) {
-        this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),review.getGameId() );
+        this(review.getReviewId(), review.getScore(), review.getComment(), review.getData(), review.getPlatform(), review.getHoursPlayed(),review.getGameId(),review.getUserId() );
     }
 
     public String reviewId() {

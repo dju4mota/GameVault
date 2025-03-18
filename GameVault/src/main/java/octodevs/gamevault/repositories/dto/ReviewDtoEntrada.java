@@ -15,6 +15,8 @@ public record ReviewDtoEntrada(
         @NotNull
         float hoursPlayed,
         @Valid
-        String gameId
+        String gameId,
+        @Valid
+        String userId
 )
 {}

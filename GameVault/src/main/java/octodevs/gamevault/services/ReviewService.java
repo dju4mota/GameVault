@@ -25,8 +25,7 @@ public class ReviewService {
 
     @Transactional
     public ReviewDtoSaida createReview(ReviewDtoEntrada DTOreview) {
-        
-        // TO DO adicionar gameID
+        // TO DO  gameID e userId        
         ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
 
         return reviewDTO;

@@ -14,16 +14,16 @@ public class Review {
     private int score;
     private String comment;
     private String data;
+    private String platform;    
+    private float hoursPlayed;    
     private String gameId;
-    private float hoursPlayed;
-    private String platform;
-
-
+    private String userId;
+    
     public Review() {
 
     }
 
-    public Review(String reviewId, int score, String comment, String data, String gameId, float hoursPlayed, String platform) {
+    public Review(String reviewId, int score, String comment, String data, String gameId, float hoursPlayed, String platform, String userId) {
         this.reviewId = reviewId;
         this.score = score;
         this.comment = comment;
@@ -31,6 +31,7 @@ public class Review {
         this.gameId = gameId;
         this.hoursPlayed = hoursPlayed;
         this.platform = platform;
+        this.userId = userId;
     }
 
     @Override
@@ -42,7 +43,8 @@ public class Review {
                 ", data=" + data + '\'' +
                 ", platform=" + platform + '\'' +
                 ", hoursPlayed=" + hoursPlayed + '\'' +
-                ", gameID=" + gameId +
+                ", gameId=" + gameId +
+                ", userId=" + userId +
                 '}';
     }
 
@@ -53,6 +55,7 @@ public class Review {
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
         this.gameId = review.gameId();
+        this.userId = review.userId();
     }
 
     public Review(ReviewDtoSaida review) {
@@ -63,6 +66,7 @@ public class Review {
         this.platform = review.platform();
         this.hoursPlayed = review.hoursPlayed();
         this.gameId = review.gameId();
+        this.userId = review.userId();
     }
 
     public void atualizarDados(ReviewDtoPut dadosReview) {
@@ -110,4 +114,9 @@ public class Review {
     public String getPlatform() {
         return platform;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
 }

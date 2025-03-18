@@ -1,7 +1,9 @@
 package octodevs.gamevault.models;
 
+import java.util.ArrayList;
+
 import jakarta.persistence.*;
-import octodevs.gamevault.repositories.dto.GameDtoPost;
+import octodevs.gamevault.repositories.dto.GameDtoEntrada;
 
 @Entity
 public class Game {
@@ -12,11 +14,13 @@ public class Game {
     private String title;
     private String description;
     private String genre;
+    private ArrayList<String> reviewList;
 
-    public Game(GameDtoPost gameDtoPost) {
+    public Game(GameDtoEntrada gameDtoPost) {
         this.title = gameDtoPost.title();
         this.description = gameDtoPost.description();
         this.genre = gameDtoPost.genre();
+        reviewList = new ArrayList<String>();
     }
 
     public Game() {
@@ -27,6 +31,7 @@ public class Game {
         this.title = title;
         this.description = description;
         this.genre = genre;
+        reviewList = new ArrayList<String>();
     }
 
     public String getGameId() {
@@ -44,5 +49,10 @@ public class Game {
     public String getGenre() {
         return genre;
     }
+
+    public ArrayList<String> getReviewList() {
+        return reviewList;
+    }
+    
 }
 

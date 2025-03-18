@@ -1,43 +1,54 @@
 package octodevs.gamevault.controllers;
 
+import octodevs.gamevault.repositories.dto.GameDtoEntrada;
+import octodevs.gamevault.repositories.dto.GameDtoSaida;
+import octodevs.gamevault.services.GameService;
 
-import octodevs.gamevault.repositories.GameRepository;
-import octodevs.gamevault.repositories.dto.GameDtoGet;
-import octodevs.gamevault.models.Game;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Optional;
+import jakarta.validation.Valid;
+
 import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/games")
 public class GameController {
+    
+    @Autowired
+    private GameService gameService;    
 
-    final GameRepository gameRepository;
+    @PostMapping
+    public ResponseEntity createGame(@RequestBody @Valid GameDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
+        
+        GameDtoSaida gameResposta = gameService.createGame(dtoEntrada);
 
-    public GameController(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+        return ResponseEntity.created(uriBuilder.path("/games/{id}").buildAndExpand(gameResposta.gameId()).toUri())
+                .body(gameResposta);
     }
 
     // Read
     @GetMapping
-    public ResponseEntity<Stream<GameDtoGet>> getAllReviews(Pageable pageable) {
-        Stream<GameDtoGet> games = gameRepository.findAll(pageable).stream().map(GameDtoGet::new);
+    public ResponseEntity<Stream<GameDtoSaida>> getAllGames(Pageable pageable) {
+        Stream<GameDtoSaida> games = gameService.getAllGames(pageable);
         return ResponseEntity.ok(games);
     }
 
     // get by Id
     @GetMapping("/{id}")
-    public ResponseEntity<GameDtoGet> getReviewbyId(@PathVariable String id) {
-        Optional<Game> game = gameRepository.findById(id);
+    public ResponseEntity<GameDtoSaida> getGameById(@PathVariable String id) {
+        GameDtoSaida game = gameService.getGameById(id);
         // TO DO mensagem de não encontrado 404
-        return ResponseEntity.ok(game.map(GameDtoGet::new).orElse(null));
+        return ResponseEntity.ok(game);
     }
 
 }
