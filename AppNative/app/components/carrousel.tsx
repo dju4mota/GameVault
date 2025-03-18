@@ -1,13 +1,13 @@
 
 import React, { ReactElement, ReactNode } from "react";
 import { View, Text, Image, FlatList, StyleSheet, ListRenderItem } from "react-native";
-import PerfilData from "../models/PerfilData";
 import ContainerPerfil from "./containerPerfil";
+import { User } from "../models/UserData";
 
 
 class CarrouselData {
     foto!: string;
-    perfil?: PerfilData;
+    perfil?: User;
 }
 
 interface CarrouselProps {
@@ -25,7 +25,7 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) =>
             <View style={styles.slide}>
                 <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
                 <View style={styles.adicional} >                                        
-                    <ContainerPerfil nome={item.perfil!.nome} foto={item.perfil!.foto} />
+                    <ContainerPerfil userName={item.perfil!.userName} userPicture={item.perfil!.userPicture} userId={item.perfil!.userId} />
                 </View>
             </View>
         );

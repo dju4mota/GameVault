@@ -26,6 +26,7 @@ O projeto segue uma estrutura de diretórios organizada em componentes, containe
 - **screens:** Contém as principais telas do aplicativo, como Login, Registro, Reviews, etc.
 - **services:** Contém serviços para comunicação com o backend, como API calls.
 - **styles:** Contém estilos globais e temas.
+- **models:** Possui as classes de dados e suas interfaces para transferir dados entre componentes e telas.
 
 ## Principais Telas e Componentes
 

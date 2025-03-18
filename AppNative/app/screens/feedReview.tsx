@@ -4,6 +4,8 @@ import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
 import getReviews from '@/services/ReviewService'; 
+import { ReviewData } from '../models/ReviewData';
+import { User } from '../models/UserData';
 
 
 
