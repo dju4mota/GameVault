@@ -3,16 +3,37 @@ import { View, StyleSheet} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Carrousel from "@/app/components/carrousel";
 import BotaoPe from "@/app/components/botaoPe";
+import PerfilData  from "../models/PerfilData";
 
 
 export default function FeedGameScreen(){
     
+    const lista = [
+    {
+        foto: "@/assets/images/persona5.jpg",
+        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+    },
+    {
+        foto: "@/assets/images/persona5.jpg",
+        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+    },
+    {
+        foto: "@/assets/images/persona5.jpg",
+        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+    },
+    {
+        foto: "@/assets/images/persona5.jpg",
+        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+    }
+];
+
+
 return(
     <View  style={ styles.mainBody}>
        <Cabecalho activeItem={"Jogos"}/>
        <View  style={styles.carrousel}>
-           <Carrousel texto={"Popular"}/>
-           <Carrousel texto={"Entre amigos"} nome="dju" foto="hell yeah"/>           
+           <Carrousel texto={"Popular"} hasProfile={false} listaDados={lista } />
+           <Carrousel texto={"Entre amigos"} hasProfile={true} listaDados={lista}/>           
        </View>  
        <BotaoPe/>
    </View>

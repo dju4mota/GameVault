@@ -6,7 +6,6 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 export default function Linha(){
     return (
         <View style={styles.linha}>
-
         </View>
     )
 }

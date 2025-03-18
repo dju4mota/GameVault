@@ -3,21 +3,23 @@ import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
+import PerfilData from "../models/PerfilData";
 
 
 export default function FeedReviewScreen(){
     
+
 return(
     <View  style={ styles.mainBody}>
         <Cabecalho activeItem={"Reviews"}/>       
         <ScrollView>
-            <Review/>       
+            <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>       
             <Linha/>
-            <Review/>       
+            <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>              
             <Linha/>
-            <Review/>      
+            <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>             
             <Linha/>
-            <Review/>       
+            <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>              
        </ScrollView>       
     </View>
     )

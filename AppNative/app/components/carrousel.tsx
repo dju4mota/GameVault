@@ -1,32 +1,31 @@
 
 import React, { ReactElement, ReactNode } from "react";
-import { View, Text, Image, FlatList, StyleSheet } from "react-native";
+import { View, Text, Image, FlatList, StyleSheet, ListRenderItem } from "react-native";
+import PerfilData from "../models/PerfilData";
+import ContainerPerfil from "./containerPerfil";
 
 
-const images = [
-    { id: 1, source: require("@/assets/images/persona5.jpg"), title: "Persona 5" },
-    { id: 2, source: require("@/assets/images/persona5.jpg"), title: "Persona 4" },
-    { id: 3, source: require("@/assets/images/persona5.jpg"), title: "Persona 3" },
-];
+class CarrouselData {
+    foto!: string;
+    perfil?: PerfilData;
+}
 
 interface CarrouselProps {
     texto: string; // Texto (string)
-    nome?: string; // Texto (string)
-    foto?: string; // Texto (string)
-    
+    listaDados: CarrouselData[];        
+    hasProfile: boolean;
 }
 
-const Carrousel: React.FC<CarrouselProps> = ({texto, nome, foto}) => {
+const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) => {
 
 
-    if (nome != null){
+    if (hasProfile){
 
-        const renderItem = () => (
+        const renderItem:ListRenderItem<CarrouselData> = ({item}) => (
             <View style={styles.slide}>
                 <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
-                <View style={styles.adicional} >
-                    <Image source={require("@/assets/images/persona5.jpg")} style={styles.adicionalFoto} />
-                    <Text style={styles.adicionalTexto}>{nome}</Text>                    
+                <View style={styles.adicional} >                                        
+                    <ContainerPerfil nome={item.perfil!.nome} foto={item.perfil!.foto} />
                 </View>
             </View>
         );
@@ -36,9 +35,10 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, nome, foto}) => {
                 <Text style={styles.title}>{texto}</Text>
                 <View style={styles.container}>
                     <FlatList
-                        data={images}
+                        data={listaDados}
                         renderItem={renderItem}
                         horizontal
+                        
                         showsHorizontalScrollIndicator={false}
                     />
                 </View>
@@ -46,7 +46,7 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, nome, foto}) => {
         )
     } else { 
     
-        const renderItem = () => (
+        const renderItem:ListRenderItem<CarrouselData> = ({item}) => (
             <View style={styles.slide}>
                 <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
             </View>
@@ -57,7 +57,7 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, nome, foto}) => {
                 <Text style={styles.title}>{texto}</Text>
                 <View style={styles.containerMenor}>
                     <FlatList
-                        data={images}
+                        data={listaDados}
                         renderItem={renderItem}
                         horizontal
                         showsHorizontalScrollIndicator={false}

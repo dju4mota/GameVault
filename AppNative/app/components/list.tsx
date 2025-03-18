@@ -1,11 +1,20 @@
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import ContainerPerfil from "./containerPerfil";
+import ContainerPerfilTitulo from "./containerPerfilTitulo";
+import  PerfilData  from "../models/PerfilData";
+import React from "react";
 
-export default function Lista(){
+
+interface Lista{
+    fotos: string[]
+    texto: string
+    perfil: PerfilData
+}
+
+const Lista:React.FC<Lista> = ({fotos, texto,perfil}) =>{
     return (
     <View>
         
-        <ContainerPerfil></ContainerPerfil>
+        <ContainerPerfilTitulo titulo="Personas" perfil={perfil}/>
 
         <View style={styles.containerGeral}> 
             <ScrollView horizontal={true}>
@@ -18,9 +27,7 @@ export default function Lista(){
                        
         </View>
         <View>
-        <Text style={styles.textoReview}> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        <Text style={styles.textoReview}>{texto}
             </Text>
         </View>
     </View>
@@ -28,6 +35,7 @@ export default function Lista(){
 
 }
 
+export default Lista;
 
 
 const styles = StyleSheet.create({
