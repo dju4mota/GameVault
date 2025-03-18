@@ -9,11 +9,11 @@ public record GameDtoSaida(
         String title,
         String description,
         String genre,
-        ArrayList<String> reviewList
+        ArrayList<String> reviewsId
 ) {
 
     public GameDtoSaida(Game game)
     {
-        this(game.getGameId(),game.getTitle(), game.getDescription(), game.getGenre(), game.getReviewList());
+        this(game.getGameId(),game.getTitle(), game.getDescription(), game.getGenre(), game.getReviewsIds());
     }
 }

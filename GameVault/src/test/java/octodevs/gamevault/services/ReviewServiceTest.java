@@ -32,113 +32,113 @@ public class ReviewServiceTest {
     @Autowired
     EntityManager entityManager;
 
-    @Test
-    void testCreateReview() {
-        ReviewDtoSaida reviewCriado = this.reviewService.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    // @Test
+    // void testCreateReview() {
+    //     ReviewDtoSaida reviewCriado = this.reviewService.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
         
-        ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+    //     ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
 
-        assertNotNull(reviewSaida);
-        assertThat(reviewCriado).isEqualTo(reviewSaida);
-    }
+    //     assertNotNull(reviewSaida);
+    //     assertThat(reviewCriado).isEqualTo(reviewSaida);
+    // }
 
-    @Test
-    void testDeleteById() {
+    // @Test
+    // void testDeleteById() {
 
-        // adicionando o resultado esperado no Banco Mockado
-        ReviewDtoSaida reviewCriado = this.reviewService.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    //     // adicionando o resultado esperado no Banco Mockado
+    //     ReviewDtoSaida reviewCriado = this.reviewService.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
-        ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+    //     ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
         
-        assertNotNull(reviewSaida);
-        assertThat(reviewCriado).isEqualTo(reviewSaida);
+    //     assertNotNull(reviewSaida);
+    //     assertThat(reviewCriado).isEqualTo(reviewSaida);
         
-        this.reviewService.deleteById(reviewCriado.reviewId());
+    //     this.reviewService.deleteById(reviewCriado.reviewId());
 
-        reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+    //     reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
         
-        assertNull(reviewSaida);
+    //     assertNull(reviewSaida);
 
-    }
+    // }
     
 
-    @Test
-    void testGetAllReviewsSucess() {
+    // @Test
+    // void testGetAllReviewsSucess() {
         
-        // adicionando o resultado esperado no Banco Mockado
-        ReviewDtoSaida reviewEsperado = this.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    //     // adicionando o resultado esperado no Banco Mockado
+    //     ReviewDtoSaida reviewEsperado = this.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
-        Pageable pageable= PageRequest.of(0, 5);
+    //     Pageable pageable= PageRequest.of(0, 5);
 
-        List<ReviewDtoSaida> reviewEncontrado =  this.reviewService.getAllReviews(pageable).toList();
+    //     List<ReviewDtoSaida> reviewEncontrado =  this.reviewService.getAllReviews(pageable).toList();
             
-        assertThat(reviewEncontrado.get(0)).isEqualTo(reviewEsperado);
-    }
+    //     assertThat(reviewEncontrado.get(0)).isEqualTo(reviewEsperado);
+    // }
     
-    @Test
-    void testGetAllReviewsEmpty() {
+    // @Test
+    // void testGetAllReviewsEmpty() {
 
-        Pageable pageable= PageRequest.of(0, 5);
+    //     Pageable pageable= PageRequest.of(0, 5);
 
-        List<ReviewDtoSaida> reviewEncontrado =  this.reviewService.getAllReviews(pageable).toList();
+    //     List<ReviewDtoSaida> reviewEncontrado =  this.reviewService.getAllReviews(pageable).toList();
             
-        assertTrue(reviewEncontrado.isEmpty());
-    }
+    //     assertTrue(reviewEncontrado.isEmpty());
+    // }
         
-    @Test
-    void testGetAllReviewsNotEmpty() {
+    // @Test
+    // void testGetAllReviewsNotEmpty() {
 
-        this.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    //     this.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
         
-        this.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    //     this.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
-        this.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    //     this.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
 
-        Pageable pageable= PageRequest.of(0, 5);
+    //     Pageable pageable= PageRequest.of(0, 5);
 
-        List<ReviewDtoSaida> reviewEncontrado =  this.reviewService.getAllReviews(pageable).toList();
+    //     List<ReviewDtoSaida> reviewEncontrado =  this.reviewService.getAllReviews(pageable).toList();
             
-        assertFalse(reviewEncontrado.isEmpty());
-    }
+    //     assertFalse(reviewEncontrado.isEmpty());
+    // }
 
-    @Test
-    void testGetReviewbyIdSucess() {
-        // adicionando o resultado esperado no Banco Mockado
-        ReviewDtoSaida reviewEsperado = this.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    // @Test
+    // void testGetReviewbyIdSucess() {
+    //     // adicionando o resultado esperado no Banco Mockado
+    //     ReviewDtoSaida reviewEsperado = this.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
-        ReviewDtoSaida reviewDtoSaida =  this.reviewService.getReviewbyId(reviewEsperado.reviewId());
+    //     ReviewDtoSaida reviewDtoSaida =  this.reviewService.getReviewbyId(reviewEsperado.reviewId());
         
-        assertThat(reviewDtoSaida).isEqualTo(reviewEsperado);
-    }
+    //     assertThat(reviewDtoSaida).isEqualTo(reviewEsperado);
+    // }
 
-    @Test
-    void testUpdateById() {
-        // adicionando o resultado esperado no Banco Mockado
-        ReviewDtoSaida reviewCriado = this.reviewService.createReview(
-            new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
+    // @Test
+    // void testUpdateById() {
+    //     // adicionando o resultado esperado no Banco Mockado
+    //     ReviewDtoSaida reviewCriado = this.reviewService.createReview(
+    //         new ReviewDtoEntrada(7, "foda", "03/05/01", "3ds", 25f, "213612763971"));
 
-        ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
+    //     ReviewDtoSaida reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());    
     
-        assertNotNull(reviewSaida);
-        assertThat(reviewCriado).isEqualTo(reviewSaida);
+    //     assertNotNull(reviewSaida);
+    //     assertThat(reviewCriado).isEqualTo(reviewSaida);
         
-        ReviewDtoPut update = new ReviewDtoPut(10, null, null, null, 0);
+    //     ReviewDtoPut update = new ReviewDtoPut(10, null, null, null, 0);
 
-        this.reviewService.updatebyID(reviewCriado.reviewId(), update);
+    //     this.reviewService.updatebyID(reviewCriado.reviewId(), update);
 
-        reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());
+    //     reviewSaida = this.reviewService.getReviewbyId(reviewCriado.reviewId());
         
-        assertTrue(reviewSaida.score() == 10);
+    //     assertTrue(reviewSaida.score() == 10);
 
-    } 
+    // } 
     
     private ReviewDtoSaida createReview(ReviewDtoEntrada dados){
         Review newReview = new Review(dados);

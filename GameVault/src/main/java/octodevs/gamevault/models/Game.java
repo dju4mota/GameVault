@@ -14,13 +14,13 @@ public class Game {
     private String title;
     private String description;
     private String genre;
-    private ArrayList<String> reviewList;
+    private ArrayList<String> reviewsIds;
 
     public Game(GameDtoEntrada gameDtoPost) {
         this.title = gameDtoPost.title();
         this.description = gameDtoPost.description();
         this.genre = gameDtoPost.genre();
-        reviewList = new ArrayList<String>();
+        reviewsIds = new ArrayList<String>();
     }
 
     public Game() {
@@ -31,7 +31,7 @@ public class Game {
         this.title = title;
         this.description = description;
         this.genre = genre;
-        reviewList = new ArrayList<String>();
+        reviewsIds = new ArrayList<String>();
     }
 
     public String getGameId() {
@@ -50,8 +50,8 @@ public class Game {
         return genre;
     }
 
-    public ArrayList<String> getReviewList() {
-        return reviewList;
+    public ArrayList<String> getReviewsIds() {
+        return reviewsIds;
     }
     
 }

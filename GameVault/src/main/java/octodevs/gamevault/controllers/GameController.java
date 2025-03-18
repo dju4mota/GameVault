@@ -4,7 +4,6 @@ import octodevs.gamevault.repositories.dto.GameDtoEntrada;
 import octodevs.gamevault.repositories.dto.GameDtoSaida;
 import octodevs.gamevault.services.GameService;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +24,8 @@ import java.util.stream.Stream;
 public class GameController {
     
     @Autowired
-    private GameService gameService;    
+    private GameService gameService;
+    
 
     @PostMapping
     public ResponseEntity createGame(@RequestBody @Valid GameDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {

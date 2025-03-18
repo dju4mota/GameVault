@@ -3,6 +3,7 @@ package octodevs.gamevault.services;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import octodevs.gamevault.models.Game;
@@ -11,7 +12,7 @@ import octodevs.gamevault.repositories.dto.GameDtoEntrada;
 import octodevs.gamevault.repositories.dto.GameDtoSaida;
 
 
-
+@Service
 public class GameService {
 
     @Autowired
