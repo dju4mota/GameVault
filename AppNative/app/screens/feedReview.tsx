@@ -4,13 +4,11 @@ import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
 import getReviews from '@/services/ReviewService'; 
-import { ReviewData } from '../models/ReviewData';
-import { User } from '../models/UserData';
-
+import { ReviewDataSimpleInterface } from '../models/ReviewData';
 
 
 export default function FeedReviewScreen() {
-    const [reviews, setReviews] = useState<ReviewData[]>([]);
+    const [reviews, setReviews] = useState<ReviewDataSimpleInterface[]>([]);
 
     // useEffect para chamar a função getReviews quando o componente for montado
     useEffect(() => {
@@ -37,8 +35,7 @@ export default function FeedReviewScreen() {
                             score={review.score} // Supondo que a API retorne um campo "nota"
                             game={review.game} // Supondo que a API retorne um campo "foto"
                             comment={review.comment} // Supondo que a API retorne um campo "texto"
-                            user={new User(review.user.userId, review.user.userName, review.user.userPicture)} // Ajuste conforme a estrutura da API
-                            reviewId={''} data={''} platform={''} hoursPlayed={''}
+                            user={review.user} 
                             />
                         <Linha />
                     </React.Fragment>
