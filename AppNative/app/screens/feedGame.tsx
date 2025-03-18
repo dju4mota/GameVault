@@ -3,7 +3,7 @@ import { View, StyleSheet} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Carrousel from "@/app/components/carrousel";
 import BotaoPe from "@/app/components/botaoPe";
-import PerfilData  from "../models/PerfilData";
+
 
 
 export default function FeedGameScreen(){
@@ -11,19 +11,19 @@ export default function FeedGameScreen(){
     const lista = [
     {
         foto: "@/assets/images/persona5.jpg",
-        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+        perfil: new User("","joker", "@/assets/images/persona5.jpg")
     },
     {
         foto: "@/assets/images/persona5.jpg",
-        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+        perfil: new User("","joker", "@/assets/images/persona5.jpg")
     },
     {
         foto: "@/assets/images/persona5.jpg",
-        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+        perfil: new User("","joker", "@/assets/images/persona5.jpg")
     },
     {
         foto: "@/assets/images/persona5.jpg",
-        perfil: new PerfilData("joker", "@/assets/images/persona5.jpg")
+        perfil: new User("","joker", "@/assets/images/persona5.jpg")
     }
 ];
 

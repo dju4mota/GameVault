@@ -1,27 +1,18 @@
 import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import ContainerPerfilTitulo from "./containerPerfilTitulo";
-import PerfilData from "../models/PerfilData";
 
 
 
-interface Review{
-    nota: string
-    foto: string
-    texto: string
-    perfil: PerfilData
-}
-
-
-const Review :React.FC<Review> = ({nota,foto,texto, perfil}) => {
+const Review :React.FC<Review> = ({score,comment,game, user}) => {
     return (
     <View>
-        <ContainerPerfilTitulo titulo="Personas" perfil={perfil}/>
+        <ContainerPerfilTitulo titulo={game.title} perfil={user}/>
         <View  style={styles.containerNota}>
-            <Text  style={styles.textoNota}> Nota: {nota}/5</Text>
+            <Text  style={styles.textoNota}> Nota: {score}/5</Text>
         </View>
         <View style={styles.containerGeral}>
             <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
-            <Text style={styles.textoReview}>{texto}</Text>
+            <Text style={styles.textoReview}>{comment}</Text>
             
         </View>
     </View>

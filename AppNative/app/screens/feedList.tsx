@@ -3,7 +3,6 @@ import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Lista from "../components/list";
 import Linha from "../components/linha";
-import PerfilData from "../models/PerfilData";
 
 
 export default function FeedListScreen(){
@@ -12,13 +11,13 @@ return(
     <View  style={ styles.mainBody}>
         <Cabecalho activeItem={"Lists"}/>      
         <ScrollView>    
-            <Lista fotos={[]} perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
+            <Lista fotos={[]} perfil={new User("","joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
             <Linha/>
-            <Lista fotos={[]} perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
+            <Lista fotos={[]} perfil={new User("","joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
             <Linha/>
-            <Lista fotos={[]} perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
+            <Lista fotos={[]} perfil={new User("","joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
             <Linha/>
-            <Lista fotos={[]} perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
+            <Lista fotos={[]} perfil={new User("","joker", "@/assets/images/persona5.jpg")} texto="aaaaaaaaaaaaaaa" />
             <Linha/>    
         </ScrollView>    
    </View>

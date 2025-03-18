@@ -3,18 +3,8 @@ import { View, StyleSheet, ScrollView} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
-import PerfilData from "../models/PerfilData";
 import getReviews from '@/services/ReviewService'; 
 
-interface ReviewData {
-    "reviewId": string
-    "score": string
-    "comment": string
-    "data": string
-    "platform": string
-    "hoursPlayed":string
-    "gameId": string
-}
 
 
 export default function FeedReviewScreen() {
@@ -42,11 +32,12 @@ export default function FeedReviewScreen() {
                 {reviews.map((review, index) => (
                     <React.Fragment key={index}>
                         <Review
-                            nota={review.score} // Supondo que a API retorne um campo "nota"
-                            foto={review.gameId} // Supondo que a API retorne um campo "foto"
-                            texto={review.comment} // Supondo que a API retorne um campo "texto"
-                            perfil={new PerfilData(review.platform, review.data)} // Ajuste conforme a estrutura da API
-                        />
+                            score={review.score} // Supondo que a API retorne um campo "nota"
+                            game={review.game} // Supondo que a API retorne um campo "foto"
+                            comment={review.comment} // Supondo que a API retorne um campo "texto"
+                            user={new User(review.user.userId, review.user.userName, review.user.userPicture)} // Ajuste conforme a estrutura da API
+                            reviewId={''} data={''} platform={''} hoursPlayed={''}
+                            />
                         <Linha />
                     </React.Fragment>
                 ))}
