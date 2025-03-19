@@ -1,6 +1,5 @@
 package octodevs.gamevault.repositories.dto.review;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 

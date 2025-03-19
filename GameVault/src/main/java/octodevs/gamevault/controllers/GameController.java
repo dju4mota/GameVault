@@ -41,6 +41,17 @@ public class GameController {
     }
 
     // Read
+
+        
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Stream<GameDtoSaida>> getGameByName(@PathVariable String name) {
+        Stream<GameDtoSaida> game = gameService.getGameByName(name);
+        if(game != null){
+            return ResponseEntity.ok(game);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping
     public ResponseEntity<Stream<GameDtoSaida>> getAllGames(Pageable pageable) {
         Stream<GameDtoSaida> games = gameService.getAllGames(pageable);

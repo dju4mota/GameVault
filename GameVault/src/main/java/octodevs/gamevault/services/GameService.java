@@ -1,5 +1,6 @@
 package octodevs.gamevault.services;
 
+import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -46,9 +47,13 @@ public class GameService {
     }
     
     // get by Id    
-    public GameDtoSaida getGameById(String id) {        
-        // TO DO mensagem de não encontrado 404
+    public GameDtoSaida getGameById(String id) {                
         return gameRepository.findById(id).map(GameDtoSaida::new).orElse(null);
+    }
+
+    
+    public Stream<GameDtoSaida> getGameByName(String title) {        
+        return gameRepository.findByTitleContains(title).stream().map(GameDtoSaida::new);
     }
 
 
