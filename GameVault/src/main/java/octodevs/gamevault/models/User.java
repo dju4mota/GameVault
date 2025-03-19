@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 
 @Entity
@@ -18,7 +17,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
     private String userName;
-    private ArrayList<String> reviewsId;
+    private ArrayList<String> reviewsIds;
     private ArrayList<String> gamesList;
     private ArrayList<String> friends;
     private String password;
@@ -32,7 +31,7 @@ public class User {
         this.userName = dtoEntrada.userName();
         this.password = dtoEntrada.password();
         this.profilePicture = dtoEntrada.profilePicture();
-        this.reviewsId = new ArrayList<String>();
+        this.reviewsIds = new ArrayList<String>();
         this.friends = new ArrayList<String>();
         this.gamesList = new ArrayList<String>();
 
@@ -40,11 +39,10 @@ public class User {
 
     
 
-    public User(String userId, String userName, ArrayList<String> reviewsId, ArrayList<String> gamesList,
-            ArrayList<String> friends, String password, String profilePicture) {
+    public User(String userId, String userName, String password, String profilePicture) {
         this.userId = userId;
         this.userName = userName;
-        this.reviewsId = new ArrayList<String>();
+        this.reviewsIds = new ArrayList<String>();
         this.friends = new ArrayList<String>();
         this.gamesList = new ArrayList<String>();
         this.password = password;
@@ -84,8 +82,8 @@ public class User {
     
     }
 
-    public ArrayList<String> getReviewsId() {
-        return reviewsId;
+    public ArrayList<String> getReviewsIds() {
+        return reviewsIds;
     }
 
 
@@ -96,6 +94,13 @@ public class User {
 
     public ArrayList<String> getFriends() {
         return friends;
+    }
+
+    public void addReview(String reviewId){
+        if(reviewsIds == null){
+            reviewsIds = new ArrayList<String>();            
+        }
+        reviewsIds.add(reviewId);
     }
     
 }

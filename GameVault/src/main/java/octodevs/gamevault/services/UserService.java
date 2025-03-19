@@ -35,4 +35,13 @@ public class UserService{
         // TO DO mensagem de não encontrado 404
         return userRepository.findById(id).map(UserDtoOut::new).orElse(null);
     }
+
+
+    @Transactional
+    public void addReview(String userId, String reviewId){        
+        User user = userRepository.getReferenceById(userId);
+        user.addReview(reviewId);
+        userRepository.save(user);
+    }
+
 }

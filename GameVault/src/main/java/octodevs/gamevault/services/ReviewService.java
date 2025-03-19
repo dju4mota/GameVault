@@ -35,11 +35,9 @@ public class ReviewService {
 
         ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
 
-        // salvar na game 
+        // Ligações com outras tabelas
         gameService.addReview(reviewDTO.gameId(), reviewDTO.reviewId());
-        
-        // salvar na user
-        //
+        userService.addReview(reviewDTO.userId(), reviewDTO.reviewId());
 
         return reviewDTO;
     }

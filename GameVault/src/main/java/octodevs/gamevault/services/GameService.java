@@ -20,8 +20,7 @@ public class GameService {
 
 
     @Transactional
-    public GameDtoSaida createGame(GameDtoEntrada dtoEntrada) {
-        // TO DO  gameID e userId        
+    public GameDtoSaida createGame(GameDtoEntrada dtoEntrada) {        
         GameDtoSaida dtoSaida = new GameDtoSaida(gameRepository.save(new Game(dtoEntrada)));
         return dtoSaida;
     }
