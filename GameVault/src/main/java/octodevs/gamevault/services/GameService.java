@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import octodevs.gamevault.models.Game;
 import octodevs.gamevault.repositories.GameRepository;
-import octodevs.gamevault.repositories.dto.GameDtoEntrada;
-import octodevs.gamevault.repositories.dto.GameDtoSaida;
+import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
+import octodevs.gamevault.repositories.dto.game.GameDtoSaida;
 
 
 @Service
@@ -24,6 +24,13 @@ public class GameService {
         // TO DO  gameID e userId        
         GameDtoSaida dtoSaida = new GameDtoSaida(gameRepository.save(new Game(dtoEntrada)));
         return dtoSaida;
+    }
+
+    @Transactional
+    public void addReview(String gameId, String reviewId){        
+        Game game = gameRepository.getReferenceById(gameId);
+        game.addReview(reviewId);
+        gameRepository.save(game);
     }
 
     // Read    

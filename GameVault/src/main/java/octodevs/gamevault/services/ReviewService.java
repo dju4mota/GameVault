@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repositories.ReviewRepository;
-import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
-import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
-import octodevs.gamevault.repositories.dto.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoCompleteSaida;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoEntrada;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 
 
 // Service 
@@ -23,10 +24,22 @@ public class ReviewService {
     @Autowired
     public ReviewRepository reviewRepository;
 
+    @Autowired
+    public GameService gameService;
+
+    @Autowired
+    public UserService userService;
+
     @Transactional
     public ReviewDtoSaida createReview(ReviewDtoEntrada DTOreview) {
-        // TO DO  gameID e userId        
+
         ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
+
+        // salvar na game 
+        gameService.addReview(reviewDTO.gameId(), reviewDTO.reviewId());
+        
+        // salvar na user
+        //
 
         return reviewDTO;
     }
@@ -39,6 +52,13 @@ public class ReviewService {
 
     public Stream<ReviewDtoSaida> getAllReviews(Pageable pageable){
         return reviewRepository.findAll(pageable).stream().map(ReviewDtoSaida::new);
+    }
+
+    public ReviewDtoCompleteSaida getReviewCompletebyId(String id){
+        // To Do -> Verificação e try-catch 
+        ReviewDtoSaida review = getReviewbyId(id);
+        ReviewDtoCompleteSaida saida = new ReviewDtoCompleteSaida(review, gameService.getGameById(review.gameId()), userService.getUserById(review.userId()));        
+        return saida;        
     }
 
     @Transactional

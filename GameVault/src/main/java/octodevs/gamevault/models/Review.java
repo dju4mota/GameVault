@@ -2,9 +2,9 @@ package octodevs.gamevault.models;
 
 
 import jakarta.persistence.*;
-import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
-import octodevs.gamevault.repositories.dto.ReviewDtoPut;
-import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoEntrada;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 
 @Entity
 public class Review {

@@ -1,9 +1,10 @@
 package octodevs.gamevault.controllers;
 
 import jakarta.validation.Valid;
-import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
-import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
-import octodevs.gamevault.repositories.dto.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoCompleteSaida;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoEntrada;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 import octodevs.gamevault.services.ReviewService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,17 @@ public class ReviewController {
     }
 
     // Read
+
+    // by Id
+    @GetMapping("/complete/{id}")
+    public ResponseEntity<ReviewDtoCompleteSaida> getReviewCompleteById(@PathVariable String id) {
+        
+        ReviewDtoCompleteSaida reviewResposta = reviewService.getReviewCompletebyId(id);
+        
+        return ResponseEntity.ok(reviewResposta);
+    }
+    
+    
     // all
     @GetMapping
     public ResponseEntity<Stream<ReviewDtoSaida>> getAllReviews(Pageable pageable) {
@@ -46,7 +58,7 @@ public class ReviewController {
 
     // by Id
     @GetMapping("/{id}")
-    public ResponseEntity<ReviewDtoSaida> getReviewbyId(@PathVariable String id) {
+    public ResponseEntity<ReviewDtoSaida> getReviewById(@PathVariable String id) {
         
         ReviewDtoSaida reviewResposta = reviewService.getReviewbyId(id);
         

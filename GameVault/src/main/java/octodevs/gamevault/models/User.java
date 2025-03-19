@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import octodevs.gamevault.repositories.dto.UserDtoEntrada;
+import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -16,7 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID userId;
+    private String userId;
     private String userName;
     private ArrayList<String> reviewsId;
     private ArrayList<String> gamesList;
@@ -44,21 +44,20 @@ public class User {
 
 
 
+    public String getUserId() {
+        return userId;
+    }
+
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
 
     public String getPassword() {
         return password;
     }
 
-
-
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
 
 
     public void setPassword(String password) {

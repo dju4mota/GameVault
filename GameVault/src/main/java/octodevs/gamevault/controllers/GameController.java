@@ -1,7 +1,7 @@
 package octodevs.gamevault.controllers;
 
-import octodevs.gamevault.repositories.dto.GameDtoEntrada;
-import octodevs.gamevault.repositories.dto.GameDtoSaida;
+import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
+import octodevs.gamevault.repositories.dto.game.GameDtoSaida;
 import octodevs.gamevault.services.GameService;
 
 import org.springframework.beans.factory.annotation.Autowired;

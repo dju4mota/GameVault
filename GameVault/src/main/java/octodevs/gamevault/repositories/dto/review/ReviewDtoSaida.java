@@ -1,4 +1,4 @@
-package octodevs.gamevault.repositories.dto;
+package octodevs.gamevault.repositories.dto.review;
 
 
 import octodevs.gamevault.models.Review;

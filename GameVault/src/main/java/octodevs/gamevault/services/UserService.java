@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import octodevs.gamevault.models.User;
 import octodevs.gamevault.repositories.UserRepository;
-import octodevs.gamevault.repositories.dto.UserDtoEntrada;
-import octodevs.gamevault.repositories.dto.UserDtoOut;
+import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
+import octodevs.gamevault.repositories.dto.user.UserDtoOut;
 
 @Service
 public class UserService{

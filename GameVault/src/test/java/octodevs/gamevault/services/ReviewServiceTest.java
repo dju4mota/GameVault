@@ -18,9 +18,9 @@ import org.springframework.test.context.ActiveProfiles;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import octodevs.gamevault.models.Review;
-import octodevs.gamevault.repositories.dto.ReviewDtoSaida;
-import octodevs.gamevault.repositories.dto.ReviewDtoEntrada;
-import octodevs.gamevault.repositories.dto.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoEntrada;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoPut;
+import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 
 @SpringBootTest
 @Transactional

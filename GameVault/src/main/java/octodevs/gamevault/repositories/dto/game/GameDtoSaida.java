@@ -1,4 +1,4 @@
-package octodevs.gamevault.repositories.dto;
+package octodevs.gamevault.repositories.dto.game;
 
 import java.util.ArrayList;
 import octodevs.gamevault.models.Game;

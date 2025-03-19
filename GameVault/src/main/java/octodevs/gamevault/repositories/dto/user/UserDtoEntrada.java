@@ -1,4 +1,4 @@
-package octodevs.gamevault.repositories.dto;
+package octodevs.gamevault.repositories.dto.user;
 
 import java.util.ArrayList;
 

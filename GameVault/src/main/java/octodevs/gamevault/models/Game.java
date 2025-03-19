@@ -3,7 +3,7 @@ package octodevs.gamevault.models;
 import java.util.ArrayList;
 
 import jakarta.persistence.*;
-import octodevs.gamevault.repositories.dto.GameDtoEntrada;
+import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
 
 @Entity
 public class Game {
@@ -54,5 +54,11 @@ public class Game {
         return reviewsIds;
     }
     
+    public void addReview(String reviewId){
+        if(reviewsIds == null){
+            reviewsIds = new ArrayList<String>();
+        }
+        reviewsIds.add(reviewId);
+    }
 }
 

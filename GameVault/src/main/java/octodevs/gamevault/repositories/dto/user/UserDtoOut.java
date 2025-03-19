@@ -1,4 +1,4 @@
-package octodevs.gamevault.repositories.dto;
+package octodevs.gamevault.repositories.dto.user;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -6,7 +6,7 @@ import java.util.UUID;
 import octodevs.gamevault.models.User;
 
 public record UserDtoOut(
-    UUID userId,
+    String userId,
     String userName,
     String password,
     String profilePciture,

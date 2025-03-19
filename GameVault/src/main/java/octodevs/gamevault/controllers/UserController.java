@@ -1,8 +1,8 @@
 package octodevs.gamevault.controllers;
 
 import jakarta.validation.Valid;
-import octodevs.gamevault.repositories.dto.UserDtoEntrada;
-import octodevs.gamevault.repositories.dto.UserDtoOut;
+import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
+import octodevs.gamevault.repositories.dto.user.UserDtoOut;
 import octodevs.gamevault.services.UserService;
 
 import java.util.stream.Stream;
