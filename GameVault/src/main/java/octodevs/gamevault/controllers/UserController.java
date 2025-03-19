@@ -3,6 +3,8 @@ package octodevs.gamevault.controllers;
 import jakarta.validation.Valid;
 import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 import octodevs.gamevault.repositories.dto.user.UserDtoOut;
+import octodevs.gamevault.repositories.dto.user.UserDtoSaidaReviews;
+import octodevs.gamevault.services.CombinedSearchsService;
 import octodevs.gamevault.services.UserService;
 
 import java.util.stream.Stream;
@@ -24,6 +26,8 @@ public class UserController {
     
     @Autowired
     private UserService userService;    
+    @Autowired
+    private CombinedSearchsService combinedSearchsService;
 
     @PostMapping
     public ResponseEntity createUser(@RequestBody @Valid UserDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
@@ -48,5 +52,14 @@ public class UserController {
         // TO DO mensagem de não encontrado 404
         return ResponseEntity.ok(user);
     }
+
+        // get by Id com reviews 
+    @GetMapping("/reviews/{id}")
+    public ResponseEntity<UserDtoSaidaReviews> getUserAndReviewById(@PathVariable String id) {
+        UserDtoSaidaReviews game = combinedSearchsService.getUserAndReviewsById(id);
+        // TO DO mensagem de não encontrado 404
+        return ResponseEntity.ok(game);
+    }
+
 
 }

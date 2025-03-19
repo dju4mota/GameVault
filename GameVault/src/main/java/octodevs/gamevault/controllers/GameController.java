@@ -2,6 +2,8 @@ package octodevs.gamevault.controllers;
 
 import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
 import octodevs.gamevault.repositories.dto.game.GameDtoSaida;
+import octodevs.gamevault.repositories.dto.game.GameDtoSaidaReviews;
+import octodevs.gamevault.services.CombinedSearchsService;
 import octodevs.gamevault.services.GameService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class GameController {
     
     @Autowired
     private GameService gameService;
+    @Autowired
+    private CombinedSearchsService combinedSearchsService;
     
 
     @PostMapping
@@ -47,6 +51,14 @@ public class GameController {
     @GetMapping("/{id}")
     public ResponseEntity<GameDtoSaida> getGameById(@PathVariable String id) {
         GameDtoSaida game = gameService.getGameById(id);
+        // TO DO mensagem de não encontrado 404
+        return ResponseEntity.ok(game);
+    }
+
+    // get by Id com reviews 
+    @GetMapping("/reviews/{id}")
+    public ResponseEntity<GameDtoSaidaReviews> getGameAndReviewsById(@PathVariable String id) {
+        GameDtoSaidaReviews game = combinedSearchsService.getGameAndReviewsById(id);
         // TO DO mensagem de não encontrado 404
         return ResponseEntity.ok(game);
     }

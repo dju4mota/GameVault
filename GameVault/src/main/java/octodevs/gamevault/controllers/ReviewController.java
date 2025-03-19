@@ -37,7 +37,7 @@ public class ReviewController {
 
     // Read
 
-    // by Id
+    // Complete by Id
     @GetMapping("/complete/{id}")
     public ResponseEntity<ReviewDtoCompleteSaida> getReviewCompleteById(@PathVariable String id) {
         
