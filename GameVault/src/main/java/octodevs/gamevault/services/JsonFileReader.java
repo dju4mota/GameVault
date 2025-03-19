@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import octodevs.gamevault.models.Game;
 import octodevs.gamevault.models.Review;
+import octodevs.gamevault.models.User;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -34,11 +35,22 @@ public class JsonFileReader {
             throw new RuntimeException("Failed to read JSON file", e);
         }
     }
+
     public List<Game> readArrayGameFromJson(String fileName) {
         try {
             Resource resource = resourceLoader.getResource("classpath:scripts/" + fileName);
             InputStream inputStream = resource.getInputStream();
             return objectMapper.readValue(inputStream, new TypeReference<List<Game>>() {} );
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read JSON file", e);
+        }
+    }
+    
+    public List<User> readArrayUserFromJson(String fileName) {
+        try {
+            Resource resource = resourceLoader.getResource("classpath:scripts/" + fileName);
+            InputStream inputStream = resource.getInputStream();
+            return objectMapper.readValue(inputStream, new TypeReference<List<User>>() {} );
         } catch (IOException e) {
             throw new RuntimeException("Failed to read JSON file", e);
         }

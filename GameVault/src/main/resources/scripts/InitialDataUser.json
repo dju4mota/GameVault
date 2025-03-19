@@ -1,0 +1,52 @@
+[
+    {
+      "password": "senha123",
+      "userName": "joao_silva",
+      "profilePicture": "https://exemplo.com/fotos/joao.jpg"
+    },
+    {
+      "password": "abc456",
+      "userName": "maria_oliveira",
+      "profilePicture": "https://exemplo.com/fotos/maria.jpg"
+    },
+    {
+      "password": "qwerty789",
+      "userName": "pedro_costa",
+      "profilePicture": "https://exemplo.com/fotos/pedro.jpg"
+    },
+    {
+      "password": "seguranca321",
+      "userName": "ana_souza",
+      "profilePicture": "https://exemplo.com/fotos/ana.jpg"
+    },
+    {
+      "password": "minhasenha2025",
+      "userName": "lucas_fernandes",
+      "profilePicture": "https://exemplo.com/fotos/lucas.jpg"
+    },
+    {
+      "password": "1234abcd",
+      "userName": "julia_lima",
+      "profilePicture": "https://exemplo.com/fotos/julia.jpg"
+    },
+    {
+      "password": "senhaforte!",
+      "userName": "carlos_rocha",
+      "profilePicture": "https://exemplo.com/fotos/carlos.jpg"
+    },
+    {
+      "password": "admin2025",
+      "userName": "fernanda_alves",
+      "profilePicture": "https://exemplo.com/fotos/fernanda.jpg"
+    },
+    {
+      "password": "bemvindo123",
+      "userName": "rafael_martins",
+      "profilePicture": "https://exemplo.com/fotos/rafael.jpg"
+    },
+    {
+      "password": "acesso2025",
+      "userName": "isabela_gomes",
+      "profilePicture": "https://exemplo.com/fotos/isabela.jpg"
+    }
+  ]

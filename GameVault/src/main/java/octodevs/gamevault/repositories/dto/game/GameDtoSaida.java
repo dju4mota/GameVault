@@ -8,12 +8,13 @@ public record GameDtoSaida(
         String gameId,
         String title,
         String description,
-        String genre,
-        ArrayList<String> reviewsId
+        String genre,        
+        ArrayList<String> reviewsId,
+        String photo
 ) {
 
     public GameDtoSaida(Game game)
     {
-        this(game.getGameId(),game.getTitle(), game.getDescription(), game.getGenre(), game.getReviewsIds());
+        this(game.getGameId(),game.getTitle(), game.getDescription(), game.getGenre(), game.getReviewsIds(), game.getPhoto());
     }
 }

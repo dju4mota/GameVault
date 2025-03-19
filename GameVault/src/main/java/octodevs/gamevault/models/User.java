@@ -22,7 +22,7 @@ public class User {
     private ArrayList<String> gamesList;
     private ArrayList<String> friends;
     private String password;
-    private String profilePciture;
+    private String profilePicture;
 
     public User() {
     }
@@ -31,12 +31,26 @@ public class User {
     public User(UserDtoEntrada dtoEntrada){ 
         this.userName = dtoEntrada.userName();
         this.password = dtoEntrada.password();
-        this.profilePciture = dtoEntrada.profilePciture();
+        this.profilePicture = dtoEntrada.profilePicture();
         this.reviewsId = new ArrayList<String>();
         this.friends = new ArrayList<String>();
         this.gamesList = new ArrayList<String>();
 
     }
+
+    
+
+    public User(String userId, String userName, ArrayList<String> reviewsId, ArrayList<String> gamesList,
+            ArrayList<String> friends, String password, String profilePicture) {
+        this.userId = userId;
+        this.userName = userName;
+        this.reviewsId = new ArrayList<String>();
+        this.friends = new ArrayList<String>();
+        this.gamesList = new ArrayList<String>();
+        this.password = password;
+        this.profilePicture = profilePicture;
+    }
+
 
     public String getUserName() {
         return userName;
@@ -65,8 +79,8 @@ public class User {
     }
 
 
-    public String getProfilePciture() {
-        return profilePciture;
+    public String getProfilePicture() {
+        return profilePicture;
     
     }
 

@@ -6,10 +6,7 @@ public record UserDtoEntrada (
     
     String userName,
     String password,
-    String profilePciture,
-    ArrayList<String> reviewsId,
-    ArrayList<String> gameLists,
-    ArrayList<String> friends
+    String profilePicture
 
 ) {
 }

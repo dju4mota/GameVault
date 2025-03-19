@@ -6,6 +6,7 @@ public record GameDtoEntrada(
         @NotNull
         String title,
         String description,
-        String genre
+        String genre,
+        String photo
 ) {
 }

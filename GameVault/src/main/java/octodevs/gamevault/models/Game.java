@@ -14,6 +14,7 @@ public class Game {
     private String title;
     private String description;
     private String genre;
+    private String photo;
     private ArrayList<String> reviewsIds;
 
     public Game(GameDtoEntrada gameDtoPost) {
@@ -21,16 +22,18 @@ public class Game {
         this.description = gameDtoPost.description();
         this.genre = gameDtoPost.genre();
         reviewsIds = new ArrayList<String>();
+        this.photo = gameDtoPost.photo();
     }
 
     public Game() {
     }
 
-    public Game(String gameId, String title, String description, String genre) {
+    public Game(String gameId, String title, String description, String genre, String photo) {
         this.gameId = gameId;
         this.title = title;
         this.description = description;
         this.genre = genre;
+        this.photo = photo;
         reviewsIds = new ArrayList<String>();
     }
 
@@ -60,5 +63,10 @@ public class Game {
         }
         reviewsIds.add(reviewId);
     }
+
+    public String getPhoto() {
+        return photo;
+    }
+    
 }
 
