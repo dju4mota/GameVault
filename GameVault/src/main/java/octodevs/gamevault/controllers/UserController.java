@@ -30,7 +30,7 @@ public class UserController {
     private CombinedSearchsService combinedSearchsService;
 
     @PostMapping
-    public ResponseEntity createUser(@RequestBody @Valid UserDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<UserDtoOut> createUser(@RequestBody @Valid UserDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
         
         UserDtoOut userResposta = userService.createUser(dtoEntrada);
 
@@ -49,16 +49,20 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDtoOut> getUserById(@PathVariable String id) {
         UserDtoOut user = userService.getUserById(id);
-        // TO DO mensagem de não encontrado 404
-        return ResponseEntity.ok(user);
+        if(user != null){
+            return ResponseEntity.ok(user);
+        }        
+        return ResponseEntity.notFound().build();        
     }
 
-        // get by Id com reviews 
+    // get by Id com reviews 
     @GetMapping("/reviews/{id}")
     public ResponseEntity<UserDtoSaidaReviews> getUserAndReviewById(@PathVariable String id) {
-        UserDtoSaidaReviews game = combinedSearchsService.getUserAndReviewsById(id);
-        // TO DO mensagem de não encontrado 404
-        return ResponseEntity.ok(game);
+        UserDtoSaidaReviews user = combinedSearchsService.getUserAndReviewsById(id);
+        if(user != null)    {
+            return ResponseEntity.ok(user);
+        }        
+        return ResponseEntity.notFound().build();
     }
 
 

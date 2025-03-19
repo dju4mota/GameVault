@@ -27,7 +27,7 @@ public class ReviewController {
 
     // Create
     @PostMapping
-    public ResponseEntity createReview(@RequestBody @Valid ReviewDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ReviewDtoSaida> createReview(@RequestBody @Valid ReviewDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
         
         ReviewDtoSaida reviewResposta = reviewService.createReview(dtoEntrada);
 
@@ -35,15 +35,18 @@ public class ReviewController {
                 .body(reviewResposta);
     }
 
+    
     // Read
-
     // Complete by Id
     @GetMapping("/complete/{id}")
     public ResponseEntity<ReviewDtoCompleteSaida> getReviewCompleteById(@PathVariable String id) {
         
         ReviewDtoCompleteSaida reviewResposta = reviewService.getReviewCompletebyId(id);
-        
-        return ResponseEntity.ok(reviewResposta);
+                
+        if(reviewResposta != null){
+            return ResponseEntity.ok(reviewResposta);
+        }
+        return ResponseEntity.notFound().build();
     }
     
     
@@ -61,13 +64,15 @@ public class ReviewController {
     public ResponseEntity<ReviewDtoSaida> getReviewById(@PathVariable String id) {
         
         ReviewDtoSaida reviewResposta = reviewService.getReviewbyId(id);
-        
-        return ResponseEntity.ok(reviewResposta);
+        if(reviewResposta != null){
+            return ResponseEntity.ok(reviewResposta);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     // Update
     @PutMapping ("/{id}")
-    public ResponseEntity updateById(@PathVariable String id, @RequestBody ReviewDtoPut dtoPut) {
+    public ResponseEntity<ReviewDtoSaida> updateById(@PathVariable String id, @RequestBody ReviewDtoPut dtoPut) {
         
         ReviewDtoSaida reviewResposta  = reviewService.updatebyID(id, dtoPut);
         
@@ -76,7 +81,7 @@ public class ReviewController {
 
     // Delete
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteReviewById(@PathVariable String id) {
+    public ResponseEntity<String> deleteReviewById(@PathVariable String id) {
         
         reviewService.deleteById(id);
         

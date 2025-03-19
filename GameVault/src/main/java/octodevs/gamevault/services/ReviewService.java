@@ -33,13 +33,17 @@ public class ReviewService {
     @Transactional
     public ReviewDtoSaida createReview(ReviewDtoEntrada DTOreview) {
 
-        ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
-
-        // Ligações com outras tabelas
-        gameService.addReview(reviewDTO.gameId(), reviewDTO.reviewId());
-        userService.addReview(reviewDTO.userId(), reviewDTO.reviewId());
-
-        return reviewDTO;
+        // try {
+            ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
+            System.out.println(reviewDTO);
+            // Ligações com outras tabelas             
+            gameService.addReview(reviewDTO.gameId(),reviewDTO.reviewId());
+            userService.addReview(reviewDTO.userId(),reviewDTO.reviewId());
+            return reviewDTO;
+        // } catch (Exception e) {    
+        //     System.out.println("Id Game or User Wrong");    
+        //     return null;
+        // }                
     }
 
 // To-Do  mensagem de não encontrado 404
@@ -55,8 +59,11 @@ public class ReviewService {
     public ReviewDtoCompleteSaida getReviewCompletebyId(String id){
         // To Do -> Verificação e try-catch 
         ReviewDtoSaida review = getReviewbyId(id);
-        ReviewDtoCompleteSaida saida = new ReviewDtoCompleteSaida(review, gameService.getGameById(review.gameId()), userService.getUserById(review.userId()));        
-        return saida;        
+        if(review != null){
+            ReviewDtoCompleteSaida saida = new ReviewDtoCompleteSaida(review, gameService.getGameById(review.gameId()), userService.getUserById(review.userId()));        
+            return saida;
+        }
+        return null;        
     }
 
     @Transactional

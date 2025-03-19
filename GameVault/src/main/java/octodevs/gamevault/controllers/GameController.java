@@ -32,7 +32,7 @@ public class GameController {
     
 
     @PostMapping
-    public ResponseEntity createGame(@RequestBody @Valid GameDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<GameDtoSaida> createGame(@RequestBody @Valid GameDtoEntrada dtoEntrada, UriComponentsBuilder uriBuilder) {
         
         GameDtoSaida gameResposta = gameService.createGame(dtoEntrada);
 
@@ -51,16 +51,20 @@ public class GameController {
     @GetMapping("/{id}")
     public ResponseEntity<GameDtoSaida> getGameById(@PathVariable String id) {
         GameDtoSaida game = gameService.getGameById(id);
-        // TO DO mensagem de não encontrado 404
-        return ResponseEntity.ok(game);
+        if(game != null){
+            return ResponseEntity.ok(game);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     // get by Id com reviews 
     @GetMapping("/reviews/{id}")
     public ResponseEntity<GameDtoSaidaReviews> getGameAndReviewsById(@PathVariable String id) {
         GameDtoSaidaReviews game = combinedSearchsService.getGameAndReviewsById(id);
-        // TO DO mensagem de não encontrado 404
-        return ResponseEntity.ok(game);
+        if(game != null){
+            return ResponseEntity.ok(game);
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }

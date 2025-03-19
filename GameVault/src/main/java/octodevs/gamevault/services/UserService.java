@@ -39,9 +39,15 @@ public class UserService{
 
     @Transactional
     public void addReview(String userId, String reviewId){        
-        User user = userRepository.getReferenceById(userId);
-        user.addReview(reviewId);
-        userRepository.save(user);
-    }
+        try {                    
+            User user = userRepository.getReferenceById(userId);
+            if(user != null){
+                user.addReview(reviewId);
+                userRepository.save(user);
+            }
+        } catch (Exception e) {
+            System.out.println("User Not Found");
+        }
 
+    }
 }

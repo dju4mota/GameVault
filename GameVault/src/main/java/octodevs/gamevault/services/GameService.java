@@ -27,9 +27,17 @@ public class GameService {
 
     @Transactional
     public void addReview(String gameId, String reviewId){        
-        Game game = gameRepository.getReferenceById(gameId);
-        game.addReview(reviewId);
-        gameRepository.save(game);
+    
+        try {
+            Game game = gameRepository.getReferenceById(gameId);    
+            if(game != null){
+                
+                game.addReview(reviewId);
+                gameRepository.save(game);
+            }        
+        } catch (Exception e) {
+            System.out.println("Game Not Found");
+        }                        
     }
 
     // Read    
