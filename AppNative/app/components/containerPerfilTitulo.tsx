@@ -1,9 +1,10 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import ContainerPerfil from "./containerPerfil";
+import { UserDataInterface } from "../models/UserData";
 
 
 interface ContainerPerfilTitulo{
-    perfil:User;
+    perfil: UserDataInterface;
     titulo: string;
 }
 
@@ -11,7 +12,7 @@ const ContainerPerfilTitulo:React.FC<ContainerPerfilTitulo> = ({perfil,titulo}) 
     return(
         <View style={styles.containerTitulo}>
             <Text style={styles.textoTitulo}>{titulo}</Text>
-            <ContainerPerfil nome={perfil.userName}  foto={perfil.userPicture} />
+            <ContainerPerfil userId={perfil.userId} userName={perfil.userName}  userPicture={perfil.userPicture} />
         </View>
     )
 }

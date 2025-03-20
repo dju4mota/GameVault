@@ -1,12 +1,13 @@
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import ContainerPerfilTitulo from "./containerPerfilTitulo";
 import React from "react";
+import { UserData } from "../models/UserData";
 
 
 interface Lista{
     fotos: string[]
     texto: string
-    perfil: User
+    perfil: UserData
 }
 
 const Lista:React.FC<Lista> = ({fotos, texto,perfil}) =>{

@@ -15,8 +15,7 @@ const Cabecalho: React.FC<CabecalhoProps> = ({activeItem}) => {
     const router = useRouter();
 
     const navega = (route: RelativePathString) => {
-        router.push(route); 
-        console.log(activeItem)
+        router.push(route);         
     };
 
     const handleMenuPress = () => {

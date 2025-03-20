@@ -5,6 +5,7 @@ export interface GameDataInterface
     description: string;
     genre: string;
     photo: string;
+    // reviewsIds: string[];
 }
 
 
@@ -15,7 +16,7 @@ export class GameData {
     description: string;
     genre: string;
     photo: string;
-    //reviewsIds: []string
+    // reviewsIds: string[];
 
     constructor(data: GameDataInterface) {
         this.gameId = data.gameId;
@@ -23,5 +24,6 @@ export class GameData {
         this.description = data.description;
         this.genre = data.genre;
         this.photo = data.photo;
+        // this.reviewsIds = data.reviewsIds;
     }
 }

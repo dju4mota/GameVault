@@ -1,10 +1,10 @@
 import { View, Text, Image, StyleSheet } from "react-native";
-import { User } from "../models/UserData";
+import { UserData } from "../models/UserData";
 
 
 
 
-const ContainerPerfil:React.FC<User> = ({userId,userName,userPicture}) => {    
+const ContainerPerfil:React.FC<UserData> = ({userId,userName,userPicture}) => {    
     return(        
         <View style={styles.containerPerfil}>
             <Text style={styles.textoPerfil}>{userName}</Text>

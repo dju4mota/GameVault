@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ScrollView} from "react-native";
+import { View, StyleSheet, ScrollView, Button} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
-import getReviews from '@/services/ReviewService'; 
-import { ReviewDataSimpleInterface } from '../models/ReviewData';
+import getReviews from '@/services/ApiService'; 
+import { ResponseDTO } from '../models/ResponseDto';
 
 
 export default function FeedReviewScreen() {
-    const [reviews, setReviews] = useState<ReviewDataSimpleInterface[]>([]);
+    const [reviews, setReviews] = useState<ResponseDTO[]>([]);
 
     // useEffect para chamar a função getReviews quando o componente for montado
     useEffect(() => {
         const fetchReviews = async () => {
+            try {
+                const data = await getReviews(); // Chama a função do serviço
+                setReviews(data); // Atualiza o estado com os dados da API
+                console.log(data)
+            } catch (error) {
+                console.error('Erro ao carregar reviews:', error);
+            }
+        };
+
+        fetchReviews();
+    },[]); // O array vazio garante que o useEffect só seja executado uma vez
+
+    async function  api(){
+        {
             try {
                 const data = await getReviews(); // Chama a função do serviço
                 setReviews(data); // Atualiza o estado com os dados da API
@@ -21,22 +35,19 @@ export default function FeedReviewScreen() {
                 console.error('Erro ao carregar reviews:', error);
             }
         };
-
-        fetchReviews();
-    }, []); // O array vazio garante que o useEffect só seja executado uma vez
+    }
 
     return (
         <View style={styles.mainBody}>
             <Cabecalho activeItem={"Reviews"} />
+            <Button title='aaa' onPress={api} />
             <ScrollView>
-                {reviews.map((review, index) => (
+                {reviews.map((review, index) => (                    
                     <React.Fragment key={index}>
-                        <Review
-                            score={review.score} // Supondo que a API retorne um campo "nota"
-                            game={review.game} // Supondo que a API retorne um campo "foto"
-                            comment={review.comment} // Supondo que a API retorne um campo "texto"
-                            user={review.user} 
-                            />
+                        <Review                        
+                            review={review.review}
+                            game={review.game}                            
+                            user={review.user}/>
                         <Linha />
                     </React.Fragment>
                 ))}
@@ -44,44 +55,6 @@ export default function FeedReviewScreen() {
         </View>
     );
 }
-
-
-
-
-// export default function FeedReviewScreen(){
-//     const [reviews, setReviews] = useState([]); // Estado para armazenar as reviews
-
-//     // useEffect para chamar a função getReviews quando o componente for montado
-//     useEffect(() => {
-//         const fetchReviews = async () => {
-//             try {
-//                 const data = await getReviews(); // Chama a função do serviço
-//                 setReviews(data); // Atualiza o estado com os dados da API
-//                 console.log(reviews)
-//             } catch (error) {
-//                 console.error('Erro ao carregar reviews:', error);
-//             }
-//         };
-
-//         fetchReviews();
-//     }, []); // O array vazio garante que o useEffect só seja executado uma vez
-
-// return(
-//     <View  style={ styles.mainBody}>
-//         <Cabecalho activeItem={"Reviews"}/>       
-//         <ScrollView>
-//             <Review nota={"5"} foto="" texto={reviews[0]} perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>       
-//             <Linha/>
-//             <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>              
-//             <Linha/>
-//             <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>             
-//             <Linha/>
-//             <Review nota={"5"} foto="" texto="aaaaaaaaaaaaaaaaa" perfil={new PerfilData("joker", "@/assets/images/persona5.jpg")}/>              
-//        </ScrollView>       
-//     </View>
-//     )
-// }
-
 
 const styles = StyleSheet.create({
     carrousel: {

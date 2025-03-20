@@ -1,18 +1,18 @@
 import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import ContainerPerfilTitulo from "./containerPerfilTitulo";
-import { ReviewDataSimpleInterface } from "../models/ReviewData";
+import { ResponseDTO } from "../models/ResponseDto";
 
 
-const Review :React.FC<ReviewDataSimpleInterface> = ({score,comment,game, user}) => {
+const Review :React.FC<ResponseDTO> = ({review,game, user}) => {
     return (
     <View>
         <ContainerPerfilTitulo titulo={game.title} perfil={user}/>
         <View  style={styles.containerNota}>
-            <Text  style={styles.textoNota}> Nota: {score}/5</Text>
+            <Text  style={styles.textoNota}> Nota: {review.score}/5</Text>
         </View>
         <View style={styles.containerGeral}>
             <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
-            <Text style={styles.textoReview}>{comment}</Text>
+            <Text style={styles.textoReview}>{review.comment}</Text>
             
         </View>
     </View>

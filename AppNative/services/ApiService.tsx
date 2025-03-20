@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'http://127.0.0.1:8080/reviews';
+const apiUrl = 'https://170.233.15.164:8080/reviews/complete';
 
 // Função para buscar as reviews da API
 const getReviews = async () => {
