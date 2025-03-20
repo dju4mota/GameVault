@@ -13,7 +13,7 @@ public class WebConfig implements  WebMvcConfigurer {
         registry.addMapping("/**") // Altere para o mapeamento correto se necessário
                 .allowedOrigins("*") // URL do seu frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
-                .allowedHeaders("*"); // Permite todos os headers
-                //.allowCredentials(true); // Permite credenciais
+                .allowedHeaders("*") // Permite todos os headers
+                .allowCredentials(false); // Permite credenciais
     }
 }

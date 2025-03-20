@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 import java.util.stream.Stream;
 
 
@@ -52,6 +54,13 @@ public class ReviewController {
         return ResponseEntity.notFound().build();
     }
     
+    @GetMapping("/complete")
+    public ResponseEntity<List<ReviewDtoCompleteSaida>> getAllReviewsComplete(Pageable pageable) {
+       
+        List<ReviewDtoCompleteSaida> reviews = reviewService.getAllReviewsComplete(pageable);
+       
+        return ResponseEntity.ok(reviews);
+    }
     
     // all
     @GetMapping

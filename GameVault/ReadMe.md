@@ -2,7 +2,7 @@
 
 ## Descrição Geral
 
-O projeto consiste em um sistema backend desenvolvido em Spring Boot que permite aos usuários criar e publicar reviews de jogos. Além disso, os usuários podem criar e compartilhar listas de jogos. O sistema também oferece funcionalidades de login e registro de usuários, utilizando Spring Boot Security para autenticação.
+O projeto consiste em uma API desenvolvida em Spring Boot que permite aos usuários criar e publicar reviews de jogos. Além disso, os usuários podem criar e compartilhar listas de jogos. O sistema também oferece funcionalidades de login e registro de usuários, utilizando Spring Boot Security para autenticação.
 
 ## Funcionalidades Principais
 
@@ -10,6 +10,7 @@ O projeto consiste em um sistema backend desenvolvido em Spring Boot que permite
 - **Publicação de Reviews:** Usuários podem publicar reviews para jogos específicos.
 - **Visualização de Reviews:** Usuários podem visualizar reviews publicadas por outros usuários.
 - **Criação e Compartilhamento de Listas de Jogos:** Usuários podem criar listas de jogos e compartilhá-las com outros usuários.
+- **Buscar Jogos:** Buscar jogos pelo nome.
 
 ## Tecnologias Utilizadas
 
@@ -21,11 +22,8 @@ O projeto consiste em um sistema backend desenvolvido em Spring Boot que permite
 
 ## Arquitetura do Projeto
 
-O projeto segue uma arquitetura em camadas, com as seguintes principais classes:
-
-- **Review:** Representa as reviews publicadas pelos usuários.
-- **Games:** Representa os jogos que podem ser revisados.
-- **Users:** Representa os usuários do sistema.
+O projeto segue uma arquitetura em camadas, divida principalmente entre Controllers, Service, Models.
+Repositories e DTO's também ajudam a compor o sistema.
 
 ## Endpoints da API
 

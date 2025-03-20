@@ -1,5 +1,7 @@
 package octodevs.gamevault.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,13 +55,30 @@ public class ReviewService {
     }
 
     public ReviewDtoCompleteSaida getReviewCompletebyId(String id){
-        // To Do -> Verificação e try-catch 
+        
         ReviewDtoSaida review = getReviewbyId(id);
         if(review != null){
             ReviewDtoCompleteSaida saida = new ReviewDtoCompleteSaida(review, gameService.getGameById(review.gameId()), userService.getUserById(review.userId()));        
             return saida;
         }
         return null;        
+    }
+
+    public List<ReviewDtoCompleteSaida> getAllReviewsComplete(Pageable pageable){
+        List<ReviewDtoSaida> reviews = getAllReviews(pageable).toList();
+        
+        List<ReviewDtoCompleteSaida> reviewsSaida = new ArrayList<>();
+
+        for (ReviewDtoSaida review : reviews) {
+            try {
+                reviewsSaida.add(getReviewCompletebyId(review.reviewId()));    
+            } catch (Exception e) {
+                System.out.println("Erro no item: " + review);
+                continue;
+            }
+            
+        }
+        return reviewsSaida;
     }
 
     @Transactional
