@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+* A Classe responsável por carregar os dados iniciais no banco. 
+* Lê os 3 Jsons em resources/scripts e chama os respectivos Services.
+* É ativada apenas no perfil Dev
+*/
 @Component
 @Profile("dev")
 public class DataLoader {

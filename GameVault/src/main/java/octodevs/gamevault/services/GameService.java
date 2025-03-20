@@ -1,6 +1,5 @@
 package octodevs.gamevault.services;
 
-import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +12,11 @@ import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
 import octodevs.gamevault.repositories.dto.game.GameDtoSaida;
 
 
+/**
+ * A classe Game Service manipula os dados de Game.
+ * Utiliza GameRepository para operar no banco. 
+ * Recebe Dtos de entrada e cria Dtos de saída
+ */
 @Service
 public class GameService {
 

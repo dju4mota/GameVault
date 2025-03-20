@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import jakarta.persistence.*;
 import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
 
+
 @Entity
 public class Game {
 

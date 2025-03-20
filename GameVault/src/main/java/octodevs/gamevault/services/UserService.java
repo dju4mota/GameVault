@@ -12,6 +12,11 @@ import octodevs.gamevault.repositories.UserRepository;
 import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 import octodevs.gamevault.repositories.dto.user.UserDtoOut;
 
+/**
+ * A classe User Service manipula os dados de User.
+ * Utiliza UserRepository para operar no banco. 
+ * Recebe Dtos de entrada e cria Dtos de saída
+ */
 @Service
 public class UserService{
 

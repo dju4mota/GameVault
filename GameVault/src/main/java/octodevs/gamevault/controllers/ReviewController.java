@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.util.stream.Stream;
 
-// Controller responsavel por rotas e respostas
-// Recebe e envia DTO's
 
+/**
+* A Classe controller das principais rotas da aplicação, chama as operaçãos de review.
+* Utiliza apenas ReviewService.
+* Recebe as requisições HTTP com Dtos de Entrada e devolve respostas HTTP com Dtos de saída.
+*/
 @RestController
 @RequestMapping("/reviews")
 public class ReviewController {

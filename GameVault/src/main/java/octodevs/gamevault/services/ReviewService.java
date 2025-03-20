@@ -2,10 +2,11 @@ package octodevs.gamevault.services;
 
 import java.util.stream.Stream;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import octodevs.gamevault.models.Review;
 import octodevs.gamevault.repositories.ReviewRepository;
 import octodevs.gamevault.repositories.dto.review.ReviewDtoCompleteSaida;
@@ -14,10 +15,11 @@ import octodevs.gamevault.repositories.dto.review.ReviewDtoPut;
 import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 
 
-// Service 
-// Entrada e Saída com DTOs
-// Manipula os Reviews
-
+/**
+ * A classe Review Service manipula os dados de Review, utiliza GameService e UserService para algumas operações em conjunto.
+ * Utiliza ReviewRepository para operar no banco. 
+ * Recebe Dtos de entrada e cria Dtos de saída
+ */
 @Service
 public class ReviewService {
 
@@ -33,20 +35,14 @@ public class ReviewService {
     @Transactional
     public ReviewDtoSaida createReview(ReviewDtoEntrada DTOreview) {
 
-        // try {
-            ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
-            System.out.println(reviewDTO);
-            // Ligações com outras tabelas             
-            gameService.addReview(reviewDTO.gameId(),reviewDTO.reviewId());
-            userService.addReview(reviewDTO.userId(),reviewDTO.reviewId());
-            return reviewDTO;
-        // } catch (Exception e) {    
-        //     System.out.println("Id Game or User Wrong");    
-        //     return null;
-        // }                
+        ReviewDtoSaida reviewDTO = new ReviewDtoSaida(reviewRepository.save(new Review(DTOreview)));
+        System.out.println(reviewDTO);
+        // Ligações com outras entidades             
+        gameService.addReview(reviewDTO.gameId(),reviewDTO.reviewId());
+        userService.addReview(reviewDTO.userId(),reviewDTO.reviewId());
+        return reviewDTO;             
     }
 
-// To-Do  mensagem de não encontrado 404
 
     public ReviewDtoSaida getReviewbyId(String id){
         return reviewRepository.findById(id).map(ReviewDtoSaida::new).orElse(null);

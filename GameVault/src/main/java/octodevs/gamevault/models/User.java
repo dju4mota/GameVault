@@ -9,7 +9,6 @@ import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 
 import java.util.ArrayList;
 
-
 @Entity
 public class User {
 
@@ -25,7 +24,6 @@ public class User {
 
     public User() {
     }
-
 
     public User(UserDtoEntrada dtoEntrada){ 
         this.userName = dtoEntrada.userName();

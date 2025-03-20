@@ -20,6 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+
+/**
+* A Classe controller para as operaçãos de User.
+* Utiliza UserService e CombinedSearch.
+* Recebe as requisições HTTP com Dtos de Entrada e devolve respostas HTTP com Dtos de saída.
+*/
 @RestController
 @RequestMapping("/users")
 public class UserController {

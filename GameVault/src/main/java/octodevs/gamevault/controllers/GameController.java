@@ -21,6 +21,12 @@ import jakarta.validation.Valid;
 
 import java.util.stream.Stream;
 
+
+/**
+* A Classe controller para as operaçãos de Game.
+* Utiliza GameService e CombinedSearch.
+* Recebe as requisições HTTP com Dtos de Entrada e devolve respostas HTTP com Dtos de saída.
+*/
 @RestController
 @RequestMapping("/games")
 public class GameController {

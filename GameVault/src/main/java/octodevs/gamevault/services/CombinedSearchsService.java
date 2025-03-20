@@ -11,6 +11,12 @@ import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 import octodevs.gamevault.repositories.dto.user.UserDtoOut;
 import octodevs.gamevault.repositories.dto.user.UserDtoSaidaReviews;
 
+
+/**
+ * A classe criada para evitar dependências em círculo entre os Services Review, Game e User.
+ * Combinas as buscas de diferentes entidades.
+ * Recebe ids, consultas os services específicos e cria Dtos de saída
+ */
 @Service
 public class CombinedSearchsService {
 
