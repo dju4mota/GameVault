@@ -1,9 +1,10 @@
 
 import React, { ReactElement, ReactNode } from "react";
-import { View, Text, Image, FlatList, StyleSheet, ListRenderItem } from "react-native";
+import { View, Text, Image, FlatList, StyleSheet, ListRenderItem, TouchableOpacity } from "react-native";
 import ContainerPerfil from "./containerPerfil";
-import { GameUserResponseDto } from "../models/ResponseDto";
+import { GameUserResponseDto, ResponseDTO } from "../models/ResponseDto";
 import { GameData } from "../models/GameData";
+import { useRouter } from "expo-router";
 
 
 
@@ -15,13 +16,25 @@ interface CarrouselProps {
 
 const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) => {
 
+    const router = useRouter();
+    
+    const navega = (game: GameData) => {
+        console.log(game)
+        router.push({
+            pathname: "/screens/gameDetails",
+            params: { game: JSON.stringify(game) },
+            });
+        };
+
 
     if (hasProfile){
 
         const renderItem:ListRenderItem<GameData> = ({item}) => (
             <View style={styles.slide}>
                 <Text>{item.title}</Text>
-                <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
+                <TouchableOpacity onPress={()=> {navega(item)}}>
+                    <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
+                </TouchableOpacity>
                 {/* <View style={styles.adicional} >                                        
                     <ContainerPerfil userName={item.user!.userName} userPicture={item.user!.userPicture} userId={item.user!.userId} />
                 </View> */}
@@ -47,7 +60,9 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) =>
         const renderItem:ListRenderItem<GameData> = ({item}) => (
             <View style={styles.slide}>
                 <Text>{item.title}</Text>
-                <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
+                <TouchableOpacity onPress={()=> {navega(item)}}>
+                    <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
+                </TouchableOpacity>
             </View>
         );
     

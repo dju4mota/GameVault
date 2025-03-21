@@ -7,6 +7,7 @@ export default function RootLayout() {
         // statusBarBackgroundColor:"rgb(255, 72, 0)",
       }}>
           <Stack.Screen name="reviewDetails" />
+          <Stack.Screen name="gameDetails" />
       </Stack>
       
   ;
