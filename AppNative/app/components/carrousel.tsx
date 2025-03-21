@@ -19,7 +19,6 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) =>
     const router = useRouter();
     
     const navega = (game: GameData) => {
-        console.log(game)
         router.push({
             pathname: "/screens/gameDetails",
             params: { game: JSON.stringify(game) },

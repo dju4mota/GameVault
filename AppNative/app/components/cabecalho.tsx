@@ -21,6 +21,7 @@ const Cabecalho: React.FC<CabecalhoProps> = ({activeItem}) => {
     const handleMenuPress = () => {
         console.log('Menu pressionado!');
     };
+    
 
     return (
         <View style={styles.total}>            
@@ -28,7 +29,7 @@ const Cabecalho: React.FC<CabecalhoProps> = ({activeItem}) => {
                 <TouchableOpacity onPress={handleMenuPress}>
                     <Icon name="menu" size={30} color="rgb(235, 231, 231)" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleMenuPress}>
+                <TouchableOpacity onPress={()=> navega("../screens/searchGame")}>
                     <Icon name="search" size={30} color="rrgb(235, 231, 231)" />
                 </TouchableOpacity>
             </View>

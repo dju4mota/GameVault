@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         backgroundColor: "rgb(36, 36, 36)",          
     },     
     containerTitulo:{
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        width: '50%'
     },
     containerRecomendado:{
         padding:20

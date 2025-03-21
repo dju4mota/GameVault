@@ -29,6 +29,17 @@ export abstract class ApiService{
             throw error; // Lança o erro para ser tratado no componente
         }
     };
+
+    // To Do - Lógica para pegar dos amigos e os populares
+    static async  searchGame (title: string) {
+        try {
+            const response = await axios.get(this.apiUrl + "games/name/" + title);
+            return response.data; // Retorna os dados da API
+        } catch (error) {
+            console.error('Erro ao buscar dados:', error);
+            throw error; // Lança o erro para ser tratado no componente
+        }
+    };
 }
 
 

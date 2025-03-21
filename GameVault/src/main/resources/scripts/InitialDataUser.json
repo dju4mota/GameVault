@@ -1,4 +1,19 @@
 [
+  {
+    "password": "senha123",
+    "userName": "dju4mota",
+    "profilePicture": "https://exemplo.com/fotos/joao.jpg"
+  },
+  {
+    "password": "senha123",
+    "userName": "Lidia <3",
+    "profilePicture": "https://exemplo.com/fotos/joao.jpg"
+  },
+  {
+    "password": "senha123",
+    "userName": "Felipe Hell Yeah",
+    "profilePicture": "https://exemplo.com/fotos/joao.jpg"
+  },
     {
       "password": "senha123",
       "userName": "joao_silva",
