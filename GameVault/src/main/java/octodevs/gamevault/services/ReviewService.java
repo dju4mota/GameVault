@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,8 +52,8 @@ public class ReviewService {
         return reviewRepository.findById(id).map(ReviewDtoSaida::new).orElse(null);
     }
 
-    public Stream<ReviewDtoSaida> getAllReviews(Pageable pageable){
-        return reviewRepository.findAll(pageable).stream().map(ReviewDtoSaida::new);
+    public Page<ReviewDtoSaida> getAllReviews(Pageable pageable){
+        return reviewRepository.findAll(pageable).map(ReviewDtoSaida::new);
     }
 
     public ReviewDtoCompleteSaida getReviewCompletebyId(String id){
@@ -64,7 +66,7 @@ public class ReviewService {
         return null;        
     }
 
-    public List<ReviewDtoCompleteSaida> getAllReviewsComplete(Pageable pageable){
+    public Page<ReviewDtoCompleteSaida> getAllReviewsComplete(Pageable pageable){
         List<ReviewDtoSaida> reviews = getAllReviews(pageable).toList();
         
         List<ReviewDtoCompleteSaida> reviewsSaida = new ArrayList<>();
@@ -78,7 +80,8 @@ public class ReviewService {
             }
             
         }
-        return reviewsSaida;
+
+        return new PageImpl<>(reviewsSaida);
     }
 
     @Transactional

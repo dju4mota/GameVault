@@ -20,3 +20,19 @@ export class ResponseDTO{
      }
 
 }
+
+export interface GameUserResponseDto{
+    game: GameData;
+    user: UserData;
+}
+
+
+export class GameUserResponseDto{
+    game: GameData;
+    user: UserData;
+    
+    constructor(data: GameUserResponseDto){
+        this.game = data.game;
+        this.user = data.user;
+    }
+}

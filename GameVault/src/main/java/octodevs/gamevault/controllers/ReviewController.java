@@ -7,8 +7,9 @@ import octodevs.gamevault.repositories.dto.review.ReviewDtoPut;
 import octodevs.gamevault.repositories.dto.review.ReviewDtoSaida;
 import octodevs.gamevault.services.ReviewService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -55,18 +56,18 @@ public class ReviewController {
     }
     
     @GetMapping("/complete")
-    public ResponseEntity<List<ReviewDtoCompleteSaida>> getAllReviewsComplete(Pageable pageable) {
+    public ResponseEntity<Page<ReviewDtoCompleteSaida>> getAllReviewsComplete(Pageable pageable) {
        
-        List<ReviewDtoCompleteSaida> reviews = reviewService.getAllReviewsComplete(pageable);
+        Page<ReviewDtoCompleteSaida> reviews = reviewService.getAllReviewsComplete(pageable);
        
         return ResponseEntity.ok(reviews);
     }
     
     // all
     @GetMapping
-    public ResponseEntity<Stream<ReviewDtoSaida>> getAllReviews(Pageable pageable) {
+    public ResponseEntity<Page<ReviewDtoSaida>> getAllReviews(Pageable pageable) {
        
-        Stream<ReviewDtoSaida> reviews = reviewService.getAllReviews(pageable);
+        Page<ReviewDtoSaida> reviews = reviewService.getAllReviews(pageable);
        
         return ResponseEntity.ok(reviews);
     }

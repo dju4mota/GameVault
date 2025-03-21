@@ -1,20 +1,33 @@
 import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import ContainerPerfilTitulo from "./containerPerfilTitulo";
 import { ResponseDTO } from "../models/ResponseDto";
+import { TouchableOpacity } from "react-native";
+import { RelativePathString, useRouter } from "expo-router";
+import { ReviewData } from "../models/ReviewData";
 
 
 const Review :React.FC<ResponseDTO> = ({review,game, user}) => {
+
+    const router = useRouter();
+    
+    const navega = (review: ResponseDTO) => {
+        router.push({
+            pathname: "/screens/reviewDetails",
+            params: { review: JSON.stringify(review) },
+            });
+        };
+
     return (
     <View>
         <ContainerPerfilTitulo titulo={game.title} perfil={user}/>
         <View  style={styles.containerNota}>
             <Text  style={styles.textoNota}> Nota: {review.score}/5</Text>
-        </View>
-        <View style={styles.containerGeral}>
-            <Image source={require("@/assets/images/persona5.jpg")} style={styles.imageReview} />
+        </View>         
+        <TouchableOpacity onPress={()=> {navega({review,game,user})}} style={styles.containerGeral}>
+            <Image source={require("@/assets/images/persona5.jpg")  } style={styles.imageReview} />
             <Text style={styles.textoReview}>{review.comment}</Text>
-            
-        </View>
+        </TouchableOpacity>
+        
     </View>
     )
 }
@@ -60,7 +73,7 @@ const styles = StyleSheet.create({
     },
     textoNota:{
         fontSize: 11,
-        color: "rgb(255, 255, 255)",
+        color: "rgb(248, 188, 120)",
     },
     imageReview:{
         // paddingTop: 50,
@@ -79,7 +92,7 @@ const styles = StyleSheet.create({
         // backgroundColor: "rgb(158, 207, 42)",
     },
     textoReview:{
-        color: "rgb(255, 255, 255)",
+        color: "rgb(160, 158, 158)",
         width: 250,
         paddingLeft: 30,
     }

@@ -1,57 +1,40 @@
-import React  from "react";
+import React, { useEffect, useState }  from "react";
 import { View, StyleSheet} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Carrousel from "@/app/components/carrousel";
 import BotaoPe from "@/app/components/botaoPe";
-import { UserData, UserDataInterface } from "../models/UserData";
+import { ApiService } from "@/services/ApiService";
+import { GameUserResponseDto } from "../models/ResponseDto";
+import { GameData } from "../models/GameData";
 
 
 
 export default function FeedGameScreen(){
+    const [games, setGames] = useState<GameData[]>([]);
+
+    // useEffect para chamar a função getReviews quando o componente for montado
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const data = await ApiService.getAllGames(5); // Chama a função do serviço
+                setGames(data); // Atualiza o estado com os dados da API
+            } catch (error) {
+                console.error('Erro ao carregar reviews:', error);
+            }
+        };
+
+        fetchReviews();
+    },[]); // O array vazio garante que o useEffect só seja executado uma vez
     
-    
-    const lista = [
-    {
-        foto: "@/assets/images/persona5.jpg",
-        perfil: new UserData({
-            userId: "1", 
-            userName: "joker",
-            userPicture: "@/assets/images/persona5.jpg"
-        })
-    },
-    {
-        foto: "@/assets/images/persona5.jpg",
-        perfil: new UserData({
-            userId: "1", 
-            userName: "joker",
-            userPicture: "@/assets/images/persona5.jpg"
-        })
-    },
-    {
-        foto: "@/assets/images/persona5.jpg",
-        perfil: new UserData({
-            userId: "1", 
-            userName: "joker",
-            userPicture: "@/assets/images/persona5.jpg"
-        })
-    },
-    {
-        foto: "@/assets/images/persona5.jpg",
-        perfil: new UserData({
-            userId: "1", 
-            userName: "joker",
-            userPicture: "@/assets/images/persona5.jpg"
-        })
-    }
-];
 
 
 return(
     <View  style={ styles.mainBody}>
        <Cabecalho activeItem={"Jogos"}/>
        <View  style={styles.carrousel}>
-           <Carrousel texto={"Popular"} hasProfile={false} listaDados={lista } />
-           <Carrousel texto={"Entre amigos"} hasProfile={true} listaDados={lista}/>           
+           <Carrousel texto={"Popular"} hasProfile={false} listaDados={games } />
+            {/* To Do -> Recomendação de amigos*/}
+           <Carrousel texto={"Entre amigos"} hasProfile={false} listaDados={games}/>           
        </View>  
        <BotaoPe/>
    </View>

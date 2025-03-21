@@ -3,8 +3,8 @@ import { View, StyleSheet, ScrollView, Button} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
-import getReviews from '@/services/ApiService'; 
 import { ResponseDTO } from '../models/ResponseDto';
+import { ApiService } from '@/services/ApiService';
 
 
 export default function FeedReviewScreen() {
@@ -14,9 +14,8 @@ export default function FeedReviewScreen() {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const data = await getReviews(); // Chama a função do serviço
-                setReviews(data); // Atualiza o estado com os dados da API
-                console.log(data)
+                const data = await ApiService.getAllReviewsComplete(10); // Chama a função do serviço
+                setReviews(data); // Atualiza o estado com os dados da API                
             } catch (error) {
                 console.error('Erro ao carregar reviews:', error);
             }
@@ -24,23 +23,10 @@ export default function FeedReviewScreen() {
 
         fetchReviews();
     },[]); // O array vazio garante que o useEffect só seja executado uma vez
-
-    async function  api(){
-        {
-            try {
-                const data = await getReviews(); // Chama a função do serviço
-                setReviews(data); // Atualiza o estado com os dados da API
-                console.log(reviews)
-            } catch (error) {
-                console.error('Erro ao carregar reviews:', error);
-            }
-        };
-    }
-
+    
     return (
         <View style={styles.mainBody}>
-            <Cabecalho activeItem={"Reviews"} />
-            <Button title='aaa' onPress={api} />
+            <Cabecalho activeItem={"Reviews"} />            
             <ScrollView>
                 {reviews.map((review, index) => (                    
                     <React.Fragment key={index}>

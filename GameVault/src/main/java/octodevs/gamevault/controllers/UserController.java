@@ -71,5 +71,8 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
+    //Get user and games 
+    //get friends by userid
+    //get friends games  by userId
 
 }

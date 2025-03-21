@@ -1,6 +1,9 @@
 package octodevs.gamevault.services;
 
 import java.util.stream.Stream;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -46,8 +49,8 @@ public class GameService {
     }
 
     // Read    
-    public Stream<GameDtoSaida> getAllGames(Pageable pageable) {    
-        return gameRepository.findAll(pageable).stream().map(GameDtoSaida::new);
+    public Page<GameDtoSaida> getAllGames(Pageable pageable) {    
+        return gameRepository.findAll(pageable).map(GameDtoSaida::new);
     }
     
     // get by Id    

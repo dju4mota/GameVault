@@ -6,8 +6,9 @@ import octodevs.gamevault.repositories.dto.game.GameDtoSaidaReviews;
 import octodevs.gamevault.services.CombinedSearchsService;
 import octodevs.gamevault.services.GameService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,11 +59,19 @@ public class GameController {
         return ResponseEntity.notFound().build();
     }
 
+
     @GetMapping
-    public ResponseEntity<Stream<GameDtoSaida>> getAllGames(Pageable pageable) {
-        Stream<GameDtoSaida> games = gameService.getAllGames(pageable);
+    public ResponseEntity<Page<GameDtoSaida>> getAllGames(Pageable pageable) {
+        Page<GameDtoSaida> games = gameService.getAllGames(pageable);
         return ResponseEntity.ok(games);
     }
+
+
+    // @GetMapping("/users")
+    // public ResponseEntity<Stream<GameDtoSaida>> getAllGamesWithUsers(Pageable pageable) {
+    //     Stream<GameDtoSaida> games = gameService.getAllGames(pageable);
+    //     return ResponseEntity.ok(games);
+    // }
 
     // get by Id
     @GetMapping("/{id}")

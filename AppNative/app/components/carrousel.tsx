@@ -2,17 +2,14 @@
 import React, { ReactElement, ReactNode } from "react";
 import { View, Text, Image, FlatList, StyleSheet, ListRenderItem } from "react-native";
 import ContainerPerfil from "./containerPerfil";
-import { User } from "../models/UserData";
+import { GameUserResponseDto } from "../models/ResponseDto";
+import { GameData } from "../models/GameData";
 
 
-class CarrouselData {
-    foto!: string;
-    perfil?: User;
-}
 
 interface CarrouselProps {
     texto: string; // Texto (string)
-    listaDados: CarrouselData[];        
+    listaDados: GameData[];        
     hasProfile: boolean;
 }
 
@@ -21,12 +18,13 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) =>
 
     if (hasProfile){
 
-        const renderItem:ListRenderItem<CarrouselData> = ({item}) => (
+        const renderItem:ListRenderItem<GameData> = ({item}) => (
             <View style={styles.slide}>
+                <Text>{item.title}</Text>
                 <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
-                <View style={styles.adicional} >                                        
-                    <ContainerPerfil userName={item.perfil!.userName} userPicture={item.perfil!.userPicture} userId={item.perfil!.userId} />
-                </View>
+                {/* <View style={styles.adicional} >                                        
+                    <ContainerPerfil userName={item.user!.userName} userPicture={item.user!.userPicture} userId={item.user!.userId} />
+                </View> */}
             </View>
         );
 
@@ -46,8 +44,9 @@ const Carrousel: React.FC<CarrouselProps> = ({texto, listaDados, hasProfile}) =>
         )
     } else { 
     
-        const renderItem:ListRenderItem<CarrouselData> = ({item}) => (
+        const renderItem:ListRenderItem<GameData> = ({item}) => (
             <View style={styles.slide}>
+                <Text>{item.title}</Text>
                 <Image source={require("@/assets/images/persona5.jpg")} style={styles.image} />
             </View>
         );
