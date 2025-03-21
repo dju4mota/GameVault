@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import octodevs.gamevault.models.User;
+import octodevs.gamevault.models.UserAccount;
 import octodevs.gamevault.repositories.UserRepository;
 import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 import octodevs.gamevault.repositories.dto.user.UserDtoOut;
@@ -26,7 +26,7 @@ public class UserService{
     @Transactional
     public UserDtoOut createUser(UserDtoEntrada dtoEntrada) {
         
-        UserDtoOut dtoSaida = new UserDtoOut(userRepository.save(new User(dtoEntrada)));
+        UserDtoOut dtoSaida = new UserDtoOut(userRepository.save(new UserAccount(dtoEntrada)));
         return dtoSaida;
     }
 
@@ -45,7 +45,7 @@ public class UserService{
     @Transactional
     public void addReview(String userId, String reviewId){        
         try {                    
-            User user = userRepository.getReferenceById(userId);
+            UserAccount user = userRepository.getReferenceById(userId);
             if(user != null){
                 user.addReview(reviewId);
                 userRepository.save(user);

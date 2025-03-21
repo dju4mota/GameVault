@@ -2,7 +2,7 @@ package octodevs.gamevault.repositories.dto.user;
 
 import java.util.ArrayList;
 
-import octodevs.gamevault.models.User;
+import octodevs.gamevault.models.UserAccount;
 
 public record UserDtoOut(
     String userId,
@@ -13,7 +13,7 @@ public record UserDtoOut(
     ArrayList<String> gameList,
     ArrayList<String> friends
 ) {
-    public UserDtoOut(User user){
+    public UserDtoOut(UserAccount user){
         this(user.getUserId(), user.getUserName(), user.getPassword(), user.getProfilePicture(), user.getReviewsIds(),user.getGamesList(), user.getFriends());
     }
 }

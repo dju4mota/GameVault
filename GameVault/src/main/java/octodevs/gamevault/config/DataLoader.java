@@ -3,7 +3,7 @@ package octodevs.gamevault.config;
 import jakarta.annotation.PostConstruct;
 import octodevs.gamevault.models.Game;
 import octodevs.gamevault.models.Review;
-import octodevs.gamevault.models.User;
+import octodevs.gamevault.models.UserAccount;
 import octodevs.gamevault.repositories.dto.game.GameDtoEntrada;
 import octodevs.gamevault.repositories.dto.game.GameDtoSaida;
 import octodevs.gamevault.repositories.dto.review.ReviewDtoEntrada;
@@ -53,10 +53,10 @@ public class DataLoader {
         }
         
 
-        List<User> users = jsonFileReader.readArrayUserFromJson("InitialDataUser.json");
+        List<UserAccount> users = jsonFileReader.readArrayUserFromJson("InitialDataUser.json");
         List<UserDtoOut> idsUsers = new ArrayList<UserDtoOut>();
 
-        for (User user : users) {
+        for (UserAccount user : users) {
             idsUsers.add(userService.createUser(new UserDtoEntrada(user.getUserName(), user.getPassword(), user.getProfilePicture())));    
         }
         

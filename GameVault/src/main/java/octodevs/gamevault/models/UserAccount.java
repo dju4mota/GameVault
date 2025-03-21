@@ -1,16 +1,23 @@
 package octodevs.gamevault.models;
 
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class User {
+public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -21,11 +28,14 @@ public class User {
     private ArrayList<String> friends;
     private String password;
     private String profilePicture;
+    
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<GrantedAuthority> authorities = new ArrayList<>();
 
-    public User() {
+    public UserAccount() {
     }
 
-    public User(UserDtoEntrada dtoEntrada){ 
+    public UserAccount(UserDtoEntrada dtoEntrada){ 
         this.userName = dtoEntrada.userName();
         this.password = dtoEntrada.password();
         this.profilePicture = dtoEntrada.profilePicture();
@@ -37,7 +47,7 @@ public class User {
 
     
 
-    public User(String userId, String userName, String password, String profilePicture) {
+    public UserAccount(String userId, String userName, String password, String profilePicture) {
         this.userId = userId;
         this.userName = userName;
         this.reviewsIds = new ArrayList<String>();
@@ -47,6 +57,17 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
+
+
+    public UserDetails asUser() {
+        return User.withDefaultPasswordEncoder() //
+            .username(getUserName()) //
+            .password(getPassword()) //
+            .authorities(getAuthorities()) //
+            .build();
+    }
+
+    
 
     public String getUserName() {
         return userName;
@@ -99,6 +120,10 @@ public class User {
             reviewsIds = new ArrayList<String>();            
         }
         reviewsIds.add(reviewId);
+    }
+
+    public List<GrantedAuthority> getAuthorities() {
+        return authorities;
     }
     
 }
