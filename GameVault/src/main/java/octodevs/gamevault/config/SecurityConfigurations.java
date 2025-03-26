@@ -23,11 +23,6 @@ import octodevs.gamevault.repositories.UserRepository;
 @EnableWebSecurity
 public class SecurityConfigurations {
 
-    // @Bean
-    // UserDetailsService userService(UserRepository repo) {
-    //     return username -> repo.findByUserName(username);.asUser();
-    // }
-
     // Expose AuthenticationManager as a bean
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -41,20 +36,6 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        // throws Exception {
-        //     http.authorizeHttpRequests() //
-        //      .requestMatchers("/login").permitAll() //
-        //      .requestMatchers("/", "/search").authenticated() //
-        //      .requestMatchers(HTTP, "/api/**")
-        //      .authenticated() //
-        //      .requestMatchers(, "/new-video",
-        //         "/api/**").hasRole("ADMIN") //
-        //      .anyRequest().denyAll() //
-        //      .and() //
-        //      .formLogin() //
-        //     .and() //
-        //     .httpBasic();
-        // return http.build();
 
         http
             .authorizeHttpRequests(auth -> auth

@@ -8,16 +8,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
+import octodevs.gamevault.utils.UserRole;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class UserAccount {
+public class UserAccount implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -28,9 +31,7 @@ public class UserAccount {
     private ArrayList<String> friends;
     private String password;
     private String profilePicture;
-    
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<GrantedAuthority> authorities = new ArrayList<>();
+    private UserRole role;
 
     public UserAccount() {
     }
@@ -42,12 +43,12 @@ public class UserAccount {
         this.reviewsIds = new ArrayList<String>();
         this.friends = new ArrayList<String>();
         this.gamesList = new ArrayList<String>();
-
+        
     }
 
     
 
-    public UserAccount(String userId, String userName, String password, String profilePicture) {
+    public UserAccount(String userId, String userName, String password, String profilePicture, UserRole role) {
         this.userId = userId;
         this.userName = userName;
         this.reviewsIds = new ArrayList<String>();
@@ -55,19 +56,8 @@ public class UserAccount {
         this.gamesList = new ArrayList<String>();
         this.password = password;
         this.profilePicture = profilePicture;
-    }
-
-
-
-    public UserDetails asUser() {
-        return User.withDefaultPasswordEncoder() //
-            .username(getUserName()) //
-            .password(getPassword()) //
-            .authorities(getAuthorities()) //
-            .build();
-    }
-
-    
+        this.role = role;
+    }   
 
     public String getUserName() {
         return userName;
@@ -122,8 +112,42 @@ public class UserAccount {
         reviewsIds.add(reviewId);
     }
 
-    public List<GrantedAuthority> getAuthorities() {
-        return authorities;
+    @Override
+    public String getUsername() {
+       return this.userName;
     }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return UserDetails.super.isEnabled();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == UserRole.ADMIN)
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else 
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+    
     
 }
