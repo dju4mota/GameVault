@@ -1,9 +1,7 @@
 package octodevs.gamevault.models;
 
 
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,7 +14,6 @@ import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
@@ -42,8 +39,13 @@ public class UserAccount implements UserDetails{
         this.profilePicture = dtoEntrada.profilePicture();
         this.reviewsIds = new ArrayList<String>();
         this.friends = new ArrayList<String>();
-        this.gamesList = new ArrayList<String>();
-        
+        this.gamesList = new ArrayList<String>();        
+    }
+
+    public UserAccount(String userName, String password, UserRole role){
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
     }
 
     

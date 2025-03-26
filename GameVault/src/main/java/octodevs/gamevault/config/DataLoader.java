@@ -53,12 +53,12 @@ public class DataLoader {
         }
         
 
-        List<UserAccount> users = jsonFileReader.readArrayUserFromJson("InitialDataUser.json");
-        List<UserDtoOut> idsUsers = new ArrayList<UserDtoOut>();
+        // List<UserAccount> users = jsonFileReader.readArrayUserFromJson("InitialDataUser.json");
+        // List<UserDtoOut> idsUsers = new ArrayList<UserDtoOut>();
 
-        for (UserAccount user : users) {
-            idsUsers.add(userService.createUser(new UserDtoEntrada(user.getUserName(), user.getPassword(), user.getProfilePicture())));    
-        }
+        // for (UserAccount user : users) {
+        //     idsUsers.add(userService.createUser(new UserDtoEntrada(user.getUserName(), user.getPassword(), user.getProfilePicture())));    
+        // }
         
 
 
@@ -67,10 +67,11 @@ public class DataLoader {
 
         for (Review review : reviews) {
             int idG = rand.nextInt(idsGame.size());
-            int idU = rand.nextInt(idsUsers.size());
+            // int idU = rand.nextInt(idsUsers.size());
             
             reviewService.createReview(new ReviewDtoEntrada(review.getScore(),review.getComment(),review.getData(),
-            review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), idsUsers.get(idU).userId()));
+            // review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), idsUsers.get(idU).userId()));
+            review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), "111111111111111111"));
         }
 
         
