@@ -1,10 +1,10 @@
 import React from "react";
-import FeedScreen from "./screens/feedGame";
+import Login from "./screens/login";
 
 
 export default function Index() {
     return (
-        <FeedScreen/> 
+        <Login/> 
     );
 }
 

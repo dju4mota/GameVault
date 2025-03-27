@@ -1,6 +1,6 @@
-import { GameData } from "./GameData";
-import { ReviewData } from "./ReviewData";
-import { UserData } from "./UserData";
+import { GameData } from "../GameData";
+import { ReviewData } from "../ReviewData";
+import { UserData } from "../UserData";
 
 export interface ResponseDTOInterface{
     review: ReviewData;

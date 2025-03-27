@@ -1,45 +1,33 @@
 import axios from 'axios';
 
-
 export abstract class ApiService{
 
+    // To Do Todas as rotas 
     static apiUrl = 'http://192.168.18.177:8080/';
     //const apiUrl = 'http://127.0.0.1:8080/reviews/complete';
 
-    // To Do -> Refatorar funções iguais
-    // Get all reviews complete
-    static async  getAllReviewsComplete (pages: number) {
-        try {
-            const response = await axios.get(this.apiUrl + "reviews/complete" + "?size=" + pages);
-            return response.data.content; // Retorna os dados da API
-        } catch (error) {
-            console.error('Erro ao buscar dados:', error);
-            throw error; // Lança o erro para ser tratado no componente
-        }    
+    static rotas = { 
+        ReviewsComplete: 'reviews/complete/',
+        Games: 'games/',
+        GamesByName: 'games/name/',
+        Reviews: "reviews/",
+        Users: "users/"
     };
 
-
-    // To Do - Lógica para pegar dos amigos e os populares
-    static async  getAllGames (pages: number) {
+    static async get(pages: number, url:string){
         try {
-            const response = await axios.get(this.apiUrl + "games" + "?size=" + pages);
-            return response.data.content; // Retorna os dados da API
+            var urlFull = this.apiUrl + url + "?size=" + pages;
+            if(pages <= 0){
+                urlFull = this.apiUrl + url;
+            }          
+            const response = await axios.get(urlFull);   
+            return response.data.content;
         } catch (error) {
             console.error('Erro ao buscar dados:', error);
-            throw error; // Lança o erro para ser tratado no componente
+            throw error;
         }
-    };
-
-    // To Do - Lógica para pegar dos amigos e os populares
-    static async  searchGame (title: string) {
-        try {
-            const response = await axios.get(this.apiUrl + "games/name/" + title);
-            return response.data; // Retorna os dados da API
-        } catch (error) {
-            console.error('Erro ao buscar dados:', error);
-            throw error; // Lança o erro para ser tratado no componente
-        }
-    };
+    }
+ 
 }
 
 

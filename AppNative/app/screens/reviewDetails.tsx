@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text,Image, ScrollView, Button} from "react-native";
 import { ReviewData } from '../models/ReviewData';
 import { useLocalSearchParams } from 'expo-router';
-import { ResponseDTO } from '../models/ResponseDto';
+import { ResponseDTO } from '../models/dto/ResponseDto';
 import ContainerPerfil from '../components/containerPerfil';
 import Linha from '../components/linha';
 

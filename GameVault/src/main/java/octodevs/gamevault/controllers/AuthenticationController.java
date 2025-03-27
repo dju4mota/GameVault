@@ -46,7 +46,6 @@ public class AuthenticationController {
         return ResponseEntity.ok( new LoginResponseDTO(token));
     }
 
-    // To Do -> Tirar opção de passar a role de amin pelo DTO 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid UserDtoEntrada dto){
         if(this.userRepository.findByUserName(dto.userName()) != null){

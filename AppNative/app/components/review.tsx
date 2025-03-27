@@ -1,6 +1,6 @@
 import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import ContainerPerfilTitulo from "./containerPerfilTitulo";
-import { ResponseDTO } from "../models/ResponseDto";
+import { ResponseDTO } from "../models/dto/ResponseDto";
 import { TouchableOpacity } from "react-native";
 import { RelativePathString, useRouter } from "expo-router";
 import { ReviewData } from "../models/ReviewData";

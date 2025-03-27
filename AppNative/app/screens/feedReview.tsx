@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Button} from "react-native";
 import Cabecalho from "@/app/components/cabecalho";
 import Review from "@/app/components/review";
 import Linha from "../components/linha";
-import { ResponseDTO } from '../models/ResponseDto';
+import { ResponseDTO } from '../models/dto/ResponseDto';
 import { ApiService } from '@/services/ApiService';
 
 
@@ -14,7 +14,7 @@ export default function FeedReviewScreen() {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const data = await ApiService.getAllReviewsComplete(10); // Chama a função do serviço
+                const data = await ApiService.get(10, ApiService.rotas.ReviewsComplete); // Chama a função do serviço
                 setReviews(data); // Atualiza o estado com os dados da API                
             } catch (error) {
                 console.error('Erro ao carregar reviews:', error);

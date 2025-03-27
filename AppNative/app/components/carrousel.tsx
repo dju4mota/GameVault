@@ -2,7 +2,7 @@
 import React, { ReactElement, ReactNode } from "react";
 import { View, Text, Image, FlatList, StyleSheet, ListRenderItem, TouchableOpacity } from "react-native";
 import ContainerPerfil from "./containerPerfil";
-import { GameUserResponseDto, ResponseDTO } from "../models/ResponseDto";
+import { GameUserResponseDto, ResponseDTO } from "../models/dto/ResponseDto";
 import { GameData } from "../models/GameData";
 import { useRouter } from "expo-router";
 

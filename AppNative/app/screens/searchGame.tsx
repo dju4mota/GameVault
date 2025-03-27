@@ -13,7 +13,7 @@ const SearchGame = () => {
     
     const search = async (title: string) => {
         try {
-            const data = await ApiService.searchGame(title); 
+            const data = await ApiService.get(0,ApiService.rotas.GamesByName + "title"); 
             setGames(data); 
         } catch (error) {
             console.error('Erro ao buscar jogo por nome ' + title +" - " , error);

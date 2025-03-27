@@ -4,7 +4,7 @@ import Cabecalho from "@/app/components/cabecalho";
 import Carrousel from "@/app/components/carrousel";
 import BotaoPe from "@/app/components/botaoPe";
 import { ApiService } from "@/services/ApiService";
-import { GameUserResponseDto } from "../models/ResponseDto";
+import { GameUserResponseDto } from "../models/dto/ResponseDto";
 import { GameData } from "../models/GameData";
 
 
@@ -16,7 +16,7 @@ export default function FeedGameScreen(){
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const data = await ApiService.getAllGames(5); // Chama a função do serviço
+                const data = await ApiService.get(5,ApiService.rotas.Games); // Chama a função do serviço
                 setGames(data); // Atualiza o estado com os dados da API
             } catch (error) {
                 console.error('Erro ao carregar reviews:', error);
