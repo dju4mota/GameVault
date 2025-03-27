@@ -39,16 +39,24 @@ public class UserAccount implements UserDetails{
         this.profilePicture = dtoEntrada.profilePicture();
         this.reviewsIds = new ArrayList<String>();
         this.friends = new ArrayList<String>();
-        this.gamesList = new ArrayList<String>();        
+        this.gamesList = new ArrayList<String>();    
+        this.role = UserRole.USER;    
+    }
+    public UserAccount(UserDtoEntrada dtoEntrada, String encryptedPassword){ 
+        this.userName = dtoEntrada.userName();
+        this.password = encryptedPassword;
+        this.profilePicture = dtoEntrada.profilePicture();
+        this.reviewsIds = new ArrayList<String>();
+        this.friends = new ArrayList<String>();
+        this.gamesList = new ArrayList<String>();    
+        this.role = UserRole.USER;    
     }
 
-    public UserAccount(String userName, String password, UserRole role){
-        this.userName = userName;
-        this.password = password;
-        this.role = role;
-    }
-
-    
+    // public UserAccount(String userName, String password, UserRole role){
+    //     this.userName = userName;
+    //     this.password = password;
+    //     this.role = role;
+    // }
 
     public UserAccount(String userId, String userName, String password, String profilePicture, UserRole role) {
         this.userId = userId;

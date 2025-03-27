@@ -26,7 +26,8 @@ import java.util.Random;
 * Lê os 3 Jsons em resources/scripts e chama os respectivos Services.
 * É ativada apenas no perfil Dev
 */
-@Component
+
+// @Component
 @Profile("dev")
 public class DataLoader {
 
@@ -53,12 +54,12 @@ public class DataLoader {
         }
         
 
-        // List<UserAccount> users = jsonFileReader.readArrayUserFromJson("InitialDataUser.json");
-        // List<UserDtoOut> idsUsers = new ArrayList<UserDtoOut>();
+        List<UserAccount> users = jsonFileReader.readArrayUserFromJson("InitialDataUser.json");
+        List<UserDtoOut> idsUsers = new ArrayList<UserDtoOut>();
 
-        // for (UserAccount user : users) {
-        //     idsUsers.add(userService.createUser(new UserDtoEntrada(user.getUserName(), user.getPassword(), user.getProfilePicture())));    
-        // }
+        for (UserAccount user : users) {
+            idsUsers.add(userService.createUserEncrypted(new UserDtoEntrada(user.getUserName(), user.getPassword(), user.getProfilePicture())));    
+        }
         
 
 
@@ -67,11 +68,11 @@ public class DataLoader {
 
         for (Review review : reviews) {
             int idG = rand.nextInt(idsGame.size());
-            // int idU = rand.nextInt(idsUsers.size());
+            int idU = rand.nextInt(idsUsers.size());
             
             reviewService.createReview(new ReviewDtoEntrada(review.getScore(),review.getComment(),review.getData(),
-            // review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), idsUsers.get(idU).userId()));
-            review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), "111111111111111111"));
+            review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), idsUsers.get(idU).userId()));
+            // review.getPlatform(),review.getHoursPlayed(), idsGame.get(idG).gameId(), "111111111111111111"));
         }
 
         

@@ -9,6 +9,5 @@ public record UserDtoEntrada (
     String password,
     @NotNull
     String profilePicture
-
 ) {
 }

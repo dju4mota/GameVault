@@ -4,6 +4,7 @@ import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,14 @@ public class UserService{
         UserDtoOut dtoSaida = new UserDtoOut(userRepository.save(new UserAccount(dtoEntrada)));
         return dtoSaida;
     }
+
+    @Transactional
+    public UserDtoOut createUserEncrypted(UserDtoEntrada dtoEntrada) {
+        String encryptPassword = new BCryptPasswordEncoder().encode(dtoEntrada.password());        
+        UserDtoOut dtoSaida = new UserDtoOut(userRepository.save(new UserAccount(dtoEntrada, encryptPassword)));
+        return dtoSaida;
+    }
+
 
     // Read    
     public Stream<UserDtoOut> getAllUsers(Pageable pageable) {    

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import octodevs.gamevault.models.UserAccount;
 import octodevs.gamevault.repositories.UserRepository;
-import octodevs.gamevault.repositories.dto.AuthenticationDTO;
-import octodevs.gamevault.repositories.dto.LoginResponseDTO;
-import octodevs.gamevault.repositories.dto.RegisterDTO;
+import octodevs.gamevault.repositories.dto.auth.AuthenticationDTO;
+import octodevs.gamevault.repositories.dto.auth.LoginResponseDTO;
+import octodevs.gamevault.repositories.dto.user.UserDtoEntrada;
 import octodevs.gamevault.services.TokenService;
+import octodevs.gamevault.services.UserService;
+
 
 
 @RestController
@@ -28,6 +30,8 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
     @Autowired
     private TokenService tokenService;
 
@@ -44,15 +48,12 @@ public class AuthenticationController {
 
     // To Do -> Tirar opção de passar a role de amin pelo DTO 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid RegisterDTO dto){
+    public ResponseEntity register(@RequestBody @Valid UserDtoEntrada dto){
         if(this.userRepository.findByUserName(dto.userName()) != null){
             return ResponseEntity.badRequest().build();
         } 
-        String encryptPassword = new BCryptPasswordEncoder().encode(dto.password());
-        UserAccount user = new UserAccount(dto.userName(), encryptPassword, dto.role());
-        
-        this.userRepository.save(user);
-
+        // String encryptPassword = new BCryptPasswordEncoder().encode(dto.password());                
+        this.userService.createUserEncrypted(dto);
         return ResponseEntity.ok().build();
     }
 
