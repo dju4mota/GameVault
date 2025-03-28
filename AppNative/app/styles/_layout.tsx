@@ -8,6 +8,7 @@ export default function RootLayout() {
       }}>
           <Stack.Screen name="reviewDetails" />
           <Stack.Screen name="gameDetails" />
+          <Stack.Screen name="register" />
       </Stack>
       
   ;

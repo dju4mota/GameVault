@@ -1,5 +1,4 @@
 
-import { useRouter } from 'expo-router';
 import React, {useState } from 'react';
 import { View, StyleSheet, Button, TextInput} from "react-native";
 
@@ -8,19 +7,10 @@ const Login = () => {
     const [userName, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
-    const router = useRouter();
-    
-    const navega = () => {      
-        router.push({
-            pathname: "/screens/register",            
-        });
-    };
-
-
-    function login(){        
+    function register(){        
         
     }
+
 
     return (
         <View style={styles.mainBody}>
@@ -40,12 +30,7 @@ const Login = () => {
                 //onSubmitEditing={login}
             />
             <View style={styles.buttonContainer}>
-                <View style={styles.button}>
-                    <Button  color={"rgb(221, 73, 15)"} title='Entrar' onPress={login}></Button>
-                </View>
-                <View style={styles.button}>
-                    <Button color={"rgb(221, 73, 15)"} title='Cadastrar' onPress={navega}></Button>
-                </View>
+                <Button color={"rgb(221, 73, 15)"} title='Cadastrar' onPress={register}></Button>
             </View>
         </View>
     )
@@ -69,9 +54,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer:{
         width: "50%"
-    },
-    button:{
-        marginBottom: 30,
     }
 
 });

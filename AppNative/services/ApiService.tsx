@@ -4,7 +4,7 @@ export abstract class ApiService{
 
     // To Do Todas as rotas 
     static apiUrl = 'http://192.168.18.177:8080/';
-    //const apiUrl = 'http://127.0.0.1:8080/reviews/complete';
+
 
     static rotas = { 
         ReviewsComplete: 'reviews/complete/',
@@ -26,6 +26,10 @@ export abstract class ApiService{
             console.error('Erro ao buscar dados:', error);
             throw error;
         }
+    }
+
+    static async post(){
+
     }
  
 }
