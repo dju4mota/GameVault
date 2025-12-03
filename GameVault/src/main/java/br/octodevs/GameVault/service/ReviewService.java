@@ -15,6 +15,8 @@ public class ReviewService {
     ReviewRepository reviewRepository;
 
     public Review saveReview(Review review){
+        if(reviewRepository.existsById(review.getReviewId()))
+            return null;
         return reviewRepository.save(review);
     }
 
@@ -26,4 +28,14 @@ public class ReviewService {
         return reviewRepository.findById(id);
     }
 
+    public Review updateById(Long id, Review review){
+        if(reviewRepository.existsById(id)){
+            return reviewRepository.save(review);
+        }
+        return null;
+    }
+
+    public void deleteById(Long id){
+        reviewRepository.deleteById(id);
+    }
 }

@@ -34,6 +34,10 @@ public class Review {
         this.hoursPlayed = hoursPlayed;
     }
 
+
+    //todo metodo para atualizar passando só os parametros a serem mudados
+
+
     @Override
     public String toString() {
         return "Review{" +
