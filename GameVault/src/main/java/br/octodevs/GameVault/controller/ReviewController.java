@@ -1,16 +1,14 @@
 package br.octodevs.GameVault.controller;
 
-import br.octodevs.GameVault.model.Review;
-import br.octodevs.GameVault.model.dto.ReviewDTO_Saida;
+import br.octodevs.GameVault.model.review.Review;
+import br.octodevs.GameVault.model.review.ReviewDTO_Entrada;
+import br.octodevs.GameVault.model.review.ReviewDTO_Saida;
 import br.octodevs.GameVault.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/review")
@@ -20,7 +18,7 @@ public class ReviewController {
     ReviewService reviewService;
 
     @PostMapping()
-    public ResponseEntity<ReviewDTO_Saida> createReview(@RequestBody Review review){
+    public ResponseEntity<ReviewDTO_Saida> createReview(@RequestBody ReviewDTO_Entrada review){
         return ResponseEntity.ok(new ReviewDTO_Saida(reviewService.saveReview(review)));
     }
 

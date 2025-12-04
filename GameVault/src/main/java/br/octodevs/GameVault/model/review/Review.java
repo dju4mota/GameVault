@@ -1,4 +1,4 @@
-package br.octodevs.GameVault.model;
+package br.octodevs.GameVault.model.review;
 
 import br.octodevs.GameVault.utils.Platform;
 import jakarta.persistence.*;
@@ -34,6 +34,15 @@ public class Review {
         this.hoursPlayed = hoursPlayed;
     }
 
+    public Review(ReviewDTO_Entrada review) {
+        this.score = review.score();
+        this.comment = review.comment();
+        this.data = review.data();
+        this.platform = review.platform();
+        this.gameId = review.gameId();
+        this.userId = review.userId();
+        this.hoursPlayed = review.hoursPlayed();
+    }
 
     //todo metodo para atualizar passando só os parametros a serem mudados
 
