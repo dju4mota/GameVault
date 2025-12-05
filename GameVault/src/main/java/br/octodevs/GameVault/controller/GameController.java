@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/review")
+@RequestMapping("/game")
 public class GameController {
 
     @Autowired
     GameService gameService;
 
     @PostMapping()
-    public ResponseEntity<GameDTO_Saida> createGame(@RequestBody GameDTO_Entrada review){
-        return ResponseEntity.ok(new GameDTO_Saida(gameService.saveGame(review)));
+    public ResponseEntity<GameDTO_Saida> createGame(@RequestBody GameDTO_Entrada game){
+        return ResponseEntity.ok(new GameDTO_Saida(gameService.saveGame(game)));
     }
 
     @GetMapping()
@@ -38,9 +38,9 @@ public class GameController {
     }
 
     @PutMapping()
-    public GameDTO_Saida updateGameByID(@RequestParam Long id, @RequestBody Game review){
+    public GameDTO_Saida updateGameByID(@RequestParam Long id, @RequestBody Game game){
         try {
-            return new GameDTO_Saida( gameService.updateById(id, review));
+            return new GameDTO_Saida( gameService.updateById(id, game));
         } catch (NoSuchElementException e) {
             System.out.println(" Não achou Id");
             return null;
